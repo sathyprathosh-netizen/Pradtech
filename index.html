@@ -654,6 +654,575 @@
                 font-size: 0.98rem;
             }
         }
+
+        /* ==========================================================================
+       COMMON SECTION STYLES
+       ========================================================================== */
+        .section-padding {
+            padding: 96px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 52px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent-soft);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 18px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 42px;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+        }
+
+        .section-description {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+       02 — WHAT YOU DO (SERVICES)
+       ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 12px 30px rgba(58, 143, 140, 0.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-soft);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            margin-bottom: 22px;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon-box {
+            background-color: var(--accent-primary);
+            color: #FFFFFF;
+            transform: scale(1.05);
+        }
+
+        .service-icon-box svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--accent-primary);
+            background: var(--accent-soft);
+            padding: 5px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+       03 — HOW YOU WORK (PROCESS)
+       ========================================================================== */
+        .process-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .process-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .process-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 26px rgba(58, 143, 140, 0.08);
+        }
+
+        .process-step-num {
+            font-family: var(--font-mono);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            opacity: 0.85;
+            margin-bottom: 16px;
+            display: block;
+            line-height: 1;
+        }
+
+        .process-card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .process-card .process-summary {
+            font-weight: 600;
+            color: var(--accent-primary);
+            font-size: 0.98rem;
+            margin-bottom: 12px;
+        }
+
+        .process-card .process-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+       TRUST & PROOF SECTION
+       ========================================================================== */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .proof-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proof-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+
+        .tech-badges-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .tech-pill:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--accent-soft);
+        }
+
+        .standards-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .standards-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.94rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .standards-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .standards-item strong {
+            color: var(--text-primary);
+        }
+
+        /* ==========================================================================
+       FAQ SECTION (ACCORDION)
+       ========================================================================== */
+        .faq-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item:hover,
+        .faq-item.active {
+            border-color: var(--accent-primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-family: var(--font-heading);
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            background: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .faq-item.active .faq-question,
+        .faq-question:hover {
+            color: var(--accent-primary);
+        }
+
+        .faq-icon {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-primary);
+            transition: transform 0.28s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease;
+            padding: 0 24px;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 250px;
+            padding: 0 24px 22px 24px;
+        }
+
+        /* ==========================================================================
+       FINAL CTA SECTION
+       ========================================================================== */
+        .cta-section {
+            padding: 90px 0 100px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #17252B 0%, #20353D 100%);
+            color: #FFFFFF;
+            border-radius: var(--radius-lg);
+            padding: 64px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(23, 37, 43, 0.16);
+        }
+
+        .cta-box .section-badge {
+            background: rgba(58, 143, 140, 0.25);
+            border-color: rgba(58, 143, 140, 0.5);
+            color: #C2F0ED;
+        }
+
+        .cta-box h2 {
+            font-size: 40px;
+            line-height: 1.15;
+            color: #FFFFFF;
+            margin-bottom: 18px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-box p {
+            font-size: 1.06rem;
+            color: #A9BFC3;
+            max-width: 580px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+        }
+
+        .cta-contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 36px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            flex-wrap: wrap;
+        }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #C2F0ED;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-pill:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+        .site-footer {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 32px;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 320px;
+        }
+
+        .footer-tagline {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .footer-socials {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-social-link {
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-social-link:hover {
+            color: var(--accent-primary);
+        }
+
+        /* ==========================================================================
+       RESPONSIVE ADJUSTMENTS FOR NEW SECTIONS
+       ========================================================================== */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-padding {
+                padding: 64px 0;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .service-card {
+                padding: 28px 22px;
+            }
+
+            .process-card {
+                padding: 28px 22px;
+            }
+
+            .proof-card {
+                padding: 28px 22px;
+            }
+
+            .cta-box {
+                padding: 44px 20px;
+            }
+
+            .cta-box h2 {
+                font-size: 28px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 28px;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -686,13 +1255,13 @@
                     <span>Prad<span>Tech</span></span>
                 </a>
 
-                <!-- Desktop Navigation Links (Manrope) -->
+                <!-- Navigation Links (Manrope) -->
                 <ul class="nav-menu">
-                    <li><a href="#services" class="nav-link active">Services</a></li>
-                    <li><a href="#web-dev" class="nav-link">Web Development</a></li>
-                    <li><a href="#seo" class="nav-link">SEO Optimization</a></li>
-                    <li><a href="#ai-chatbot" class="nav-link">AI Chatbots</a></li>
-                    <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#process" class="nav-link">How It Works</a></li>
+                    <li><a href="#proof" class="nav-link">Proof & Tech</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
 
                 <!-- Right Side CTA Actions -->
@@ -716,9 +1285,10 @@
     </header>
 
     <!-- ==========================================================================
-       HERO SECTION
+       MAIN CONTENT
        ========================================================================== -->
     <main>
+        <!-- 01 — HERO SECTION -->
         <section class="hero-section" id="home">
             <div class="container">
                 <div class="hero-container">
@@ -769,34 +1339,454 @@
                 </div>
             </div>
         </section>
+
+        <!-- 02 — WHAT YOU DO (SERVICES) -->
+        <section class="section-padding" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">02 — WHAT WE DO</div>
+                    <h2 class="section-title">One Partner. Multiple Digital Solutions.</h2>
+                    <p class="section-description">
+                        Everything your business needs to establish authority, attract qualified customers, and automate operations.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1: Web Development -->
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Websites and custom web experiences.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Custom Code</span>
+                            <span class="service-tag">High Performance</span>
+                            <span class="service-tag">Mobile-First</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: SEO & Google Business Profile -->
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <polyline points="11 8 13 11 16 11"></polyline>
+                            </svg>
+                        </div>
+                        <h3>SEO & Google Business Profile</h3>
+                        <p>Get discovered where your customers are searching.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Local Maps SEO</span>
+                            <span class="service-tag">Search Ranking</span>
+                            <span class="service-tag">Organic Traffic</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: AI Solutions -->
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-4.5a1 1 0 0 1-2 0V7a1 1 0 0 1 2 0z"/>
+                                <path d="M12 8v4m0 4h.01"/>
+                            </svg>
+                        </div>
+                        <h3>AI Solutions</h3>
+                        <p>Chatbots, AI receptionists and automation.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Custom AI Agents</span>
+                            <span class="service-tag">Lead Capture</span>
+                            <span class="service-tag">Workflow Automation</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Web Apps & WordPress -->
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Web Apps & WordPress</h3>
+                        <p>Custom applications and flexible business websites.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Custom CMS</span>
+                            <span class="service-tag">Scalable Stack</span>
+                            <span class="service-tag">Easy Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 — HOW YOU WORK (PROCESS) -->
+        <section class="section-padding process-section" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">03 — HOW WE WORK</div>
+                    <h2 class="section-title">Simple From Start to Launch.</h2>
+                    <p class="section-description">
+                        What happens if you hire us? A straightforward, three-step execution designed for speed and clarity.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+                    <!-- Step 01 -->
+                    <div class="process-card">
+                        <span class="process-step-num">01</span>
+                        <h3>Discover</h3>
+                        <div class="process-summary">Understand your goals.</div>
+                        <p class="process-desc">
+                            We analyze your business, target audience, and key goals to craft the ideal technical and design strategy.
+                        </p>
+                    </div>
+
+                    <!-- Step 02 -->
+                    <div class="process-card">
+                        <span class="process-step-num">02</span>
+                        <h3>Build</h3>
+                        <div class="process-summary">Design and develop the solution.</div>
+                        <p class="process-desc">
+                            We engineer your project with clean, high-performance code, pixel-perfect UI, and robust mobile responsiveness.
+                        </p>
+                    </div>
+
+                    <!-- Step 03 -->
+                    <div class="process-card">
+                        <span class="process-step-num">03</span>
+                        <h3>Launch</h3>
+                        <div class="process-summary">Go live and keep improving.</div>
+                        <p class="process-desc">
+                            Smooth deployment, performance checks, and ongoing guidance so your digital presence continues to generate results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 — TRUST & PROOF -->
+        <section class="section-padding" id="proof">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">TRUST & PROOF</div>
+                    <h2 class="section-title">Proven Execution. Real Standards.</h2>
+                    <p class="section-description">
+                        We believe in verifiable proof. Here is the technical foundation, modern workflows, and engineering quality we bring to every project.
+                    </p>
+                </div>
+
+                <div class="proof-grid">
+                    <!-- Tech & Workflows -->
+                    <div class="proof-card">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                            </svg>
+                            Technologies & Workflows
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem;">
+                            Modern, industry-standard toolchain engineered for longevity, security, and peak performance:
+                        </p>
+                        <div class="tech-badges-list">
+                            <span class="tech-pill">HTML5 & Modern CSS3</span>
+                            <span class="tech-pill">JavaScript (ES6+)</span>
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">React & Next.js</span>
+                            <span class="tech-pill">WordPress & Headless</span>
+                            <span class="tech-pill">REST & GraphQL APIs</span>
+                            <span class="tech-pill">AI / LLM Integrations</span>
+                            <span class="tech-pill">Git Version Control</span>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Standards -->
+                    <div class="proof-card">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                            Engineering Standards
+                        </h3>
+                        <ul class="standards-list">
+                            <li class="standards-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <div><strong>95+ Performance Target:</strong> Blazing-fast loading times that enhance user retention and boost search ranking.</div>
+                            </li>
+                            <li class="standards-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <div><strong>100% Mobile Responsive:</strong> Flawless experience across all phone screens, tablets, and desktop resolutions.</div>
+                            </li>
+                            <li class="standards-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <div><strong>Clean Semantic SEO Code:</strong> Structured hierarchy and schema metadata to maximize search engine discoverability.</div>
+                            </li>
+                            <li class="standards-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <div><strong>Zero Bloat:</strong> Custom, purposeful code without heavy unused plugins or sluggish dependencies.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 — FAQ SECTION (ACCORDION) -->
+        <section class="section-padding faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">FAQ</div>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-description">
+                        Everything you need to know about our services, process, and working together.
+                    </p>
+                </div>
+
+                <div class="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do you work with businesses outside India?</span>
+                            <span class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, absolutely. We work with businesses and founders across the globe including the US, UK, Europe, Australia, and the Middle East. All communication, project tracking, and milestones are handled smoothly via asynchronous updates and video calls.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can you redesign an existing website?</span>
+                            <span class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We can completely modernize your current website’s look, speed, and mobile responsiveness while safeguarding your existing SEO rankings, backlink equity, and content structure.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do you build WordPress websites?</span>
+                            <span class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We develop custom WordPress themes and flexible setups that give you full control over your content while maintaining high loading speeds and clean architecture without bloated plugins.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can you manage my Google Business Profile?</span>
+                            <span class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We optimize your profile category, services, citations, photos, and review strategy to help your business rank in Google Local Map Packs and attract local customer inquiries.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do you provide SEO after the website launch?</span>
+                            <span class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We offer ongoing SEO retainers covering technical audits, keyword tracking, content strategy, and continuous performance improvements to keep your business climbing search engine results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 — FINAL CTA SECTION -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <div class="cta-box">
+                    <div class="section-badge">HAVE A PROJECT IN MIND?</div>
+                    <h2>Let's Build Something That Moves Your Business Forward.</h2>
+                    <p>
+                        Whether you need a high-converting website, local SEO dominance, or AI-powered automation, let's talk about your goals and make it happen.
+                    </p>
+
+                    <a href="mailto:sathyprathosh@futryx.in?subject=Project%20Inquiry%20-%20PradTech" class="btn btn-primary" style="background-color: var(--accent-primary); border-color: var(--accent-primary); padding: 14px 32px; font-size: 1.05rem;">
+                        <span>Start Your Project</span>
+                        <span class="draw-arrow-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path pathLength="1" d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <div class="cta-contact-info">
+                        <a href="mailto:sathyprathosh@futryx.in" class="contact-pill">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            sathyprathosh@futryx.in
+                        </a>
+                        <span style="color: rgba(255,255,255,0.4);">•</span>
+                        <a href="mailto:sathyprathosh@gmail.com" class="contact-pill">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            sathyprathosh@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- ==========================================================================
-       LIGHTWEIGHT SCRIPT FOR MOBILE MENU TOGGLE
+       FOOTER
+       ========================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="brand-logo">
+                        <div class="logo-icon-box">
+                            <svg viewBox="0 0 536 465">
+                                <path pathLength="1" class="pt-t-path"
+                                    d="M0 0 C29.82 -0.02 59.63 -0.04 89.45 -0.05 C92.99 -0.05 96.54 -0.05 100.08 -0.05 C100.78 -0.06 101.49 -0.06 102.22 -0.06 C113.54 -0.06 124.87 -0.07 136.2 -0.08 C147.87 -0.09 159.55 -0.09 171.22 -0.09 C177.76 -0.1 184.29 -0.1 190.83 -0.11 C197.01 -0.11 203.2 -0.11 209.39 -0.11 C211.62 -0.11 213.86 -0.12 216.1 -0.12 C236.09 -0.15 256 0.46 276 1 C276 27.4 276 53.8 276 81 C244.98 81 213.96 81 182 81 C182.12 92.87 182.23 104.73 182.35 116.96 C182.4 124.48 182.45 132 182.49 139.52 C182.55 151.45 182.62 163.39 182.75 175.32 C182.85 184.02 182.92 192.71 182.94 201.4 C182.95 206 182.98 210.6 183.06 215.2 C183.13 219.54 183.15 223.87 183.13 228.21 C183.13 229.79 183.15 231.38 183.19 232.96 C183.47 244.89 183.47 244.89 179.84 250.1 C177.35 252.63 174.81 254.83 172 257 C170.6 258.22 169.2 259.45 167.81 260.69 C167.18 261.23 166.54 261.77 165.89 262.33 C163.26 264.65 160.85 267.17 158.45 269.71 C157 271 157 271 155 271 C154.67 271.99 154.34 272.98 154 274 C153.34 274 152.68 274 152 274 C152 274.66 152 275.32 152 276 C150.39 277.59 150.39 277.59 148.25 279.38 C145.93 281.34 143.75 283.26 141.62 285.44 C140 287 140 287 138 287 C138 287.66 138 288.32 138 289 C137.34 289 136.68 289 136 289 C135.73 289.64 135.46 290.28 135.19 290.94 C134 293 134 293 131 294 C131 294.66 131 295.32 131 296 C129.5 297.52 129.5 297.52 127.44 299.25 C126.34 300.18 126.34 300.18 125.23 301.13 C124.49 301.75 123.76 302.37 123 303 C121.77 304.04 120.54 305.08 119.31 306.12 C118.79 306.56 118.27 307 117.74 307.45 C114.77 310.1 112.01 312.97 109.23 315.81 C107.26 317.81 105.29 319.81 103.31 321.81 C102.64 322.51 101.96 323.2 101.26 323.91 C100.62 324.57 99.97 325.22 99.3 325.89 C98.71 326.49 98.13 327.09 97.52 327.7 C96 329 96 329 94 329 C94 327.44 94 327.44 93.99 325.84 C93.91 300.42 93.82 275.01 93.71 249.59 C93.66 237.3 93.62 225.01 93.58 212.72 C93.55 202 93.51 191.28 93.46 180.56 C93.43 174.89 93.41 169.22 93.4 163.55 C93.38 158.2 93.36 152.86 93.33 147.51 C93.32 145.56 93.32 143.6 93.32 141.65 C93.3 130.58 92.81 119.93 91 109 C90.88 108.23 90.76 107.47 90.64 106.67 C87.65 88.32 80.21 71.89 69.93 56.53 C68.26 54.02 66.96 51.88 66 49 C65.34 49 64.68 49 64 49 C63.5 47.02 63.5 47.02 63 45 C62.34 45 61.68 45 61 45 C59.73 43.67 59.73 43.67 58.19 41.75 C47.56 29.35 34.77 19.06 20 12 C20 11.34 20 10.68 20 10 C19.34 9.9 18.67 9.8 17.99 9.69 C14.21 8.82 10.77 7.41 7.19 5.94 C6.49 5.66 5.8 5.37 5.09 5.08 C3.39 4.39 1.69 3.7 0 3 C0 2.01 0 1.02 0 0 Z"
+                                    transform="translate(211,37)" />
+                                <path pathLength="1" class="pt-p-path"
+                                    d="M0 0 C-0.41 6.57 -0.84 12.74 -3 19 C-3.28 19.81 -3.56 20.61 -3.84 21.45 C-4.86 24.31 -5.92 27.16 -7 30 C-7.36 30.96 -7.72 31.93 -8.09 32.92 C-14.34 48.85 -24.59 64.24 -38 75 C-40.12 76.9 -42.23 78.8 -44.34 80.71 C-46 82 -46 82 -48 82 C-48 82.66 -48 83.32 -48 84 C-49.47 85.31 -51 86.55 -52.56 87.75 C-55.79 90.26 -58.94 92.79 -62 95.5 C-65 98 -65 98 -67 98 C-67 98.66 -67 99.32 -67 100 C-68.9 101.73 -68.9 101.73 -71.38 103.62 C-72.59 104.57 -72.59 104.57 -73.84 105.54 C-76 107 -76 107 -78 107 C-78.2 107.54 -78.4 108.09 -78.6 108.65 C-80.59 111.99 -83.42 114.19 -86.38 116.62 C-86.95 117.11 -87.53 117.6 -88.12 118.11 C-90.95 120.47 -93.57 122.57 -97 124 C-97 124.66 -97 125.32 -97 126 C-98.49 127.35 -100.04 128.63 -101.62 129.88 C-105.06 132.62 -108.46 135.37 -111.78 138.26 C-112.41 138.81 -113.04 139.36 -113.68 139.92 C-114.93 141.01 -116.17 142.1 -117.4 143.19 C-121.78 147 -121.78 147 -124 147 C-124 147.66 -124 148.32 -124 149 C-125.65 149.66 -127.3 150.32 -129 151 C-129 151.66 -129 152.32 -129 153 C-130.71 154.59 -132.5 156.1 -134.31 157.56 C-135.79 158.77 -135.79 158.77 -137.3 160 C-140 162 -140 162 -143 163 C-143 163.66 -143 164.32 -143 165 C-144.71 166.59 -146.5 168.1 -148.31 169.56 C-149.79 170.77 -149.79 170.77 -151.3 172 C-154 174 -154 174 -157 175 C-157 175.66 -157 176.32 -157 177 C-158.57 178.41 -160.21 179.76 -161.88 181.06 C-166.78 184.97 -171.42 189.06 -176 193.35 C-178 195 -178 195 -180 195 C-180 195.66 -180 196.32 -180 197 C-181.55 198.39 -183.17 199.71 -184.81 201 C-188.94 204.3 -192.92 207.67 -196.81 211.25 C-207.44 221 -207.44 221 -210 221 C-210.21 221.58 -210.41 222.15 -210.62 222.75 C-212.49 225.8 -215.01 227.09 -218 229 C-218.5 229.99 -218.5 229.99 -219 231 C-219.99 231 -220.98 231 -222 231 C-223.16 227.52 -223.18 224.37 -223.21 220.74 C-223.22 220 -223.23 219.25 -223.24 218.48 C-223.27 215.97 -223.29 213.46 -223.32 210.94 C-223.34 209.13 -223.36 207.32 -223.38 205.51 C-223.44 200.57 -223.49 195.62 -223.53 190.67 C-223.56 187.57 -223.59 184.47 -223.62 181.36 C-223.97 146.93 -224.13 112.5 -224.18 78.06 C-224.19 74.43 -224.2 70.81 -224.21 67.18 C-224.22 61.46 -224.23 55.73 -224.23 50.01 C-224.23 47.9 -224.23 45.78 -224.24 43.67 C-224.25 40.78 -224.25 37.88 -224.24 34.99 C-224.25 34.15 -224.25 33.3 -224.26 32.43 C-224.21 23.21 -224.21 23.21 -221 20 C-213.66 18.92 -206.41 18.85 -199.01 18.84 C-197.05 18.83 -195.1 18.83 -193.14 18.82 C-191.05 18.81 -188.96 18.81 -186.87 18.8 C-182.49 18.79 -178.11 18.77 -173.72 18.75 C-161.26 18.69 -148.8 18.63 -136.34 18.6 C-129.45 18.58 -122.55 18.55 -115.66 18.51 C-112.03 18.49 -108.39 18.47 -104.76 18.47 C-72.92 18.45 -43.29 14.57 -14.12 1.23 C-9.12 -0.74 -5.23 -1.38 0 0 Z"
+                                    transform="translate(277,196)" />
+                                <path pathLength="1" class="pt-p-path"
+                                    d="M0 0 C7.63 -0.07 15.26 -0.12 22.89 -0.14 C25.46 -0.15 28.04 -0.16 30.61 -0.18 C62.13 -0.33 98.85 0.03 123.61 23.03 C123.61 23.69 123.61 24.35 123.61 25.03 C124.19 25.3 124.78 25.57 125.38 25.85 C138.75 32.97 146.91 47.06 153.61 60.03 C154.35 61.42 154.35 61.42 155.11 62.84 C160.48 73.62 163.35 86.1 164.61 98.03 C160.9 100.5 158.08 100.32 153.79 100.31 C152.58 100.32 152.58 100.32 151.35 100.32 C148.64 100.34 145.94 100.34 143.23 100.34 C141.29 100.35 139.36 100.36 137.42 100.36 C132.16 100.39 126.89 100.4 121.62 100.4 C118.34 100.4 115.05 100.41 111.76 100.42 C100.3 100.44 88.84 100.46 77.38 100.46 C66.68 100.46 55.99 100.49 45.29 100.53 C36.12 100.57 26.94 100.58 17.77 100.58 C12.28 100.59 6.8 100.59 1.32 100.62 C-3.84 100.65 -8.99 100.65 -14.15 100.64 C-16.04 100.63 -17.94 100.64 -19.83 100.66 C-22.41 100.68 -24.99 100.67 -27.57 100.65 C-28.33 100.66 -29.08 100.67 -29.86 100.69 C-31.95 100.65 -31.95 100.65 -35.39 100.03 C-37.86 97.16 -38.77 94.76 -38.77 91 C-38.77 90.23 -38.78 89.46 -38.79 88.67 C-38.78 87.84 -38.77 87.01 -38.76 86.16 C-38.77 85.28 -38.77 84.39 -38.78 83.48 C-38.78 80.57 -38.77 77.66 -38.76 74.74 C-38.75 72.72 -38.76 70.69 -38.76 68.67 C-38.76 64.42 -38.75 60.18 -38.73 55.94 C-38.71 50.5 -38.7 45.06 -38.71 39.62 C-38.71 35.43 -38.71 31.25 -38.7 27.07 C-38.69 25.06 -38.69 23.06 -38.7 21.05 C-38.7 18.25 -38.68 15.45 -38.67 12.65 C-38.67 11.82 -38.67 10.98 -38.67 10.13 C-38.64 6.24 -38.59 4.34 -36.39 1.03 C-34.07 0.6 -34.07 0.6 -31.05 0.52 C-29.87 0.49 -28.69 0.45 -27.48 0.41 C-26.14 0.39 -24.8 0.37 -23.45 0.35 C-22.04 0.31 -20.62 0.28 -19.2 0.25 C-12.8 0.12 -6.4 0.06 0 0 Z"
+                                    transform="translate(91.391845703125,36.966796875)" />
+                            </svg>
+                        </div>
+                        <span>Prad<span>Tech</span></span>
+                    </a>
+                    <p class="footer-tagline">Web Development · SEO · AI · Digital Solutions</p>
+                </div>
+
+                <!-- Footer Navigation -->
+                <ul class="footer-nav">
+                    <li><a href="#services" class="footer-link">Services</a></li>
+                    <li><a href="#process" class="footer-link">How It Works</a></li>
+                    <li><a href="#proof" class="footer-link">Proof & Tech</a></li>
+                    <li><a href="#faq" class="footer-link">FAQ</a></li>
+                    <li><a href="#contact" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 PradTech. All rights reserved.</div>
+                <div class="footer-socials">
+                    <a href="https://github.com/sathyprathosh-netizen" target="_blank" rel="noopener" class="footer-social-link">GitHub</a>
+                    <span style="opacity: 0.3;">•</span>
+                    <a href="mailto:sathyprathosh@futryx.in" class="footer-social-link">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       INTERACTIVE SCRIPTS (MOBILE MENU & FAQ ACCORDION)
        ========================================================================== -->
     <script>
+        // Mobile Navigation Toggle & Auto-Close
         const mobileBtn = document.getElementById('mobileMenuBtn');
-        if (mobileBtn) {
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileBtn && navMenu) {
             mobileBtn.addEventListener('click', () => {
-                const navMenu = document.querySelector('.nav-menu');
-                if (navMenu) {
-                    if (navMenu.style.display === 'flex') {
-                        navMenu.style.display = 'none';
-                    } else {
-                        navMenu.style.display = 'flex';
-                        navMenu.style.flexDirection = 'column';
-                        navMenu.style.position = 'absolute';
-                        navMenu.style.top = '70px';
-                        navMenu.style.left = '0';
-                        navMenu.style.width = '100%';
-                        navMenu.style.backgroundColor = '#FFFFFF';
-                        navMenu.style.borderBottom = '1px solid #DCE6E4';
-                        navMenu.style.padding = '20px';
-                        navMenu.style.gap = '14px';
-                    }
+                const isOpen = navMenu.style.display === 'flex';
+                if (isOpen) {
+                    navMenu.style.display = 'none';
+                } else {
+                    navMenu.style.display = 'flex';
+                    navMenu.style.flexDirection = 'column';
+                    navMenu.style.position = 'absolute';
+                    navMenu.style.top = '70px';
+                    navMenu.style.left = '0';
+                    navMenu.style.width = '100%';
+                    navMenu.style.backgroundColor = '#FFFFFF';
+                    navMenu.style.borderBottom = '1px solid #DCE6E4';
+                    navMenu.style.padding = '20px 24px';
+                    navMenu.style.gap = '14px';
+                    navMenu.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
                 }
             });
+
+            // Close mobile menu when clicking any nav link
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 992) {
+                        navMenu.style.display = 'none';
+                    }
+                });
+            });
         }
+
+        // FAQ Accordion Toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('active');
+
+                // Close other open items
+                document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                    if (activeItem !== item) {
+                        activeItem.classList.remove('active');
+                        const questionBtn = activeItem.querySelector('.faq-question');
+                        if (questionBtn) questionBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Toggle current item
+                if (isOpen) {
+                    item.classList.remove('active');
+                    btn.setAttribute('aria-expanded', 'false');
+                } else {
+                    item.classList.add('active');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
     </script>
 </body>
 

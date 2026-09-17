@@ -187,15 +187,20 @@
         }
 
         /* ==========================================================================
-       ROBUST NAVBAR ALIGNMENT & LAYOUT
+       ROBUST NAVBAR ALIGNMENT & LAYOUT (FROSTED GLASSMORPHISM)
        ========================================================================== */
         .header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: var(--bg-surface);
-            border-bottom: 1px solid var(--border);
+            background: rgba(253, 249, 252, 0.72);
+            background-color: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px) saturate(190%);
+            -webkit-backdrop-filter: blur(20px) saturate(190%);
+            border-bottom: 1px solid rgba(220, 230, 228, 0.65);
+            box-shadow: 0 4px 20px rgba(23, 37, 43, 0.03);
             width: 100%;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .nav-wrapper {
@@ -2618,11 +2623,13 @@
                     navMenu.style.top = '70px';
                     navMenu.style.left = '0';
                     navMenu.style.width = '100%';
-                    navMenu.style.backgroundColor = '#FFFFFF';
-                    navMenu.style.borderBottom = '1px solid #DCE6E4';
+                    navMenu.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+                    navMenu.style.backdropFilter = 'blur(20px) saturate(190%)';
+                    navMenu.style.webkitBackdropFilter = 'blur(20px) saturate(190%)';
+                    navMenu.style.borderBottom = '1px solid rgba(220, 230, 228, 0.7)';
                     navMenu.style.padding = '20px 24px';
                     navMenu.style.gap = '14px';
-                    navMenu.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
+                    navMenu.style.boxShadow = '0 12px 30px rgba(0,0,0,0.06)';
                 }
             });
 

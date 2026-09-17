@@ -174,6 +174,15 @@
             }
         }
 
+        /* Responsive Text Helpers */
+        .mobile-only-text {
+            display: none !important;
+        }
+
+        .desktop-only-text {
+            display: inline;
+        }
+
         /* ==========================================================================
        ROBUST NAVBAR ALIGNMENT & LAYOUT
        ========================================================================== */
@@ -673,19 +682,20 @@
             align-items: center;
             gap: 8px;
             background-color: var(--accent-soft);
-            border: 1px solid var(--border);
-            padding: 6px 14px;
+            border: 1px solid rgba(58, 143, 140, 0.25);
+            padding: 7px 16px;
             border-radius: var(--radius-full);
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            font-weight: 600;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
             color: var(--accent-primary);
             margin-bottom: 18px;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
         .section-title {
+            font-family: var(--font-heading);
             font-size: 42px;
             line-height: 1.15;
             color: var(--text-primary);
@@ -694,108 +704,437 @@
         }
 
         .section-description {
+            font-family: var(--font-body);
             font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.6;
         }
 
         /* ==========================================================================
-       02 — WHAT YOU DO (SERVICES)
+       02 — WHAT WE DO (SERVICES CAROUSEL WITH CORNER BUTTONS & DOTS)
        ========================================================================== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            transition: var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
+        .services-section {
             position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 12px 30px rgba(58, 143, 140, 0.1);
+        /* Draggable Horizontal Slider Track Container */
+        .services-slider-container {
+            width: 100%;
+            position: relative;
         }
 
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon-box {
-            width: 48px;
-            height: 48px;
-            background-color: var(--accent-soft);
-            border-radius: var(--radius-md);
+        /* Corner Navigation Buttons (Left and Right corners) */
+        .slider-corner-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-primary);
-            margin-bottom: 22px;
-            transition: var(--transition-smooth);
+            color: var(--text-primary);
+            cursor: pointer;
+            z-index: 30;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(23, 37, 43, 0.12);
         }
 
-        .service-card:hover .service-icon-box {
-            background-color: var(--accent-primary);
+        .slider-corner-btn.prev-btn {
+            left: -22px;
+        }
+
+        .slider-corner-btn.next-btn {
+            right: -22px;
+        }
+
+        .slider-corner-btn:hover {
+            background: var(--accent-primary);
             color: #FFFFFF;
-            transform: scale(1.05);
+            border-color: var(--accent-primary);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 10px 28px rgba(58, 143, 140, 0.45);
         }
 
-        .service-icon-box svg {
-            width: 24px;
-            height: 24px;
+        .slider-corner-btn:active {
+            transform: translateY(-50%) scale(0.94);
+        }
+
+        .slider-corner-btn svg {
+            width: 22px;
+            height: 22px;
+            pointer-events: none;
+        }
+
+        .services-track {
+            display: flex;
+            gap: 28px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 16px 8px 24px;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 8px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .services-track::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .services-track.is-dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+            scroll-snap-type: none;
+        }
+
+        /* Service Card (Generous Full Desktop Size) */
+        .service-card {
+            flex: 0 0 400px;
+            min-width: 400px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 34px 30px 28px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, 0.04);
+            scroll-snap-align: start;
+            box-sizing: border-box;
+        }
+
+        /* Dark Slate Teal Hover Mode matching reference image */
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #17252B 0%, #1F363F 100%);
+            border-color: rgba(58, 143, 140, 0.6);
+            box-shadow: 0 24px 48px rgba(23, 37, 43, 0.28), 0 8px 20px rgba(58, 143, 140, 0.22);
+        }
+
+        /* Card Top Header */
+        .service-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .service-category-pill {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-category-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(194, 240, 237, 0.25);
+            color: #C2F0ED;
+        }
+
+        .service-arrow-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-full);
+            background: #4A6369;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+
+        .service-arrow-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-arrow-btn {
+            background: var(--accent-primary);
+            box-shadow: 0 4px 16px rgba(58, 143, 140, 0.5);
+            transform: scale(1.1);
+        }
+
+        .service-card:hover .service-arrow-btn svg {
+            transform: translateX(3px);
+        }
+
+        /* Card Content */
+        .service-card-body {
+            margin-bottom: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Clean Icon (No square background container) */
+        .service-icon-clean {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .service-card:hover .service-icon-clean {
+            color: #C2F0ED;
+        }
+
+        .service-icon-clean svg {
+            width: 32px;
+            height: 32px;
+            overflow: visible;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: block;
+        }
+
+        .service-icon-clean svg path,
+        .service-icon-clean svg polyline,
+        .service-icon-clean svg line,
+        .service-icon-clean svg circle,
+        .service-icon-clean svg rect,
+        .service-icon-clean svg polygon {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        /* SVG Draw Animation on hover */
+        .service-card:hover .service-icon-clean svg path,
+        .service-card:hover .service-icon-clean svg polyline,
+        .service-card:hover .service-icon-clean svg line,
+        .service-card:hover .service-icon-clean svg circle,
+        .service-card:hover .service-icon-clean svg rect,
+        .service-card:hover .service-icon-clean svg polygon {
+            animation: iconStrokeDraw 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .service-card h3 {
+            font-family: var(--font-heading);
             font-size: 1.4rem;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 10px;
+            line-height: 1.25;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: #FFFFFF;
         }
 
         .service-card p {
-            font-size: 1.02rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex: 1;
+            line-height: 1.55;
+            margin-bottom: 0;
+            transition: color 0.3s ease;
         }
 
-        .service-tags {
+        .service-card:hover p {
+            color: #A9BFC3;
+        }
+
+        /* Visual Preview Mockup Box */
+        .service-preview-wrap {
+            width: 100%;
+            height: 220px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #0E1A1F;
+            border: 1px solid var(--border);
+            margin-top: auto;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: all 0.35s ease;
+        }
+
+        .service-card:hover .service-preview-wrap {
+            border-color: rgba(58, 143, 140, 0.4);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+        }
+
+        .service-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .service-card:hover .service-preview-img {
+            transform: scale(1.05);
+        }
+
+        /* Pagination Dots Section */
+        .services-dots-wrap {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 26px;
         }
 
-        .service-tag {
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            color: var(--accent-primary);
-            background: var(--accent-soft);
-            padding: 5px 12px;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
+        .service-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-full);
+            background: rgba(58, 143, 140, 0.25);
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0;
         }
+
+        .service-dot:hover {
+            background: var(--accent-primary);
+            transform: scale(1.25);
+        }
+
+        .service-dot.active {
+            width: 32px;
+            background: var(--accent-primary);
+            border-radius: var(--radius-full);
+            box-shadow: 0 2px 10px rgba(58, 143, 140, 0.45);
+        }
+
+        /* Tablet scaling (Shows ~1.8 cards + 20% peek) */
+        @media (max-width: 992px) {
+            .service-card {
+                flex: 0 0 clamp(280px, 45vw, 340px);
+                min-width: clamp(280px, 45vw, 340px);
+                padding: 26px 22px 20px;
+            }
+            .service-preview-wrap {
+                height: 180px;
+            }
+            .service-card h3 {
+                font-size: 1.25rem;
+            }
+            .slider-corner-btn {
+                width: 44px;
+                height: 44px;
+            }
+            .slider-corner-btn.prev-btn {
+                left: -12px;
+            }
+            .slider-corner-btn.next-btn {
+                right: -12px;
+            }
+        }
+
+        /* Mobile scaling (< 600px) - Compact size + 15-20% peek of adjacent section */
+        @media (max-width: 600px) {
+            .services-slider-container {
+                padding: 0;
+            }
+            .services-track {
+                gap: 16px;
+                padding: 8px 18px 20px;
+                margin: 0 -16px;
+                scroll-padding: 18px;
+            }
+            .service-card {
+                flex: 0 0 75vw;
+                min-width: 75vw;
+                max-width: 300px;
+                padding: 22px 18px 18px;
+                border-radius: var(--radius-md);
+            }
+            .service-card-header {
+                margin-bottom: 16px;
+            }
+            .service-category-pill {
+                font-size: 0.74rem;
+                padding: 4px 12px;
+            }
+            .service-arrow-btn {
+                width: 34px;
+                height: 34px;
+            }
+            .service-arrow-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            .service-icon-clean {
+                margin-bottom: 12px;
+            }
+            .service-icon-clean svg {
+                width: 26px;
+                height: 26px;
+            }
+            .service-card h3 {
+                font-size: 1.15rem;
+                margin-bottom: 6px;
+            }
+            .service-card p {
+                font-size: 0.88rem;
+                line-height: 1.45;
+            }
+            .service-card-body {
+                margin-bottom: 16px;
+            }
+            .service-preview-wrap {
+                height: 155px;
+            }
+            .slider-corner-btn {
+                width: 36px;
+                height: 36px;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+                background: rgba(255, 255, 255, 0.92);
+            }
+            .slider-corner-btn.prev-btn {
+                left: 2px;
+            }
+            .slider-corner-btn.next-btn {
+                right: 2px;
+            }
+            .slider-corner-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            .services-dots-wrap {
+                margin-top: 18px;
+                gap: 8px;
+            }
+            .service-dot {
+                width: 8px;
+                height: 8px;
+            }
+            .service-dot.active {
+                width: 24px;
+            }
+        }
+
+
+
+
 
         /* ==========================================================================
        03 — HOW YOU WORK (PROCESS)
@@ -1172,7 +1511,7 @@
        ========================================================================== */
         @media (max-width: 992px) {
             .services-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .process-grid {
@@ -1185,6 +1524,10 @@
         }
 
         @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
             .section-padding {
                 padding: 64px 0;
             }
@@ -1340,87 +1683,201 @@
             </div>
         </section>
 
-        <!-- 02 — WHAT YOU DO (SERVICES) -->
-        <section class="section-padding" id="services">
+        <!-- 02 — WHAT YOU DO (DRAGGABLE SERVICES SLIDER) -->
+        <section class="section-padding services-section" id="services">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-badge">02 — WHAT WE DO</div>
-                    <h2 class="section-title">One Partner. Multiple Digital Solutions.</h2>
+                    <div class="section-badge">
+                        <span class="desktop-only-text">02 — WHAT WE DO</span>
+                        <span class="mobile-only-text">02 — SERVICES</span>
+                    </div>
+                    <h2 class="section-title">
+                        <span class="desktop-only-text">One Partner. Multiple Digital Solutions.</span>
+                        <span class="mobile-only-text">One Partner. Many Solutions.</span>
+                    </h2>
                     <p class="section-description">
-                        Everything your business needs to establish authority, attract qualified customers, and automate operations.
+                        <span class="desktop-only-text">Everything your business needs to establish authority, attract qualified customers, and automate operations.</span>
+                        <span class="mobile-only-text">Built around what your business needs to move forward.</span>
                     </p>
                 </div>
 
-                <div class="services-grid">
-                    <!-- Service 1: Web Development -->
-                    <div class="service-card">
-                        <div class="service-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
+                <div class="services-slider-container">
+                    <!-- Corner Nav Buttons (Left & Right) -->
+                    <button class="slider-corner-btn prev-btn" id="servicesPrevBtn" aria-label="Previous service">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="services-track" id="servicesTrack">
+                        <!-- Service 1: Web Development -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">Web Experience</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline pathLength="1" points="16 18 22 12 16 6"></polyline>
+                                        <polyline pathLength="1" points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                </div>
+                                <h3>Web Development</h3>
+                                <p>Websites and custom web experiences.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/web-development.jpg" alt="Web Development Interface Preview" class="service-preview-img" loading="lazy">
+                            </div>
                         </div>
-                        <h3>Web Development</h3>
-                        <p>Websites and custom web experiences.</p>
-                        <div class="service-tags">
-                            <span class="service-tag">Custom Code</span>
-                            <span class="service-tag">High Performance</span>
-                            <span class="service-tag">Mobile-First</span>
+
+                        <!-- Service 2: SEO (Search Engine Optimization) -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">Organic Growth</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle pathLength="1" cx="11" cy="11" r="8"></circle>
+                                        <line pathLength="1" x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <polyline pathLength="1" points="11 8 13 11 16 11"></polyline>
+                                    </svg>
+                                </div>
+                                <h3>SEO (Search Engine Optimization)</h3>
+                                <p>Top search rankings, technical audits & organic traffic.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/seo-ranking.jpg" alt="Local SEO & GBP Dashboard Preview" class="service-preview-img" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Service 3: Google Business Profile -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">Local Maps</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path pathLength="1" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle pathLength="1" cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <h3>Google Business Profile</h3>
+                                <p>Google Maps 3-pack dominance and local customer calls.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/google-business-profile.jpg" alt="Google Business Profile Preview" class="service-preview-img" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Service 4: AI Solutions -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">AI & Automation</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path pathLength="1" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    </svg>
+                                </div>
+                                <h3>AI Solutions</h3>
+                                <p>Chatbots, AI receptionists and automation.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/ai-solutions.jpg" alt="AI Automation & Chatbots Preview" class="service-preview-img" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Service 5: Web Applications -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">Custom Apps</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect pathLength="1" x="2" y="3" width="20" height="14" rx="2"></rect>
+                                        <line pathLength="1" x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line pathLength="1" x1="12" y1="17" x2="12" y2="21"></line>
+                                    </svg>
+                                </div>
+                                <h3>Web Applications</h3>
+                                <p>Custom scalable applications and cloud software.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/web-apps.jpg" alt="Web Applications & Platform Preview" class="service-preview-img" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Service 6: WordPress Development -->
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <span class="service-category-pill">CMS & WordPress</span>
+                                <span class="service-arrow-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-icon-clean">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon pathLength="1" points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                        <polyline pathLength="1" points="2 17 12 22 22 17"></polyline>
+                                        <polyline pathLength="1" points="2 12 12 17 22 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h3>WordPress Development</h3>
+                                <p>Custom themes, flexible layouts and easy management.</p>
+                            </div>
+                            <div class="service-preview-wrap">
+                                <img src="assets/wordpress-development.jpg" alt="WordPress CMS & Custom Theme Preview" class="service-preview-img" loading="lazy">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Service 2: SEO & Google Business Profile -->
-                    <div class="service-card">
-                        <div class="service-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <polyline points="11 8 13 11 16 11"></polyline>
-                            </svg>
-                        </div>
-                        <h3>SEO & Google Business Profile</h3>
-                        <p>Get discovered where your customers are searching.</p>
-                        <div class="service-tags">
-                            <span class="service-tag">Local Maps SEO</span>
-                            <span class="service-tag">Search Ranking</span>
-                            <span class="service-tag">Organic Traffic</span>
-                        </div>
-                    </div>
+                    <button class="slider-corner-btn next-btn" id="servicesNextBtn" aria-label="Next service">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
 
-                    <!-- Service 3: AI Solutions -->
-                    <div class="service-card">
-                        <div class="service-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-4.5a1 1 0 0 1-2 0V7a1 1 0 0 1 2 0z"/>
-                                <path d="M12 8v4m0 4h.01"/>
-                            </svg>
-                        </div>
-                        <h3>AI Solutions</h3>
-                        <p>Chatbots, AI receptionists and automation.</p>
-                        <div class="service-tags">
-                            <span class="service-tag">Custom AI Agents</span>
-                            <span class="service-tag">Lead Capture</span>
-                            <span class="service-tag">Workflow Automation</span>
-                        </div>
-                    </div>
-
-                    <!-- Service 4: Web Apps & WordPress -->
-                    <div class="service-card">
-                        <div class="service-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Web Apps & WordPress</h3>
-                        <p>Custom applications and flexible business websites.</p>
-                        <div class="service-tags">
-                            <span class="service-tag">Custom CMS</span>
-                            <span class="service-tag">Scalable Stack</span>
-                            <span class="service-tag">Easy Management</span>
-                        </div>
-                    </div>
+                <!-- Interactive Pagination Dots -->
+                <div class="services-dots-wrap" id="servicesDots">
+                    <button class="service-dot active" data-index="0" aria-label="Go to Web Development"></button>
+                    <button class="service-dot" data-index="1" aria-label="Go to SEO"></button>
+                    <button class="service-dot" data-index="2" aria-label="Go to Google Business Profile"></button>
+                    <button class="service-dot" data-index="3" aria-label="Go to AI Solutions"></button>
+                    <button class="service-dot" data-index="4" aria-label="Go to Web Applications"></button>
+                    <button class="service-dot" data-index="5" aria-label="Go to WordPress Development"></button>
                 </div>
             </div>
         </section>
@@ -1430,9 +1887,13 @@
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">03 — HOW WE WORK</div>
-                    <h2 class="section-title">Simple From Start to Launch.</h2>
+                    <h2 class="section-title">
+                        <span class="desktop-only-text">Simple From Start to Launch.</span>
+                        <span class="mobile-only-text">From Idea to Launch.</span>
+                    </h2>
                     <p class="section-description">
-                        What happens if you hire us? A straightforward, three-step execution designed for speed and clarity.
+                        <span class="desktop-only-text">What happens if you hire us? A straightforward, three-step execution designed for speed and clarity.</span>
+                        <span class="mobile-only-text">A clear process. Built around your goals.</span>
                     </p>
                 </div>
 
@@ -1787,6 +2248,159 @@
                 }
             });
         });
+
+        // ==========================================================================
+        // SERVICES HORIZONTAL SLIDER (CORNER BUTTONS, DRAG, DOTS)
+        // ==========================================================================
+        const servicesTrack = document.getElementById('servicesTrack');
+        const prevBtn = document.getElementById('servicesPrevBtn');
+        const nextBtn = document.getElementById('servicesNextBtn');
+        const dotsWrap = document.getElementById('servicesDots');
+        const serviceDots = dotsWrap ? dotsWrap.querySelectorAll('.service-dot') : [];
+
+        if (servicesTrack) {
+            let isDown = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let moved = false;
+
+            // Update Active Pagination Dot accurately across full scroll range
+            const updateActiveDot = () => {
+                if (!serviceDots.length) return;
+                const maxScroll = servicesTrack.scrollWidth - servicesTrack.clientWidth;
+                if (maxScroll <= 0) {
+                    serviceDots.forEach((dot, idx) => dot.classList.toggle('active', idx === 0));
+                    return;
+                }
+
+                const currentScroll = servicesTrack.scrollLeft;
+
+                // Snapped to first
+                if (currentScroll <= 15) {
+                    serviceDots.forEach((dot, idx) => dot.classList.toggle('active', idx === 0));
+                    return;
+                }
+
+                // Snapped to last
+                if (currentScroll >= maxScroll - 15) {
+                    serviceDots.forEach((dot, idx) => dot.classList.toggle('active', idx === serviceDots.length - 1));
+                    return;
+                }
+
+                // Proportional mapping for intermediate positions
+                const progress = currentScroll / maxScroll;
+                const activeIdx = Math.min(
+                    serviceDots.length - 1,
+                    Math.max(0, Math.round(progress * (serviceDots.length - 1)))
+                );
+
+                serviceDots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeIdx);
+                });
+            };
+
+            // Listen to scroll events on track
+            let scrollTimeout;
+            servicesTrack.addEventListener('scroll', () => {
+                cancelAnimationFrame(scrollTimeout);
+                scrollTimeout = requestAnimationFrame(updateActiveDot);
+            }, { passive: true });
+
+            // Initial active dot update on load
+            updateActiveDot();
+            window.addEventListener('resize', updateActiveDot);
+
+            // Pagination Dot Click
+            serviceDots.forEach((dot) => {
+                dot.addEventListener('click', () => {
+                    const targetIdx = parseInt(dot.getAttribute('data-index') || '0', 10);
+                    const maxScroll = servicesTrack.scrollWidth - servicesTrack.clientWidth;
+                    if (maxScroll <= 0) return;
+                    const targetScroll = (targetIdx / (serviceDots.length - 1)) * maxScroll;
+                    servicesTrack.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Corner Arrow Navigation
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const maxScroll = servicesTrack.scrollWidth - servicesTrack.clientWidth;
+                    if (maxScroll <= 0) return;
+                    const currentProgress = servicesTrack.scrollLeft / maxScroll;
+                    const currentIdx = Math.round(currentProgress * (serviceDots.length - 1));
+                    const targetIdx = Math.max(0, currentIdx - 1);
+                    const targetScroll = (targetIdx / (serviceDots.length - 1)) * maxScroll;
+                    servicesTrack.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const maxScroll = servicesTrack.scrollWidth - servicesTrack.clientWidth;
+                    if (maxScroll <= 0) return;
+                    const currentProgress = servicesTrack.scrollLeft / maxScroll;
+                    const currentIdx = Math.round(currentProgress * (serviceDots.length - 1));
+                    const targetIdx = Math.min(serviceDots.length - 1, currentIdx + 1);
+                    const targetScroll = (targetIdx / (serviceDots.length - 1)) * maxScroll;
+                    servicesTrack.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Mouse Drag Listeners
+            servicesTrack.addEventListener('mousedown', (e) => {
+                isDown = true;
+                moved = false;
+                servicesTrack.classList.add('is-dragging');
+                startX = e.pageX - servicesTrack.offsetLeft;
+                scrollLeft = servicesTrack.scrollLeft;
+            });
+
+            servicesTrack.addEventListener('mouseleave', () => {
+                if (!isDown) return;
+                isDown = false;
+                servicesTrack.classList.remove('is-dragging');
+                updateActiveDot();
+            });
+
+            servicesTrack.addEventListener('mouseup', () => {
+                if (!isDown) return;
+                isDown = false;
+                servicesTrack.classList.remove('is-dragging');
+                updateActiveDot();
+            });
+
+            servicesTrack.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - servicesTrack.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                if (Math.abs(walk) > 4) {
+                    moved = true;
+                }
+                servicesTrack.scrollLeft = scrollLeft - walk;
+            });
+
+            // Prevent accidental clicks when dragging
+            servicesTrack.addEventListener('click', (e) => {
+                if (moved) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+        }
     </script>
 </body>
 

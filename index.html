@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PradTech | Web Development, SEO & AI Solutions</title>
+    <meta name="description"
+        content="Web development, SEO and AI solutions that help your business get found, get trusted and grow online.">
+
+    <link rel="icon" type="image/svg+xml" href="No bg Icon.svg">
+
+    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+       STRICT COLOR SYSTEM & TYPOGRAPHY TOKENS
+       ========================================================================== */
+        :root {
+            /* Palette */
+            --bg-main: #fdf9fc;
+            --bg-surface: #FFFFFF;
+            --text-primary: #17252B;
+            --text-secondary: #5F6F73;
+            --accent-primary: #3A8F8C;
+            --accent-soft: #E7F3F1;
+            --border: #DCE6E4;
+            --status-success: #4F8A6A;
+            --status-warning: #C6924A;
+            --status-error: #C65D5D;
+
+            /* Typography Families */
+            --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            /* Radii */
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Headings strictly use DM Sans */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            letter-spacing: -0.025em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: var(--font-body);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Responsive text toggling */
+        .mobile-only-text {
+            display: none;
+        }
+
+        .desktop-only-text {
+            display: inline;
+        }
+
+        /* ==========================================================================
+       SVG DRAW ANIMATIONS
+       ========================================================================== */
+        @keyframes logoDrawAnimation {
+            0% {
+                stroke-dashoffset: 1;
+                fill-opacity: 0;
+                stroke-width: 14px;
+            }
+
+            65% {
+                stroke-dashoffset: 0;
+                fill-opacity: 0.35;
+                stroke-width: 6px;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+                fill-opacity: 1;
+                stroke-width: 0px;
+            }
+        }
+
+        @keyframes iconStrokeDraw {
+            0% {
+                stroke-dashoffset: 1;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes iconSparkleDraw {
+            0% {
+                stroke-dashoffset: 1;
+                fill: transparent;
+            }
+
+            65% {
+                stroke-dashoffset: 0;
+                fill: transparent;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+                fill: var(--accent-primary);
+            }
+        }
+
+        /* ==========================================================================
+       ROBUST NAVBAR ALIGNMENT & LAYOUT
+       ========================================================================== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            gap: 20px;
+        }
+
+        /* Brand Logo */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            cursor: pointer;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .logo-icon-box {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 7px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 2px 8px rgba(58, 143, 140, 0.25);
+        }
+
+        .logo-icon-box svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .logo-icon-box svg .pt-p-path {
+            fill: #FFFFFF;
+            stroke: #FFFFFF;
+            stroke-width: 0px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .logo-icon-box svg .pt-t-path {
+            fill: #C2F0ED;
+            stroke: #C2F0ED;
+            stroke-width: 0px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .brand-logo:hover .logo-icon-box svg .pt-p-path,
+        .brand-logo:hover .logo-icon-box svg .pt-t-path {
+            animation: logoDrawAnimation 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .brand-logo:hover .logo-icon-box {
+            transform: scale(1.06) rotate(-1deg);
+            box-shadow: 0 4px 14px rgba(58, 143, 140, 0.4);
+        }
+
+        .brand-logo span span {
+            color: var(--accent-primary);
+        }
+
+        /* Nav Links */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            transition: color 0.2s ease, background-color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-primary);
+            background-color: var(--accent-soft);
+        }
+
+        .nav-link.active {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Nav Right Actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        /* ==========================================================================
+       BUTTONS WITH PREMIUM INTERACTIVE HOVER EFFECTS
+       ========================================================================== */
+        .btn {
+            font-family: var(--font-body);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            white-space: nowrap;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-smooth);
+            user-select: none;
+        }
+
+        /* Primary Button Interaction */
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: var(--bg-surface);
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 4px 14px rgba(58, 143, 140, 0.22), 0 1px 3px rgba(58, 143, 140, 0.12);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(58, 143, 140, 0.34), 0 3px 8px rgba(58, 143, 140, 0.16);
+            filter: brightness(1.03);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 8px rgba(58, 143, 140, 0.2);
+        }
+
+        /* Secondary Button Interaction */
+        .btn-secondary {
+            background-color: var(--accent-soft);
+            color: var(--accent-primary);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 14px rgba(220, 230, 228, 0.6), 0 1px 3px rgba(58, 143, 140, 0.05);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background-color: var(--bg-surface);
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 22px rgba(220, 230, 228, 0.95), 0 2px 6px rgba(58, 143, 140, 0.12);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Arrow Icon with Draw & Micro-Slide */
+        .draw-arrow-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .draw-arrow-icon svg {
+            width: 16px;
+            height: 16px;
+            overflow: visible;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .draw-arrow-icon path {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        /* Icon draws & nudges right on button hover */
+        .btn:hover .draw-arrow-icon {
+            transform: translateX(3px);
+        }
+
+        .btn:hover .draw-arrow-icon path {
+            animation: iconStrokeDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .mobile-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-surface);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .mobile-toggle:hover {
+            background-color: var(--accent-soft);
+            border-color: var(--accent-primary);
+        }
+
+        .mobile-toggle svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--text-primary);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .mobile-toggle svg path {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        .mobile-toggle:hover svg path {
+            animation: iconStrokeDraw 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+        .hero-section {
+            padding: 100px 0 120px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Status Pill (Calm & Static Badge) */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent-soft);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-body);
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 28px;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .sparkle-icon {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sparkle-icon svg {
+            width: 14px;
+            height: 14px;
+            overflow: visible;
+        }
+
+        .sparkle-icon path {
+            fill: var(--accent-primary);
+            stroke: var(--accent-primary);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        .status-badge:hover .sparkle-icon path {
+            animation: iconSparkleDraw 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Hero Heading (DM Sans) - Desktop Specs */
+        .hero-title {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 68px;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            max-width: 880px;
+            color: var(--text-primary);
+            margin: 0 auto 24px;
+        }
+
+        .hero-title .highlight {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Description (Manrope) - Desktop Specs */
+        .hero-description {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.55;
+            letter-spacing: 0;
+            max-width: 620px;
+            color: var(--text-secondary);
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+       RESPONSIVE BREAKPOINTS & MOBILE FIXES
+       ========================================================================== */
+        /* Tablet & Medium Screens (Prevent Navbar Collision) */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .header-cta-btn {
+                display: inline-flex;
+                padding: 10px 18px;
+                font-size: 0.88rem;
+            }
+
+            .hero-section {
+                padding: 80px 0 100px;
+            }
+
+            .hero-title {
+                font-size: 52px;
+                line-height: 1.05;
+                max-width: 750px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+                max-width: 580px;
+            }
+        }
+
+        /* Mobile Breakpoint (< 600px) */
+        @media (max-width: 600px) {
+            .desktop-only-text {
+                display: none !important;
+            }
+
+            .mobile-only-text {
+                display: inline !important;
+            }
+
+            .header {
+                position: sticky;
+            }
+
+            .nav-wrapper {
+                height: 70px;
+            }
+
+            .brand-logo {
+                font-size: 1.2rem;
+                gap: 10px;
+            }
+
+            .logo-icon-box {
+                width: 36px;
+                height: 36px;
+            }
+
+            /* Compact header button on mobile so it never collides */
+            .header-cta-btn {
+                display: none;
+            }
+
+            .hero-section {
+                padding: 48px 0 64px;
+            }
+
+            .hero-title {
+                font-size: 40px;
+                line-height: 1.08;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+                line-height: 1.55;
+                max-width: 100%;
+                margin-bottom: 32px;
+            }
+
+            .hero-cta-group {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .hero-cta-group .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-wrapper">
+                <!-- Logo -->
+                <a href="#home" class="brand-logo">
+                    <div class="logo-icon-box">
+                        <svg viewBox="0 0 536 465">
+                            <!-- Right Accent Wing -->
+                            <path pathLength="1" class="pt-t-path"
+                                d="M0 0 C29.82 -0.02 59.63 -0.04 89.45 -0.05 C92.99 -0.05 96.54 -0.05 100.08 -0.05 C100.78 -0.06 101.49 -0.06 102.22 -0.06 C113.54 -0.06 124.87 -0.07 136.2 -0.08 C147.87 -0.09 159.55 -0.09 171.22 -0.09 C177.76 -0.1 184.29 -0.1 190.83 -0.11 C197.01 -0.11 203.2 -0.11 209.39 -0.11 C211.62 -0.11 213.86 -0.12 216.1 -0.12 C236.09 -0.15 256 0.46 276 1 C276 27.4 276 53.8 276 81 C244.98 81 213.96 81 182 81 C182.12 92.87 182.23 104.73 182.35 116.96 C182.4 124.48 182.45 132 182.49 139.52 C182.55 151.45 182.62 163.39 182.75 175.32 C182.85 184.02 182.92 192.71 182.94 201.4 C182.95 206 182.98 210.6 183.06 215.2 C183.13 219.54 183.15 223.87 183.13 228.21 C183.13 229.79 183.15 231.38 183.19 232.96 C183.47 244.89 183.47 244.89 179.84 250.1 C177.35 252.63 174.81 254.83 172 257 C170.6 258.22 169.2 259.45 167.81 260.69 C167.18 261.23 166.54 261.77 165.89 262.33 C163.26 264.65 160.85 267.17 158.45 269.71 C157 271 157 271 155 271 C154.67 271.99 154.34 272.98 154 274 C153.34 274 152.68 274 152 274 C152 274.66 152 275.32 152 276 C150.39 277.59 150.39 277.59 148.25 279.38 C145.93 281.34 143.75 283.26 141.62 285.44 C140 287 140 287 138 287 C138 287.66 138 288.32 138 289 C137.34 289 136.68 289 136 289 C135.73 289.64 135.46 290.28 135.19 290.94 C134 293 134 293 131 294 C131 294.66 131 295.32 131 296 C129.5 297.52 129.5 297.52 127.44 299.25 C126.34 300.18 126.34 300.18 125.23 301.13 C124.49 301.75 123.76 302.37 123 303 C121.77 304.04 120.54 305.08 119.31 306.12 C118.79 306.56 118.27 307 117.74 307.45 C114.77 310.1 112.01 312.97 109.23 315.81 C107.26 317.81 105.29 319.81 103.31 321.81 C102.64 322.51 101.96 323.2 101.26 323.91 C100.62 324.57 99.97 325.22 99.3 325.89 C98.71 326.49 98.13 327.09 97.52 327.7 C96 329 96 329 94 329 C94 327.44 94 327.44 93.99 325.84 C93.91 300.42 93.82 275.01 93.71 249.59 C93.66 237.3 93.62 225.01 93.58 212.72 C93.55 202 93.51 191.28 93.46 180.56 C93.43 174.89 93.41 169.22 93.4 163.55 C93.38 158.2 93.36 152.86 93.33 147.51 C93.32 145.56 93.32 143.6 93.32 141.65 C93.3 130.58 92.81 119.93 91 109 C90.88 108.23 90.76 107.47 90.64 106.67 C87.65 88.32 80.21 71.89 69.93 56.53 C68.26 54.02 66.96 51.88 66 49 C65.34 49 64.68 49 64 49 C63.5 47.02 63.5 47.02 63 45 C62.34 45 61.68 45 61 45 C59.73 43.67 59.73 43.67 58.19 41.75 C47.56 29.35 34.77 19.06 20 12 C20 11.34 20 10.68 20 10 C19.34 9.9 18.67 9.8 17.99 9.69 C14.21 8.82 10.77 7.41 7.19 5.94 C6.49 5.66 5.8 5.37 5.09 5.08 C3.39 4.39 1.69 3.7 0 3 C0 2.01 0 1.02 0 0 Z"
+                                transform="translate(211,37)" />
+                            <!-- Left P Lower Section -->
+                            <path pathLength="1" class="pt-p-path"
+                                d="M0 0 C-0.41 6.57 -0.84 12.74 -3 19 C-3.28 19.81 -3.56 20.61 -3.84 21.45 C-4.86 24.31 -5.92 27.16 -7 30 C-7.36 30.96 -7.72 31.93 -8.09 32.92 C-14.34 48.85 -24.59 64.24 -38 75 C-40.12 76.9 -42.23 78.8 -44.34 80.71 C-46 82 -46 82 -48 82 C-48 82.66 -48 83.32 -48 84 C-49.47 85.31 -51 86.55 -52.56 87.75 C-55.79 90.26 -58.94 92.79 -62 95.5 C-65 98 -65 98 -67 98 C-67 98.66 -67 99.32 -67 100 C-68.9 101.73 -68.9 101.73 -71.38 103.62 C-72.59 104.57 -72.59 104.57 -73.84 105.54 C-76 107 -76 107 -78 107 C-78.2 107.54 -78.4 108.09 -78.6 108.65 C-80.59 111.99 -83.42 114.19 -86.38 116.62 C-86.95 117.11 -87.53 117.6 -88.12 118.11 C-90.95 120.47 -93.57 122.57 -97 124 C-97 124.66 -97 125.32 -97 126 C-98.49 127.35 -100.04 128.63 -101.62 129.88 C-105.06 132.62 -108.46 135.37 -111.78 138.26 C-112.41 138.81 -113.04 139.36 -113.68 139.92 C-114.93 141.01 -116.17 142.1 -117.4 143.19 C-121.78 147 -121.78 147 -124 147 C-124 147.66 -124 148.32 -124 149 C-125.65 149.66 -127.3 150.32 -129 151 C-129 151.66 -129 152.32 -129 153 C-130.71 154.59 -132.5 156.1 -134.31 157.56 C-135.79 158.77 -135.79 158.77 -137.3 160 C-140 162 -140 162 -143 163 C-143 163.66 -143 164.32 -143 165 C-144.71 166.59 -146.5 168.1 -148.31 169.56 C-149.79 170.77 -149.79 170.77 -151.3 172 C-154 174 -154 174 -157 175 C-157 175.66 -157 176.32 -157 177 C-158.57 178.41 -160.21 179.76 -161.88 181.06 C-166.78 184.97 -171.42 189.06 -176 193.35 C-178 195 -178 195 -180 195 C-180 195.66 -180 196.32 -180 197 C-181.55 198.39 -183.17 199.71 -184.81 201 C-188.94 204.3 -192.92 207.67 -196.81 211.25 C-207.44 221 -207.44 221 -210 221 C-210.21 221.58 -210.41 222.15 -210.62 222.75 C-212.49 225.8 -215.01 227.09 -218 229 C-218.5 229.99 -218.5 229.99 -219 231 C-219.99 231 -220.98 231 -222 231 C-223.16 227.52 -223.18 224.37 -223.21 220.74 C-223.22 220 -223.23 219.25 -223.24 218.48 C-223.27 215.97 -223.29 213.46 -223.32 210.94 C-223.34 209.13 -223.36 207.32 -223.38 205.51 C-223.44 200.57 -223.49 195.62 -223.53 190.67 C-223.56 187.57 -223.59 184.47 -223.62 181.36 C-223.97 146.93 -224.13 112.5 -224.18 78.06 C-224.19 74.43 -224.2 70.81 -224.21 67.18 C-224.22 61.46 -224.23 55.73 -224.23 50.01 C-224.23 47.9 -224.23 45.78 -224.24 43.67 C-224.25 40.78 -224.25 37.88 -224.24 34.99 C-224.25 34.15 -224.25 33.3 -224.26 32.43 C-224.21 23.21 -224.21 23.21 -221 20 C-213.66 18.92 -206.41 18.85 -199.01 18.84 C-197.05 18.83 -195.1 18.83 -193.14 18.82 C-191.05 18.81 -188.96 18.81 -186.87 18.8 C-182.49 18.79 -178.11 18.77 -173.72 18.75 C-161.26 18.69 -148.8 18.63 -136.34 18.6 C-129.45 18.58 -122.55 18.55 -115.66 18.51 C-112.03 18.49 -108.39 18.47 -104.76 18.47 C-72.92 18.45 -43.29 14.57 -14.12 1.23 C-9.12 -0.74 -5.23 -1.38 0 0 Z"
+                                transform="translate(277,196)" />
+                            <!-- Left P Top Loop -->
+                            <path pathLength="1" class="pt-p-path"
+                                d="M0 0 C7.63 -0.07 15.26 -0.12 22.89 -0.14 C25.46 -0.15 28.04 -0.16 30.61 -0.18 C62.13 -0.33 98.85 0.03 123.61 23.03 C123.61 23.69 123.61 24.35 123.61 25.03 C124.19 25.3 124.78 25.57 125.38 25.85 C138.75 32.97 146.91 47.06 153.61 60.03 C154.35 61.42 154.35 61.42 155.11 62.84 C160.48 73.62 163.35 86.1 164.61 98.03 C160.9 100.5 158.08 100.32 153.79 100.31 C152.58 100.32 152.58 100.32 151.35 100.32 C148.64 100.34 145.94 100.34 143.23 100.34 C141.29 100.35 139.36 100.36 137.42 100.36 C132.16 100.39 126.89 100.4 121.62 100.4 C118.34 100.4 115.05 100.41 111.76 100.42 C100.3 100.44 88.84 100.46 77.38 100.46 C66.68 100.46 55.99 100.49 45.29 100.53 C36.12 100.57 26.94 100.58 17.77 100.58 C12.28 100.59 6.8 100.59 1.32 100.62 C-3.84 100.65 -8.99 100.65 -14.15 100.64 C-16.04 100.63 -17.94 100.64 -19.83 100.66 C-22.41 100.68 -24.99 100.67 -27.57 100.65 C-28.33 100.66 -29.08 100.67 -29.86 100.69 C-31.95 100.65 -31.95 100.65 -35.39 100.03 C-37.86 97.16 -38.77 94.76 -38.77 91 C-38.77 90.23 -38.78 89.46 -38.79 88.67 C-38.78 87.84 -38.77 87.01 -38.76 86.16 C-38.77 85.28 -38.77 84.39 -38.78 83.48 C-38.78 80.57 -38.77 77.66 -38.76 74.74 C-38.75 72.72 -38.76 70.69 -38.76 68.67 C-38.76 64.42 -38.75 60.18 -38.73 55.94 C-38.71 50.5 -38.7 45.06 -38.71 39.62 C-38.71 35.43 -38.71 31.25 -38.7 27.07 C-38.69 25.06 -38.69 23.06 -38.7 21.05 C-38.7 18.25 -38.68 15.45 -38.67 12.65 C-38.67 11.82 -38.67 10.98 -38.67 10.13 C-38.64 6.24 -38.59 4.34 -36.39 1.03 C-34.07 0.6 -34.07 0.6 -31.05 0.52 C-29.87 0.49 -28.69 0.45 -27.48 0.41 C-26.14 0.39 -24.8 0.37 -23.45 0.35 C-22.04 0.31 -20.62 0.28 -19.2 0.25 C-12.8 0.12 -6.4 0.06 0 0 Z"
+                                transform="translate(91.391845703125,36.966796875)" />
+                        </svg>
+                    </div>
+                    <span>Prad<span>Tech</span></span>
+                </a>
+
+                <!-- Desktop Navigation Links (Manrope) -->
+                <ul class="nav-menu">
+                    <li><a href="#services" class="nav-link active">Services</a></li>
+                    <li><a href="#web-dev" class="nav-link">Web Development</a></li>
+                    <li><a href="#seo" class="nav-link">SEO Optimization</a></li>
+                    <li><a href="#ai-chatbot" class="nav-link">AI Chatbots</a></li>
+                    <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
+                </ul>
+
+                <!-- Right Side CTA Actions -->
+                <div class="nav-actions">
+                    <a href="#contact" class="btn btn-primary header-cta-btn">
+                        <span>Discuss Your Project</span>
+                        <span class="draw-arrow-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path pathLength="1" d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </span>
+                    </a>
+                    <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path pathLength="1" d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+    <main>
+        <section class="hero-section" id="home">
+            <div class="container">
+                <div class="hero-container">
+
+                    <!-- Live Status Pill -->
+                    <div class="status-badge">
+                        <span class="sparkle-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path pathLength="1"
+                                    d="M12 2 L14.8 9.2 L22 12 L14.8 14.8 L12 22 L9.2 14.8 L2 12 L9.2 9.2 Z" />
+                            </svg>
+                        </span>
+                        <span class="desktop-only-text">DIGITAL SOLUTIONS - BUILT FOR BUSINESS</span>
+                        <span class="mobile-only-text">DIGITAL SOLUTIONS FOR BUSINESS</span>
+                    </div>
+
+                    <!-- Main Heading (DM Sans) -->
+                    <h1 class="hero-title">
+                        <span class="desktop-only-text">Build a Better <span class="highlight">Digital Presence</span>
+                            for Your Business.</span>
+                        <span class="mobile-only-text">Digital Solutions That <span class="highlight">Grow Your
+                                Business.</span></span>
+                    </h1>
+
+                    <!-- Descriptive Paragraph (Manrope) -->
+                    <p class="hero-description">
+                        <span class="desktop-only-text">Web development, SEO and AI solutions that help your business
+                            get found, get trusted and grow online.</span>
+                        <span class="mobile-only-text">Websites, SEO, AI & more — built to help your business
+                            grow.</span>
+                    </p>
+
+                    <!-- CTA Button Group with Hover Interactions -->
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Let’s Work Together</span>
+                            <span class="draw-arrow-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path pathLength="1" d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="#services" class="btn btn-secondary">
+                            <span>Discover More</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       LIGHTWEIGHT SCRIPT FOR MOBILE MENU TOGGLE
+       ========================================================================== -->
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu) {
+                    if (navMenu.style.display === 'flex') {
+                        navMenu.style.display = 'none';
+                    } else {
+                        navMenu.style.display = 'flex';
+                        navMenu.style.flexDirection = 'column';
+                        navMenu.style.position = 'absolute';
+                        navMenu.style.top = '70px';
+                        navMenu.style.left = '0';
+                        navMenu.style.width = '100%';
+                        navMenu.style.backgroundColor = '#FFFFFF';
+                        navMenu.style.borderBottom = '1px solid #DCE6E4';
+                        navMenu.style.padding = '20px';
+                        navMenu.style.gap = '14px';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

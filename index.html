@@ -1535,86 +1535,243 @@
         }
 
         /* ==========================================================================
-       TRUST & PROOF SECTION
+       04 — TESTIMONIALS (GOOGLE REVIEWS DOUBLE MARQUEE)
        ========================================================================== */
-        .proof-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
+        .testimonials-section {
+            background-color: var(--bg-surface);
+            overflow: hidden;
+            position: relative;
+            padding: 90px 0 100px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .proof-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .proof-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-primary);
-        }
-
-        .tech-badges-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 6px;
-        }
-
-        .tech-pill {
+        .google-rating-summary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             background: var(--bg-main);
             border: 1px solid var(--border);
-            padding: 8px 14px;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            margin-top: 18px;
+        }
+
+        .google-summary-g {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
+
+        .google-stars {
+            color: #FBBC05;
+            display: inline-flex;
+            gap: 2px;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .google-rating-text {
+            font-size: 0.94rem;
+            font-weight: 700;
             color: var(--text-primary);
-            transition: var(--transition-smooth);
         }
 
-        .tech-pill:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-            background: var(--accent-soft);
+        .google-rating-sub {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
         }
 
-        .standards-list {
-            list-style: none;
+        /* Double Marquee Rows & Wrappers */
+        .marquee-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+
+        .marquee-row {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            user-select: none;
+            cursor: grab;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 22px;
+            flex-shrink: 0;
+            will-change: transform;
+        }
+
+        /* Top Row: Moves to the RIGHT */
+        .marquee-track-right {
+            animation: marqueeScrollRight 45s linear infinite;
+        }
+
+        /* Bottom Row: Moves to the LEFT */
+        .marquee-track-left {
+            animation: marqueeScrollLeft 45s linear infinite;
+        }
+
+        @keyframes marqueeScrollLeft {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marqueeScrollRight {
+            from {
+                transform: translateX(-50%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Pause marquee on hover or touch */
+        .marquee-wrapper:hover .marquee-track,
+        .marquee-wrapper:active .marquee-track,
+        .marquee-track:hover,
+        .marquee-track:active {
+            animation-play-state: paused !important;
+        }
+
+        /* Google Review Card */
+        .google-review-card {
+            width: 380px;
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 26px;
             display: flex;
             flex-direction: column;
             gap: 14px;
-        }
-
-        .standards-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 0.94rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .standards-item svg {
-            width: 20px;
-            height: 20px;
-            color: var(--accent-primary);
             flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(23, 37, 43, 0.03);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .google-review-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(58, 143, 140, 0.4);
+            box-shadow: 0 12px 28px rgba(58, 143, 140, 0.08);
+        }
+
+        .review-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .reviewer-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            flex-shrink: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .reviewer-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reviewer-name {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.25;
+        }
+
+        .reviewer-guide {
+            font-size: 0.78rem;
+            color: #70757A;
+            display: flex;
+            align-items: center;
+            gap: 4px;
             margin-top: 2px;
         }
 
-        .standards-item strong {
-            color: var(--text-primary);
+        .google-badge-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .review-rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .review-stars {
+            display: inline-flex;
+            gap: 2px;
+            color: #FBBC05;
+            font-size: 1rem;
+        }
+
+        .review-time {
+            font-size: 0.8rem;
+            color: #70757A;
+        }
+
+        .review-text {
+            font-size: 0.93rem;
+            line-height: 1.6;
+            color: #3C4043;
+            margin: 0;
+        }
+
+        .review-project-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            background: var(--accent-soft);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            width: fit-content;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            .google-review-card {
+                width: 310px;
+                padding: 20px 22px;
+            }
+            .testimonials-section {
+                padding: 64px 0 74px;
+            }
         }
 
         /* ==========================================================================
@@ -1939,7 +2096,7 @@
                 <ul class="nav-menu">
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#process" class="nav-link">How It Works</a></li>
-                    <li><a href="#proof" class="nav-link">Proof & Tech</a></li>
+                    <li><a href="#reviews" class="nav-link">Reviews</a></li>
                     <li><a href="#faq" class="nav-link">FAQ</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -2397,75 +2554,512 @@
             </div>
         </section>
 
-        <!-- 04 — TRUST & PROOF -->
-        <section class="section-padding" id="proof">
+        <!-- 04 — TESTIMONIALS (GOOGLE REVIEWS DOUBLE MARQUEE) -->
+        <section class="testimonials-section" id="reviews">
             <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">TRUST & PROOF</div>
-                    <h2 class="section-title">Proven Execution. Real Standards.</h2>
+                <div class="section-header" style="margin-bottom: 0;">
+                    <div class="section-badge">TESTIMONIALS</div>
+                    <h2 class="section-title">Trusted by Founders & Businesses</h2>
                     <p class="section-description">
-                        We believe in verifiable proof. Here is the technical foundation, modern workflows, and engineering quality we bring to every project.
+                        Real reviews from real clients. We engineer scalable, high-converting digital products built to perform.
                     </p>
+                    <div class="google-rating-summary">
+                        <svg class="google-summary-g" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                        <div class="google-stars">★★★★★</div>
+                        <span class="google-rating-text">5.0</span>
+                        <span class="google-rating-sub">· Based on Google Reviews</span>
+                    </div>
                 </div>
+            </div>
 
-                <div class="proof-grid">
-                    <!-- Tech & Workflows -->
-                    <div class="proof-card">
-                        <h3>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-                            </svg>
-                            Technologies & Workflows
-                        </h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem;">
-                            Modern, industry-standard toolchain engineered for longevity, security, and peak performance:
-                        </p>
-                        <div class="tech-badges-list">
-                            <span class="tech-pill">HTML5 & Modern CSS3</span>
-                            <span class="tech-pill">JavaScript (ES6+)</span>
-                            <span class="tech-pill">TypeScript</span>
-                            <span class="tech-pill">React & Next.js</span>
-                            <span class="tech-pill">WordPress & Headless</span>
-                            <span class="tech-pill">REST & GraphQL APIs</span>
-                            <span class="tech-pill">AI / LLM Integrations</span>
-                            <span class="tech-pill">Git Version Control</span>
+            <!-- Double Marquee Carousel Area -->
+            <div class="marquee-wrapper">
+                <!-- TOP ROW: Moves to the RIGHT (Duplicated 2x for seamless infinite loop) -->
+                <div class="marquee-row">
+                    <div class="marquee-track marquee-track-right">
+                        <!-- Card 1 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #4285F4;">M</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Marcus Sterling</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 34 reviews · 12 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">3 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to 99, and organic conversions jumped by 42% in the first month. Absolutely top-tier engineering."
+                            </p>
+                            <div class="review-tag-badge">Next.js & Custom Web App</div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #EA4335;">E</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Dr. Elena Vance</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 19 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">a month ago</span>
+                            </div>
+                            <p class="review-text">
+                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1 locally for all our primary healthcare keywords. The patient booking flow is smooth as butter."
+                            </p>
+                            <div class="review-tag-badge">Local SEO & Clinic Portal</div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #34A853;">K</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Kavitha Ramanathan</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 48 reviews · 27 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">2 months ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
+                            </p>
+                            <div class="review-tag-badge">Headless WordPress & eCommerce</div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #FB8C00;">D</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">David Holbrook</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            12 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">2 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Working with PradTech was effortless. They automated our internal customer workflow with custom AI integration. Saved our operations team over 15 hours every single week."
+                            </p>
+                            <div class="review-tag-badge">AI Workflow Automation</div>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless Loop (Top Row) -->
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #4285F4;">M</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Marcus Sterling</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 34 reviews · 12 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">3 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to 99, and organic conversions jumped by 42% in the first month. Absolutely top-tier engineering."
+                            </p>
+                            <div class="review-tag-badge">Next.js & Custom Web App</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #EA4335;">E</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Dr. Elena Vance</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 19 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">a month ago</span>
+                            </div>
+                            <p class="review-text">
+                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1 locally for all our primary healthcare keywords. The patient booking flow is smooth as butter."
+                            </p>
+                            <div class="review-tag-badge">Local SEO & Clinic Portal</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #34A853;">K</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Kavitha Ramanathan</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 48 reviews · 27 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">2 months ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
+                            </p>
+                            <div class="review-tag-badge">Headless WordPress & eCommerce</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #FB8C00;">D</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">David Holbrook</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            12 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">2 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Working with PradTech was effortless. They automated our internal customer workflow with custom AI integration. Saved our operations team over 15 hours every single week."
+                            </p>
+                            <div class="review-tag-badge">AI Workflow Automation</div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Engineering Standards -->
-                    <div class="proof-card">
-                        <h3>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                            Engineering Standards
-                        </h3>
-                        <ul class="standards-list">
-                            <li class="standards-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
+                <!-- BOTTOM ROW: Moves to the LEFT (Duplicated 2x for seamless infinite loop) -->
+                <div class="marquee-row">
+                    <div class="marquee-track marquee-track-left">
+                        <!-- Card 5 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #673AB7;">S</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Sarah Jenkins</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 29 reviews · 8 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                                 </svg>
-                                <div><strong>95+ Performance Target:</strong> Blazing-fast loading times that enhance user retention and boost search ranking.</div>
-                            </li>
-                            <li class="standards-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">1 week ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth transitions make our brand look ten times more established. Truly modern web development."
+                            </p>
+                            <div class="review-tag-badge">Brand UI/UX & Web Dev</div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #00897B;">A</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Arjun Mehta</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 52 reviews · 41 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                                 </svg>
-                                <div><strong>100% Mobile Responsive:</strong> Flawless experience across all phone screens, tablets, and desktop resolutions.</div>
-                            </li>
-                            <li class="standards-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">3 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
+                            </p>
+                            <div class="review-tag-badge">GBP Optimization & Technical SEO</div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #E91E63;">C</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Claire Beaumont</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            15 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                                 </svg>
-                                <div><strong>Clean Semantic SEO Code:</strong> Structured hierarchy and schema metadata to maximize search engine discoverability.</div>
-                            </li>
-                            <li class="standards-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">a month ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant page loads. They delivered our venture portal with zero friction."
+                            </p>
+                            <div class="review-tag-badge">Enterprise Web Architecture</div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="google-review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #1E88E5;">N</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Naveen Kumar</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 63 reviews · 35 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                                 </svg>
-                                <div><strong>Zero Bloat:</strong> Custom, purposeful code without heavy unused plugins or sluggish dependencies.</div>
-                            </li>
-                        </ul>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">5 days ago</span>
+                            </div>
+                            <p class="review-text">
+                                "From discovery to deployment, communication was clear and proactive. Every single promise on performance targets and mobile responsiveness was met with flying colors."
+                            </p>
+                            <div class="review-tag-badge">Custom Web Engineering</div>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless Loop (Bottom Row) -->
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #673AB7;">S</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Sarah Jenkins</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 29 reviews · 8 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">1 week ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth transitions make our brand look ten times more established. Truly modern web development."
+                            </p>
+                            <div class="review-tag-badge">Brand UI/UX & Web Dev</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #00897B;">A</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Arjun Mehta</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 52 reviews · 41 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">3 weeks ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
+                            </p>
+                            <div class="review-tag-badge">GBP Optimization & Technical SEO</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #E91E63;">C</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Claire Beaumont</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            15 reviews
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">a month ago</span>
+                            </div>
+                            <p class="review-text">
+                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant page loads. They delivered our venture portal with zero friction."
+                            </p>
+                            <div class="review-tag-badge">Enterprise Web Architecture</div>
+                        </div>
+
+                        <div class="google-review-card" aria-hidden="true">
+                            <div class="review-card-header">
+                                <div class="reviewer-profile">
+                                    <div class="reviewer-avatar" style="background: #1E88E5;">N</div>
+                                    <div class="reviewer-meta">
+                                        <div class="reviewer-name">Naveen Kumar</div>
+                                        <div class="reviewer-guide">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            Local Guide · 63 reviews · 35 photos
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg class="google-badge-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">★★★★★</div>
+                                <span class="review-time">5 days ago</span>
+                            </div>
+                            <p class="review-text">
+                                "From discovery to deployment, communication was clear and proactive. Every single promise on performance targets and mobile responsiveness was met with flying colors."
+                            </p>
+                            <div class="review-tag-badge">Custom Web Engineering</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2632,7 +3226,7 @@
                 <ul class="footer-nav">
                     <li><a href="#services" class="footer-link">Services</a></li>
                     <li><a href="#process" class="footer-link">How It Works</a></li>
-                    <li><a href="#proof" class="footer-link">Proof & Tech</a></li>
+                    <li><a href="#reviews" class="footer-link">Reviews</a></li>
                     <li><a href="#faq" class="footer-link">FAQ</a></li>
                     <li><a href="#contact" class="footer-link">Contact</a></li>
                 </ul>

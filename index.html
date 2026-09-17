@@ -1326,9 +1326,21 @@
             text-transform: uppercase;
             color: var(--accent-primary);
             background: var(--accent-soft);
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: var(--radius-full);
+            border: 1px solid rgba(58, 143, 140, 0.2);
             margin-bottom: 2px;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .process-summary-pill:hover {
+            transform: translateY(-2px) scale(1.03);
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 14px rgba(58, 143, 140, 0.25);
         }
 
         .process-content-left h3 {
@@ -1362,6 +1374,18 @@
             font-size: 0.92rem;
             font-weight: 500;
             color: var(--text-primary);
+            padding: 5px 10px;
+            margin-left: -10px;
+            border-radius: var(--radius-sm);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .process-feature-list li:hover {
+            color: var(--accent-primary);
+            transform: translateX(6px);
+            background: rgba(58, 143, 140, 0.07);
         }
 
         .process-feature-list li svg {
@@ -1369,6 +1393,20 @@
             height: 16px;
             color: var(--accent-primary);
             flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .process-feature-list li svg polyline {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        .process-feature-list li:hover svg {
+            transform: scale(1.2);
+        }
+
+        .process-feature-list li:hover svg polyline {
+            animation: iconStrokeDraw 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .process-content-right {
@@ -2179,12 +2217,12 @@
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">Target audience analysis & competitor mapping</span>
                                             <span class="mobile-only-text">Goals & requirements</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">Technical architecture & custom roadmap</span>
                                             <span class="mobile-only-text">Project roadmap</span>
                                         </li>
@@ -2232,12 +2270,12 @@
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">High-performance, semantic modern code</span>
                                             <span class="mobile-only-text">UI & development</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">Pixel-perfect responsive design across all screens</span>
                                             <span class="mobile-only-text">Responsive & optimized</span>
                                         </li>
@@ -2285,12 +2323,12 @@
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">Smooth deployment with zero downtime</span>
                                             <span class="mobile-only-text">Deployment & testing</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
                                             <span class="desktop-only-text">Continuous tracking, SEO audits & guidance</span>
                                             <span class="mobile-only-text">Ongoing support</span>
                                         </li>

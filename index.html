@@ -1149,11 +1149,11 @@
         }
 
         .process-accordion-container {
-            max-width: 1020px;
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .process-accordion-item {
@@ -1178,7 +1178,7 @@
 
         .process-accordion-header {
             width: 100%;
-            padding: 24px 30px;
+            padding: 22px 26px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1192,12 +1192,12 @@
         .process-header-title-wrap {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
         }
 
         .process-step-badge {
             font-family: var(--font-mono);
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--accent-primary);
             background: var(--accent-soft);
@@ -1217,7 +1217,7 @@
 
         .process-header-title {
             font-family: var(--font-heading);
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.02em;
@@ -1230,8 +1230,8 @@
         }
 
         .process-accordion-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: var(--radius-full);
             background: var(--bg-surface);
             border: 1px solid var(--border);
@@ -1244,8 +1244,8 @@
         }
 
         .process-accordion-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             transition: transform 0.3s ease;
         }
 
@@ -1262,49 +1262,49 @@
             overflow: hidden;
             transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease, opacity 0.35s ease;
             opacity: 0;
-            padding: 0 30px;
+            padding: 0 26px;
         }
 
         .process-accordion-item.active .process-accordion-content {
-            max-height: 850px;
+            max-height: 800px;
             opacity: 1;
-            padding: 0 32px 34px 32px;
+            padding: 0 28px 28px 28px;
             border-top: 1px solid rgba(220, 230, 228, 0.6);
-            margin-top: 4px;
-            padding-top: 28px;
+            margin-top: 2px;
+            padding-top: 20px;
         }
 
         .process-content-grid {
             display: grid;
-            grid-template-columns: 1fr 1.15fr;
-            gap: 40px;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 20px;
             align-items: center;
         }
 
         .process-content-left {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .process-summary-pill {
             display: inline-flex;
             width: fit-content;
             font-family: var(--font-heading);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--accent-primary);
             background: var(--accent-soft);
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: var(--radius-full);
             margin-bottom: 2px;
         }
 
         .process-content-left h3 {
             font-family: var(--font-heading);
-            font-size: 1.65rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-primary);
             line-height: 1.25;
@@ -1312,9 +1312,9 @@
         }
 
         .process-content-left .process-desc {
-            font-size: 1.02rem;
+            font-size: 0.98rem;
             color: var(--text-secondary);
-            line-height: 1.65;
+            line-height: 1.6;
             margin: 0;
         }
 
@@ -1322,22 +1322,22 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 6px;
+            gap: 10px;
+            margin-top: 4px;
         }
 
         .process-feature-list li {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
+            gap: 10px;
+            font-size: 0.92rem;
             font-weight: 500;
             color: var(--text-primary);
         }
 
         .process-feature-list li svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             color: var(--accent-primary);
             flex-shrink: 0;
         }
@@ -1347,27 +1347,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: visible;
         }
 
         .process-lottie-box {
             width: 100%;
-            height: 350px;
-            border-radius: var(--radius-lg);
-            background: var(--bg-main);
-            border: 1px solid var(--border);
+            height: 250px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            padding: 16px;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
+            padding: 0;
+            overflow: visible;
         }
 
         .process-lottie-box dotlottie-player {
             width: 100%;
             height: 100%;
-            min-height: 320px;
+            min-height: 250px;
+            transform: scale(1.3);
+            transform-origin: center center;
             display: block;
             pointer-events: none;
         }
@@ -1381,22 +1382,22 @@
                 display: none !important;
             }
             .process-accordion-header {
-                padding: 20px 22px;
+                padding: 18px 20px;
             }
             .process-header-title {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
             }
             .process-step-badge {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
                 padding: 5px 12px;
             }
             .process-accordion-item.active .process-accordion-content {
                 max-height: 500px;
-                padding: 0 22px 24px 22px;
-                padding-top: 18px;
+                padding: 0 20px 22px 20px;
+                padding-top: 16px;
             }
             .process-content-left h3 {
-                font-size: 1.35rem;
+                font-size: 1.3rem;
             }
         }
 

@@ -187,20 +187,42 @@
         }
 
         /* ==========================================================================
-       ROBUST NAVBAR ALIGNMENT & LAYOUT (FROSTED GLASSMORPHISM)
+       ROBUST NAVBAR ALIGNMENT & DYNAMIC PILL TRANSITION
        ========================================================================== */
         .header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(253, 249, 252, 0.72);
-            background-color: rgba(255, 255, 255, 0.72);
+            background: rgba(253, 249, 252, 0.75);
+            background-color: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px) saturate(190%);
             -webkit-backdrop-filter: blur(20px) saturate(190%);
             border-bottom: 1px solid rgba(220, 230, 228, 0.65);
             box-shadow: 0 4px 20px rgba(23, 37, 43, 0.03);
             width: 100%;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 100%;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+            transition: top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border 0.4s ease,
+                        box-shadow 0.45s ease,
+                        background-color 0.4s ease;
+        }
+
+        /* Scrolled Pill-Shaped State (After 3-4 user scrolls) */
+        .header.scrolled-pill {
+            top: 14px;
+            max-width: 1060px;
+            width: calc(100% - 36px);
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(220, 230, 228, 0.9);
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 12px 36px rgba(23, 37, 43, 0.09), 0 2px 8px rgba(23, 37, 43, 0.04);
         }
 
         .nav-wrapper {
@@ -209,6 +231,12 @@
             justify-content: space-between;
             height: 80px;
             gap: 20px;
+            transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .header.scrolled-pill .nav-wrapper {
+            height: 60px;
+            padding: 0 6px;
         }
 
         /* Brand Logo */
@@ -224,6 +252,12 @@
             cursor: pointer;
             flex-shrink: 0;
             user-select: none;
+            transition: all 0.35s ease;
+        }
+
+        .header.scrolled-pill .brand-logo {
+            font-size: 1.25rem;
+            gap: 10px;
         }
 
         .logo-icon-box {
@@ -236,8 +270,20 @@
             justify-content: center;
             flex-shrink: 0;
             padding: 7px;
-            transition: var(--transition-smooth);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 2px 8px rgba(58, 143, 140, 0.25);
+        }
+
+        .header.scrolled-pill .logo-icon-box {
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            border-radius: 10px;
+        }
+
+        .header.scrolled-pill .header-cta-btn {
+            padding: 9px 18px;
+            font-size: 0.88rem;
         }
 
         .logo-icon-box svg {
@@ -2607,6 +2653,29 @@
        INTERACTIVE SCRIPTS (MOBILE MENU & FAQ ACCORDION)
        ========================================================================== -->
     <script>
+        // Dynamic Pill-Shaped Navbar Transition on Scroll (Buttery smooth transition after 3-4 scrolls)
+        const headerElement = document.querySelector('.header');
+        if (headerElement) {
+            let isTicking = false;
+            const updateNavbarShape = () => {
+                if (window.scrollY > 130) {
+                    headerElement.classList.add('scrolled-pill');
+                } else {
+                    headerElement.classList.remove('scrolled-pill');
+                }
+                isTicking = false;
+            };
+
+            window.addEventListener('scroll', () => {
+                if (!isTicking) {
+                    window.requestAnimationFrame(updateNavbarShape);
+                    isTicking = true;
+                }
+            }, { passive: true });
+
+            updateNavbarShape();
+        }
+
         // Mobile Navigation Toggle & Auto-Close
         const mobileBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.querySelector('.nav-menu');

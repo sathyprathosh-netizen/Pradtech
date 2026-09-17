@@ -1157,6 +1157,7 @@
         }
 
         .process-accordion-item {
+            position: relative;
             background: var(--bg-main);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
@@ -1174,6 +1175,35 @@
             border-color: var(--accent-primary);
             box-shadow: 0 12px 32px rgba(58, 143, 140, 0.12);
             background: #FFFFFF;
+        }
+
+        .process-timer-track {
+            width: 100%;
+            height: 3px;
+            background: rgba(58, 143, 140, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .process-accordion-item.active .process-timer-track {
+            display: block;
+        }
+
+        .process-timer-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, #4F8A6A 100%);
+            border-radius: 4px;
+        }
+
+        @keyframes processProgressAnim {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
         }
 
         .process-accordion-header {
@@ -2129,6 +2159,9 @@
                                 </svg>
                             </span>
                         </button>
+                        <div class="process-timer-track">
+                            <div class="process-timer-fill"></div>
+                        </div>
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
@@ -2179,6 +2212,9 @@
                                 </svg>
                             </span>
                         </button>
+                        <div class="process-timer-track">
+                            <div class="process-timer-fill"></div>
+                        </div>
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
@@ -2229,6 +2265,9 @@
                                 </svg>
                             </span>
                         </button>
+                        <div class="process-timer-track">
+                            <div class="process-timer-fill"></div>
+                        </div>
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
@@ -2587,32 +2626,85 @@
             });
         });
 
-        // 03 — Process / How We Work Accordion Toggle
-        const processHeaders = document.querySelectorAll('.process-accordion-header');
-        processHeaders.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.closest('.process-accordion-item');
-                const isOpen = item.classList.contains('active');
+        // 03 — Process / How We Work Auto-Cycling Accordion with Progress Timer (16s per step)
+        const processItems = document.querySelectorAll('.process-accordion-item');
+        const processSection = document.getElementById('process');
+        let processTimer = null;
+        const STEP_DURATION = 16000; // 16 seconds per step
 
-                // Close other open process items
-                document.querySelectorAll('.process-accordion-item.active').forEach(activeItem => {
-                    if (activeItem !== item) {
-                        activeItem.classList.remove('active');
-                        const headerBtn = activeItem.querySelector('.process-accordion-header');
-                        if (headerBtn) headerBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
+        const openProcessStep = (index, startTimer = true) => {
+            if (!processItems.length) return;
+            const targetIdx = (index + processItems.length) % processItems.length;
 
-                // Toggle current process item
-                if (isOpen) {
-                    item.classList.remove('active');
-                    btn.setAttribute('aria-expanded', 'false');
-                } else {
+            processItems.forEach((item, idx) => {
+                const headerBtn = item.querySelector('.process-accordion-header');
+                const fillBar = item.querySelector('.process-timer-fill');
+
+                if (idx === targetIdx) {
                     item.classList.add('active');
-                    btn.setAttribute('aria-expanded', 'true');
+                    if (headerBtn) headerBtn.setAttribute('aria-expanded', 'true');
+                    
+                    if (fillBar) {
+                        // Reset and trigger linear progress bar animation
+                        fillBar.style.animation = 'none';
+                        void fillBar.offsetWidth; // force reflow
+                        if (startTimer) {
+                            fillBar.style.animation = `processProgressAnim ${STEP_DURATION}ms linear forwards`;
+                        }
+                    }
+                } else {
+                    item.classList.remove('active');
+                    if (headerBtn) headerBtn.setAttribute('aria-expanded', 'false');
+                    if (fillBar) {
+                        fillBar.style.animation = 'none';
+                    }
                 }
             });
+
+            clearTimeout(processTimer);
+            if (startTimer) {
+                processTimer = setTimeout(() => {
+                    openProcessStep(targetIdx + 1, true);
+                }, STEP_DURATION);
+            }
+        };
+
+        // Click on header opens that step and restarts 16s timer
+        processItems.forEach((item, idx) => {
+            const headerBtn = item.querySelector('.process-accordion-header');
+            if (headerBtn) {
+                headerBtn.addEventListener('click', () => {
+                    openProcessStep(idx, true);
+                });
+            }
         });
+
+        // Intersection Observer: Start timer when user scrolls near Section 03 (3-4 scrolls before)
+        if (processSection && 'IntersectionObserver' in window) {
+            let isNear = false;
+            const processObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!isNear) {
+                            isNear = true;
+                            const activeIdx = Array.from(processItems).findIndex(item => item.classList.contains('active'));
+                            openProcessStep(activeIdx >= 0 ? activeIdx : 0, true);
+                        }
+                    } else {
+                        isNear = false;
+                        clearTimeout(processTimer);
+                        processItems.forEach(item => {
+                            const fillBar = item.querySelector('.process-timer-fill');
+                            if (fillBar) fillBar.style.animation = 'none';
+                        });
+                    }
+                });
+            }, {
+                rootMargin: '280px 0px 180px 0px', // triggers before reaching section
+                threshold: 0.05
+            });
+            processObserver.observe(processSection);
+        }
 
         // ==========================================================================
         // SERVICES HORIZONTAL SLIDER (CORNER BUTTONS, DRAG, DOTS)

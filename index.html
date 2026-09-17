@@ -1266,16 +1266,16 @@
         }
 
         .process-accordion-item.active .process-accordion-content {
-            max-height: 900px;
+            max-height: 600px;
             opacity: 1;
-            padding: 0 28px 24px 28px;
+            padding: 0 28px 26px 28px;
             margin-top: 0;
-            padding-top: 16px;
+            padding-top: 14px;
         }
 
         .process-content-grid {
             display: grid;
-            grid-template-columns: 1fr 1.15fr;
+            grid-template-columns: 1fr 1.1fr;
             gap: 24px;
             align-items: center;
         }
@@ -1351,34 +1351,33 @@
 
         .process-lottie-box {
             width: 100%;
-            height: 330px;
+            height: 260px;
             background: transparent;
             border: none;
             box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 0 0 0;
+            padding: 0;
             overflow: visible;
         }
 
         .process-lottie-box dotlottie-player {
             width: 100%;
             height: 100%;
-            min-height: 320px;
             display: block;
             pointer-events: none;
         }
 
-        /* Large scale for Step 01 & Step 03 animations (anchored towards bottom so top is never cut) */
+        /* Step 01 & Step 03: Scale 1.3 (exact previous size, fully visible) */
         .process-lottie-box.scale-lg dotlottie-player {
-            transform: scale(1.65);
-            transform-origin: center 65%;
+            transform: scale(1.3);
+            transform-origin: center center;
         }
 
-        /* Default/Original scale for Step 02 animation */
+        /* Step 02: Normal/Original 1.0 scale */
         .process-lottie-box.scale-normal dotlottie-player {
-            transform: scale(1.05);
+            transform: scale(1.0);
             transform-origin: center center;
         }
 

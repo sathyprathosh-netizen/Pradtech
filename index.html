@@ -1382,6 +1382,12 @@
         }
 
         @media (max-width: 820px) {
+            .desktop-only-text {
+                display: none !important;
+            }
+            .mobile-only-text {
+                display: inline !important;
+            }
             .process-content-grid {
                 grid-template-columns: 1fr;
                 gap: 0;
@@ -2126,19 +2132,28 @@
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
-                                    <div class="process-summary-pill">Step 01 — Goals & Discovery</div>
-                                    <h3>Understand Your Goals.</h3>
+                                    <div class="process-summary-pill">
+                                        <span class="desktop-only-text">Step 01 — Goals & Discovery</span>
+                                        <span class="mobile-only-text">Step 01 — DISCOVER</span>
+                                    </div>
+                                    <h3>
+                                        <span class="desktop-only-text">Understand Your Goals.</span>
+                                        <span class="mobile-only-text">Understand the Goal.</span>
+                                    </h3>
                                     <p class="process-desc">
-                                        We analyze your business, target audience, and key goals to craft the ideal technical and design strategy.
+                                        <span class="desktop-only-text">We analyze your business, target audience, and key goals to craft the ideal technical and design strategy.</span>
+                                        <span class="mobile-only-text">We learn about your business, audience and what you need to achieve.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Target audience analysis & competitor mapping</span>
+                                            <span class="desktop-only-text">Target audience analysis & competitor mapping</span>
+                                            <span class="mobile-only-text">Goals & requirements</span>
                                         </li>
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Technical architecture & custom roadmap</span>
+                                            <span class="desktop-only-text">Technical architecture & custom roadmap</span>
+                                            <span class="mobile-only-text">Project roadmap</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -2167,19 +2182,28 @@
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
-                                    <div class="process-summary-pill">Step 02 — Design & Engineering</div>
-                                    <h3>Design & Develop The Solution.</h3>
+                                    <div class="process-summary-pill">
+                                        <span class="desktop-only-text">Step 02 — Design & Engineering</span>
+                                        <span class="mobile-only-text">Step 02 — BUILD</span>
+                                    </div>
+                                    <h3>
+                                        <span class="desktop-only-text">Design & Develop The Solution.</span>
+                                        <span class="mobile-only-text">Design & Build.</span>
+                                    </h3>
                                     <p class="process-desc">
-                                        We engineer your project with clean, high-performance code, pixel-perfect UI, and robust mobile responsiveness.
+                                        <span class="desktop-only-text">We engineer your project with clean, high-performance code, pixel-perfect UI, and robust mobile responsiveness.</span>
+                                        <span class="mobile-only-text">We design and develop the solution around your goals, with responsive performance across every screen.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>High-performance, semantic modern code</span>
+                                            <span class="desktop-only-text">High-performance, semantic modern code</span>
+                                            <span class="mobile-only-text">UI & development</span>
                                         </li>
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Pixel-perfect responsive design across all screens</span>
+                                            <span class="desktop-only-text">Pixel-perfect responsive design across all screens</span>
+                                            <span class="mobile-only-text">Responsive & optimized</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -2208,19 +2232,28 @@
                         <div class="process-accordion-content">
                             <div class="process-content-grid">
                                 <div class="process-content-left">
-                                    <div class="process-summary-pill">Step 03 — Deployment & Scaling</div>
-                                    <h3>Go Live & Keep Improving.</h3>
+                                    <div class="process-summary-pill">
+                                        <span class="desktop-only-text">Step 03 — Deployment & Scaling</span>
+                                        <span class="mobile-only-text">Step 03 — LAUNCH</span>
+                                    </div>
+                                    <h3>
+                                        <span class="desktop-only-text">Go Live & Keep Improving.</span>
+                                        <span class="mobile-only-text">Launch & Improve.</span>
+                                    </h3>
                                     <p class="process-desc">
-                                        Smooth deployment, performance checks, and ongoing guidance so your digital presence continues to generate results.
+                                        <span class="desktop-only-text">Smooth deployment, performance checks, and ongoing guidance so your digital presence continues to generate results.</span>
+                                        <span class="mobile-only-text">We launch your project, check performance and continue improving it after launch.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Smooth deployment with zero downtime</span>
+                                            <span class="desktop-only-text">Smooth deployment with zero downtime</span>
+                                            <span class="mobile-only-text">Deployment & testing</span>
                                         </li>
                                         <li>
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            <span>Continuous tracking, SEO audits & guidance</span>
+                                            <span class="desktop-only-text">Continuous tracking, SEO audits & guidance</span>
+                                            <span class="mobile-only-text">Ongoing support</span>
                                         </li>
                                     </ul>
                                 </div>

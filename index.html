@@ -10,13 +10,12 @@
 
     <link rel="icon" type="image/svg+xml" href="No bg Icon.svg">
 
-    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono & Blanquotey -->
+    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/blanquotey" rel="stylesheet">
 
     <!-- Three.js (for footer shader text hover animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
@@ -2141,30 +2140,13 @@
         .footer-bottom {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            text-align: center;
             gap: 20px;
             padding-top: 24px;
             border-top: 1px solid var(--border);
             font-size: 0.84rem;
             color: var(--text-secondary);
-            flex-wrap: wrap;
-        }
-
-        .footer-socials {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-social-link {
-            color: var(--text-secondary);
-            font-size: 0.86rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .footer-social-link:hover {
-            color: var(--accent-primary);
         }
 
         /* ==========================================================================
@@ -3481,11 +3463,6 @@
 
             <div class="footer-bottom">
                 <div>© 2026 PradTech. All rights reserved.</div>
-                <div class="footer-socials">
-                    <a href="https://github.com/sathyprathosh-netizen" target="_blank" rel="noopener" class="footer-social-link">GitHub</a>
-                    <span style="opacity: 0.3;">•</span>
-                    <a href="mailto:sathyprathosh@futryx.in" class="footer-social-link">Email</a>
-                </div>
             </div>
         </div>
     </footer>

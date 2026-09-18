@@ -10,12 +10,16 @@
 
     <link rel="icon" type="image/svg+xml" href="No bg Icon.svg">
 
-    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono -->
+    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono & Blanquotey -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/blanquotey" rel="stylesheet">
+
+    <!-- Three.js (for footer shader text hover animation) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
 
     <!-- DotLottie Web Player -->
     <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
@@ -2164,6 +2168,39 @@
         }
 
         /* ==========================================================================
+        FOOTER INTERACTIVE TEXT HOVER BANNER (THREE.JS SHADER EFFECT)
+        ========================================================================== */
+        .footer-hover-banner {
+            position: relative;
+            width: 100%;
+            height: clamp(140px, 19vw, 240px);
+            margin: 28px 0 28px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            cursor: crosshair;
+            user-select: none;
+            touch-action: none;
+            box-shadow: 0 4px 20px rgba(23, 37, 43, 0.03);
+            transition: border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .footer-hover-banner:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 30px rgba(58, 143, 140, 0.08);
+        }
+
+        .footer-hover-banner canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+
+        /* ==========================================================================
        RESPONSIVE ADJUSTMENTS FOR NEW SECTIONS
        ========================================================================== */
         @media (max-width: 992px) {
@@ -3446,6 +3483,9 @@
                 </ul>
             </div>
 
+            <!-- Interactive Footer Brand Showcase (Three.js Hover Shader Effect) -->
+            <div class="footer-hover-banner" id="footerTextContainer" title="Hover over PradTech"></div>
+
             <div class="footer-bottom">
                 <div>© 2026 PradTech. All rights reserved.</div>
                 <div class="footer-socials">
@@ -3780,6 +3820,288 @@
                 }
             }, true);
         }
+
+        // ==========================================================================
+        // FOOTER TEXT HOVER SHADER ANIMATION (THREE.JS DISPLACEMENT EFFECT)
+        // ==========================================================================
+        (function initFooterTextHover() {
+            const container = document.getElementById("footerTextContainer");
+            if (!container || typeof THREE === "undefined") return;
+
+            let easeFactor = 0.02;
+            let scene, camera, renderer, planeMesh, shaderMaterial;
+            let mousePosition = { x: 0.5, y: 0.5 };
+            let targetMousePosition = { x: 0.5, y: 0.5 };
+            let prevPosition = { x: 0.5, y: 0.5 };
+            let isHovering = false;
+            let autoWaveTime = 0;
+            let isVisible = true;
+            let animationFrameId = null;
+
+            const vertexShader = `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = vec4(position, 1.0);
+                }
+            `;
+
+            const fragmentShader = `
+                varying vec2 vUv;
+                uniform sampler2D u_texture;
+                uniform vec2 u_mouse;
+                uniform vec2 u_prevMouse;
+                uniform vec2 u_grid;
+
+                void main() {
+                    vec2 gridUV = floor(vUv * u_grid) / u_grid;
+                    vec2 centerOfPixel = gridUV + (vec2(0.5) / u_grid);
+
+                    vec2 mouseDirection = u_mouse - u_prevMouse;
+
+                    vec2 pixelToMouseDirection = centerOfPixel - u_mouse;
+                    float pixelDistanceToMouse = length(pixelToMouseDirection);
+                    float strength = smoothstep(0.32, 0.0, pixelDistanceToMouse);
+
+                    vec2 uvOffset = strength * -mouseDirection * 0.45;
+                    vec2 uv = clamp(vUv - uvOffset, 0.0, 1.0);
+
+                    vec4 color = texture2D(u_texture, uv);
+                    gl_FragColor = color;
+                }
+            `;
+
+            function createTextTexture(text, font, color, fontWeight = "600") {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const rect = container.getBoundingClientRect();
+                const containerW = rect.width > 0 ? rect.width : 1100;
+                const containerH = rect.height > 0 ? rect.height : 220;
+
+                const canvasWidth = Math.round(containerW * dpr);
+                const canvasHeight = Math.round(containerH * dpr);
+
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+
+                // Crisp background
+                ctx.fillStyle = color || "#FFFFFF";
+                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+                // Responsive dynamic font sizing
+                const fontSize = Math.floor(canvasHeight * 0.68);
+
+                ctx.fillStyle = "#17252B";
+                ctx.font = `${fontWeight} ${fontSize}px "${font || 'Blanquotey'}", "DM Sans", -apple-system, sans-serif`;
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = "high";
+
+                const textMetrics = ctx.measureText(text);
+                const textWidth = textMetrics.width;
+
+                const maxTextWidth = canvasWidth * 0.90;
+                const scaleFactor = Math.min(1, maxTextWidth / Math.max(textWidth, 1));
+
+                ctx.save();
+                ctx.setTransform(
+                    scaleFactor,
+                    0,
+                    0,
+                    scaleFactor,
+                    canvasWidth / 2,
+                    canvasHeight / 2
+                );
+
+                ctx.fillStyle = "#17252B";
+                ctx.fillText(text, 0, 0);
+
+                ctx.strokeStyle = "#17252B";
+                ctx.lineWidth = fontSize * 0.008;
+                ctx.strokeText(text, 0, 0);
+                ctx.restore();
+
+                const texture = new THREE.CanvasTexture(canvas);
+                texture.minFilter = THREE.LinearFilter;
+                texture.magFilter = THREE.LinearFilter;
+                texture.generateMipmaps = false;
+                return texture;
+            }
+
+            function getGridVector() {
+                const rect = container.getBoundingClientRect();
+                const w = rect.width > 0 ? rect.width : 1100;
+                const h = rect.height > 0 ? rect.height : 220;
+                const aspect = w / h;
+                const gridY = 36.0;
+                const gridX = Math.max(16.0, Math.round(gridY * aspect));
+                return new THREE.Vector2(gridX, gridY);
+            }
+
+            function initializeScene() {
+                scene = new THREE.Scene();
+                camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+                camera.position.z = 1;
+
+                const textTex = createTextTexture("PradTech", "Blanquotey", "#FFFFFF", "600");
+
+                shaderMaterial = new THREE.ShaderMaterial({
+                    uniforms: {
+                        u_texture: { value: textTex },
+                        u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+                        u_prevMouse: { value: new THREE.Vector2(0.5, 0.5) },
+                        u_grid: { value: getGridVector() }
+                    },
+                    vertexShader,
+                    fragmentShader,
+                    depthTest: false,
+                    depthWrite: false
+                });
+
+                planeMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), shaderMaterial);
+                scene.add(planeMesh);
+
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+                const rect = container.getBoundingClientRect();
+                const initW = rect.width > 0 ? rect.width : 1100;
+                const initH = rect.height > 0 ? rect.height : 220;
+                renderer.setSize(initW, initH);
+                renderer.setClearColor(0xffffff, 1);
+
+                container.appendChild(renderer.domElement);
+            }
+
+            function reloadTexture() {
+                if (!container.clientWidth || !container.clientHeight || !shaderMaterial) return;
+                const newTexture = createTextTexture("PradTech", "Blanquotey", "#FFFFFF", "600");
+                if (shaderMaterial.uniforms.u_texture.value) {
+                    shaderMaterial.uniforms.u_texture.value.dispose();
+                }
+                shaderMaterial.uniforms.u_texture.value = newTexture;
+                shaderMaterial.uniforms.u_grid.value = getGridVector();
+            }
+
+            initializeScene();
+
+            if (document.fonts) {
+                document.fonts.ready.then(() => {
+                    reloadTexture();
+                });
+            }
+
+            function animateScene() {
+                if (!isVisible) return;
+                animationFrameId = requestAnimationFrame(animateScene);
+
+                // Subtle organic ripple when idle to invite interaction
+                if (!isHovering) {
+                    autoWaveTime += 0.016;
+                    const autoX = 0.5 + Math.sin(autoWaveTime * 1.3) * 0.28;
+                    const autoY = 0.5 + Math.cos(autoWaveTime * 1.8) * 0.18;
+                    targetMousePosition.x = autoX;
+                    targetMousePosition.y = autoY;
+                }
+
+                mousePosition.x += (targetMousePosition.x - mousePosition.x) * easeFactor;
+                mousePosition.y += (targetMousePosition.y - mousePosition.y) * easeFactor;
+
+                shaderMaterial.uniforms.u_mouse.value.set(
+                    mousePosition.x,
+                    1.0 - mousePosition.y
+                );
+
+                shaderMaterial.uniforms.u_prevMouse.value.set(
+                    prevPosition.x,
+                    1.0 - prevPosition.y
+                );
+
+                renderer.render(scene, camera);
+            }
+
+            animateScene();
+
+            function handlePointerMove(event) {
+                easeFactor = 0.04;
+                const rect = container.getBoundingClientRect();
+                if (rect.width <= 0 || rect.height <= 0) return;
+                prevPosition = { ...targetMousePosition };
+                targetMousePosition.x = (event.clientX - rect.left) / rect.width;
+                targetMousePosition.y = (event.clientY - rect.top) / rect.height;
+            }
+
+            function handlePointerEnter(event) {
+                isHovering = true;
+                easeFactor = 0.02;
+                const rect = container.getBoundingClientRect();
+                if (rect.width <= 0 || rect.height <= 0) return;
+                mousePosition.x = targetMousePosition.x = (event.clientX - rect.left) / rect.width;
+                mousePosition.y = targetMousePosition.y = (event.clientY - rect.top) / rect.height;
+                prevPosition = { ...targetMousePosition };
+            }
+
+            function handlePointerLeave() {
+                isHovering = false;
+                easeFactor = 0.015;
+            }
+
+            container.addEventListener("mousemove", handlePointerMove, { passive: true });
+            container.addEventListener("mouseenter", handlePointerEnter, { passive: true });
+            container.addEventListener("mouseleave", handlePointerLeave, { passive: true });
+
+            // Mobile Touch Interaction
+            container.addEventListener("touchstart", (e) => {
+                if (e.touches && e.touches[0]) {
+                    handlePointerEnter(e.touches[0]);
+                }
+            }, { passive: true });
+
+            container.addEventListener("touchmove", (e) => {
+                if (e.touches && e.touches[0]) {
+                    handlePointerMove(e.touches[0]);
+                }
+            }, { passive: true });
+
+            container.addEventListener("touchend", handlePointerLeave, { passive: true });
+
+            // Responsive Resize
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const rect = container.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) {
+                        renderer.setSize(rect.width, rect.height);
+                        reloadTexture();
+                    }
+                }, 120);
+            }, { passive: true });
+
+            // Optimized Viewport Observer (saves GPU when user is elsewhere on page)
+            if ("IntersectionObserver" in window) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!isVisible) {
+                                isVisible = true;
+                                animateScene();
+                            }
+                        } else {
+                            isVisible = false;
+                            if (animationFrameId) {
+                                cancelAnimationFrame(animationFrameId);
+                            }
+                        }
+                    });
+                }, { threshold: 0.02 });
+
+                footerObserver.observe(container);
+            }
+        })();
     </script>
 </body>
 

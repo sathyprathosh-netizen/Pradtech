@@ -2173,22 +2173,15 @@
         .footer-hover-banner {
             position: relative;
             width: 100%;
-            height: clamp(140px, 19vw, 240px);
-            margin: 28px 0 28px;
-            border-radius: var(--radius-md);
+            height: clamp(120px, 18vw, 240px);
+            margin: 16px 0 32px;
             overflow: hidden;
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border);
-            cursor: crosshair;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
             user-select: none;
             touch-action: none;
-            box-shadow: 0 4px 20px rgba(23, 37, 43, 0.03);
-            transition: border-color 0.28s ease, box-shadow 0.28s ease;
-        }
-
-        .footer-hover-banner:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 8px 30px rgba(58, 143, 140, 0.08);
         }
 
         .footer-hover-banner canvas {
@@ -3824,17 +3817,18 @@
         // ==========================================================================
         // FOOTER TEXT HOVER SHADER ANIMATION (THREE.JS DISPLACEMENT EFFECT)
         // ==========================================================================
+        // ==========================================================================
+        // FOOTER BRAND TEXT HOVER SHADER ANIMATION (SNAPPY & THEME-ALIGNED)
+        // ==========================================================================
         (function initFooterTextHover() {
             const container = document.getElementById("footerTextContainer");
             if (!container || typeof THREE === "undefined") return;
 
-            let easeFactor = 0.02;
             let scene, camera, renderer, planeMesh, shaderMaterial;
             let mousePosition = { x: 0.5, y: 0.5 };
             let targetMousePosition = { x: 0.5, y: 0.5 };
-            let prevPosition = { x: 0.5, y: 0.5 };
-            let isHovering = false;
-            let autoWaveTime = 0;
+            let velocity = { x: 0.0, y: 0.0 };
+            let targetVelocity = { x: 0.0, y: 0.0 };
             let isVisible = true;
             let animationFrameId = null;
 
@@ -3850,20 +3844,18 @@
                 varying vec2 vUv;
                 uniform sampler2D u_texture;
                 uniform vec2 u_mouse;
-                uniform vec2 u_prevMouse;
+                uniform vec2 u_velocity;
                 uniform vec2 u_grid;
 
                 void main() {
                     vec2 gridUV = floor(vUv * u_grid) / u_grid;
                     vec2 centerOfPixel = gridUV + (vec2(0.5) / u_grid);
 
-                    vec2 mouseDirection = u_mouse - u_prevMouse;
-
                     vec2 pixelToMouseDirection = centerOfPixel - u_mouse;
                     float pixelDistanceToMouse = length(pixelToMouseDirection);
-                    float strength = smoothstep(0.32, 0.0, pixelDistanceToMouse);
+                    float strength = smoothstep(0.24, 0.0, pixelDistanceToMouse);
 
-                    vec2 uvOffset = strength * -mouseDirection * 0.45;
+                    vec2 uvOffset = strength * -u_velocity * 1.4;
                     vec2 uv = clamp(vUv - uvOffset, 0.0, 1.0);
 
                     vec4 color = texture2D(u_texture, uv);
@@ -3871,7 +3863,7 @@
                 }
             `;
 
-            function createTextTexture(text, font, color, fontWeight = "600") {
+            function createTextTexture() {
                 const canvas = document.createElement("canvas");
                 const ctx = canvas.getContext("2d");
 
@@ -3886,25 +3878,25 @@
                 canvas.width = canvasWidth;
                 canvas.height = canvasHeight;
 
-                // Crisp background
-                ctx.fillStyle = color || "#FFFFFF";
+                // Match exact footer background
+                ctx.fillStyle = "#FFFFFF";
                 ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-                // Responsive dynamic font sizing
-                const fontSize = Math.floor(canvasHeight * 0.68);
-
-                ctx.fillStyle = "#17252B";
-                ctx.font = `${fontWeight} ${fontSize}px "${font || 'Blanquotey'}", "DM Sans", -apple-system, sans-serif`;
-                ctx.textAlign = "center";
+                // Exact brand font: DM Sans 700
+                const fontSize = Math.floor(canvasHeight * 0.72);
+                ctx.font = `700 ${fontSize}px "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif`;
                 ctx.textBaseline = "middle";
                 ctx.imageSmoothingEnabled = true;
                 ctx.imageSmoothingQuality = "high";
 
-                const textMetrics = ctx.measureText(text);
-                const textWidth = textMetrics.width;
+                const pradMetrics = ctx.measureText("Prad");
+                const techMetrics = ctx.measureText("Tech");
+                const pradWidth = pradMetrics.width;
+                const techWidth = techMetrics.width;
+                const totalTextWidth = pradWidth + techWidth;
 
-                const maxTextWidth = canvasWidth * 0.90;
-                const scaleFactor = Math.min(1, maxTextWidth / Math.max(textWidth, 1));
+                const maxTextWidth = canvasWidth * 0.92;
+                const scaleFactor = Math.min(1, maxTextWidth / Math.max(totalTextWidth, 1));
 
                 ctx.save();
                 ctx.setTransform(
@@ -3916,12 +3908,17 @@
                     canvasHeight / 2
                 );
 
-                ctx.fillStyle = "#17252B";
-                ctx.fillText(text, 0, 0);
+                const startX = -totalTextWidth / 2;
 
-                ctx.strokeStyle = "#17252B";
-                ctx.lineWidth = fontSize * 0.008;
-                ctx.strokeText(text, 0, 0);
+                // "Prad" in #17252B (var(--text-primary))
+                ctx.fillStyle = "#17252B";
+                ctx.textAlign = "left";
+                ctx.fillText("Prad", startX, 0);
+
+                // "Tech" in #3A8F8C (var(--accent-primary))
+                ctx.fillStyle = "#3A8F8C";
+                ctx.fillText("Tech", startX + pradWidth, 0);
+
                 ctx.restore();
 
                 const texture = new THREE.CanvasTexture(canvas);
@@ -3936,7 +3933,7 @@
                 const w = rect.width > 0 ? rect.width : 1100;
                 const h = rect.height > 0 ? rect.height : 220;
                 const aspect = w / h;
-                const gridY = 36.0;
+                const gridY = 40.0;
                 const gridX = Math.max(16.0, Math.round(gridY * aspect));
                 return new THREE.Vector2(gridX, gridY);
             }
@@ -3946,13 +3943,13 @@
                 camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
                 camera.position.z = 1;
 
-                const textTex = createTextTexture("PradTech", "Blanquotey", "#FFFFFF", "600");
+                const textTex = createTextTexture();
 
                 shaderMaterial = new THREE.ShaderMaterial({
                     uniforms: {
                         u_texture: { value: textTex },
                         u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
-                        u_prevMouse: { value: new THREE.Vector2(0.5, 0.5) },
+                        u_velocity: { value: new THREE.Vector2(0.0, 0.0) },
                         u_grid: { value: getGridVector() }
                     },
                     vertexShader,
@@ -3978,7 +3975,7 @@
 
             function reloadTexture() {
                 if (!container.clientWidth || !container.clientHeight || !shaderMaterial) return;
-                const newTexture = createTextTexture("PradTech", "Blanquotey", "#FFFFFF", "600");
+                const newTexture = createTextTexture();
                 if (shaderMaterial.uniforms.u_texture.value) {
                     shaderMaterial.uniforms.u_texture.value.dispose();
                 }
@@ -3998,26 +3995,25 @@
                 if (!isVisible) return;
                 animationFrameId = requestAnimationFrame(animateScene);
 
-                // Subtle organic ripple when idle to invite interaction
-                if (!isHovering) {
-                    autoWaveTime += 0.016;
-                    const autoX = 0.5 + Math.sin(autoWaveTime * 1.3) * 0.28;
-                    const autoY = 0.5 + Math.cos(autoWaveTime * 1.8) * 0.18;
-                    targetMousePosition.x = autoX;
-                    targetMousePosition.y = autoY;
-                }
+                // Responsive follow & decay (snappy, zero sticky drag)
+                mousePosition.x += (targetMousePosition.x - mousePosition.x) * 0.25;
+                mousePosition.y += (targetMousePosition.y - mousePosition.y) * 0.25;
 
-                mousePosition.x += (targetMousePosition.x - mousePosition.x) * easeFactor;
-                mousePosition.y += (targetMousePosition.y - mousePosition.y) * easeFactor;
+                velocity.x += (targetVelocity.x - velocity.x) * 0.3;
+                velocity.y += (targetVelocity.y - velocity.y) * 0.3;
+
+                // Quick natural decay so text instantly settles back
+                targetVelocity.x *= 0.78;
+                targetVelocity.y *= 0.78;
 
                 shaderMaterial.uniforms.u_mouse.value.set(
                     mousePosition.x,
                     1.0 - mousePosition.y
                 );
 
-                shaderMaterial.uniforms.u_prevMouse.value.set(
-                    prevPosition.x,
-                    1.0 - prevPosition.y
+                shaderMaterial.uniforms.u_velocity.value.set(
+                    velocity.x,
+                    -velocity.y
                 );
 
                 renderer.render(scene, camera);
@@ -4026,27 +4022,37 @@
             animateScene();
 
             function handlePointerMove(event) {
-                easeFactor = 0.04;
                 const rect = container.getBoundingClientRect();
                 if (rect.width <= 0 || rect.height <= 0) return;
-                prevPosition = { ...targetMousePosition };
-                targetMousePosition.x = (event.clientX - rect.left) / rect.width;
-                targetMousePosition.y = (event.clientY - rect.top) / rect.height;
+
+                const newX = (event.clientX - rect.left) / rect.width;
+                const newY = (event.clientY - rect.top) / rect.height;
+
+                targetVelocity.x = Math.max(-0.6, Math.min(0.6, (newX - targetMousePosition.x) * 1.8));
+                targetVelocity.y = Math.max(-0.6, Math.min(0.6, (newY - targetMousePosition.y) * 1.8));
+
+                targetMousePosition.x = newX;
+                targetMousePosition.y = newY;
             }
 
             function handlePointerEnter(event) {
-                isHovering = true;
-                easeFactor = 0.02;
                 const rect = container.getBoundingClientRect();
                 if (rect.width <= 0 || rect.height <= 0) return;
-                mousePosition.x = targetMousePosition.x = (event.clientX - rect.left) / rect.width;
-                mousePosition.y = targetMousePosition.y = (event.clientY - rect.top) / rect.height;
-                prevPosition = { ...targetMousePosition };
+
+                const newX = (event.clientX - rect.left) / rect.width;
+                const newY = (event.clientY - rect.top) / rect.height;
+
+                mousePosition.x = targetMousePosition.x = newX;
+                mousePosition.y = targetMousePosition.y = newY;
+                targetVelocity.x = 0;
+                targetVelocity.y = 0;
+                velocity.x = 0;
+                velocity.y = 0;
             }
 
             function handlePointerLeave() {
-                isHovering = false;
-                easeFactor = 0.015;
+                targetVelocity.x = 0;
+                targetVelocity.y = 0;
             }
 
             container.addEventListener("mousemove", handlePointerMove, { passive: true });
@@ -4081,7 +4087,7 @@
                 }, 120);
             }, { passive: true });
 
-            // Optimized Viewport Observer (saves GPU when user is elsewhere on page)
+            // Viewport Observer
             if ("IntersectionObserver" in window) {
                 const footerObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {

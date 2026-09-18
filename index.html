@@ -81,6 +81,7 @@
             min-height: 100dvh;
             display: flex;
             flex-direction: column;
+            padding-top: 80px;
         }
 
         main {
@@ -193,11 +194,10 @@
        ROBUST NAVBAR ALIGNMENT & DYNAMIC PILL TRANSITION
        ========================================================================== */
         .header {
-            position: sticky;
+            position: fixed;
             top: 0;
             z-index: 1000;
-            background: rgba(253, 249, 252, 0.75);
-            background-color: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.78);
             backdrop-filter: blur(20px) saturate(190%);
             -webkit-backdrop-filter: blur(20px) saturate(190%);
             border-bottom: 1px solid rgba(220, 230, 228, 0.65);
@@ -208,13 +208,18 @@
             left: 0;
             right: 0;
             border-radius: 0;
-            transition: top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                border 0.4s ease,
-                box-shadow 0.45s ease,
-                background-color 0.4s ease;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: top, max-width, width, border-radius, box-shadow, background-color;
+            transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border 0.35s ease,
+                box-shadow 0.4s ease,
+                background-color 0.35s ease;
         }
 
         /* Scrolled Pill-Shaped State (After 3-4 user scrolls) */
@@ -224,7 +229,7 @@
             width: calc(100% - 36px);
             border-radius: var(--radius-full);
             border: 1px solid rgba(220, 230, 228, 0.9);
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             box-shadow: 0 12px 36px rgba(23, 37, 43, 0.09), 0 2px 8px rgba(23, 37, 43, 0.04);
         }
 
@@ -650,8 +655,18 @@
                 display: inline !important;
             }
 
+            body {
+                padding-top: 70px;
+            }
+
             .header {
-                position: sticky;
+                position: fixed;
+            }
+
+            .header.scrolled-pill {
+                top: 10px;
+                width: calc(100% - 20px);
+                max-width: calc(100% - 20px);
             }
 
             .nav-wrapper {
@@ -2492,8 +2507,8 @@
                                 <p>Top search rankings, technical audits & organic traffic.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/SEARCH-ENGINE-OPTIMIZATION.jpeg" alt="Search Engine Optimization Preview"
-                                    class="service-preview-img" loading="lazy">
+                                <img src="assets/SEARCH-ENGINE-OPTIMIZATION.jpeg"
+                                    alt="Search Engine Optimization Preview" class="service-preview-img" loading="lazy">
                             </div>
                         </div>
 
@@ -3745,14 +3760,20 @@
        INTERACTIVE SCRIPTS (MOBILE MENU & FAQ ACCORDION)
        ========================================================================== -->
     <script>
-        // Dynamic Pill-Shaped Navbar Transition on Scroll (Buttery smooth transition after 3-4 scrolls)
+        // Dynamic Pill-Shaped Navbar Transition on Scroll (Buttery smooth with hysteresis)
         const headerElement = document.querySelector('.header');
         if (headerElement) {
+            let isScrolled = false;
             let isTicking = false;
+
             const updateNavbarShape = () => {
-                if (window.scrollY > 130) {
+                const currentY = window.scrollY || window.pageYOffset;
+                // Deadband hysteresis to guarantee ZERO oscillation or vibration:
+                if (!isScrolled && currentY > 65) {
+                    isScrolled = true;
                     headerElement.classList.add('scrolled-pill');
-                } else {
+                } else if (isScrolled && currentY < 25) {
+                    isScrolled = false;
                     headerElement.classList.remove('scrolled-pill');
                 }
                 isTicking = false;

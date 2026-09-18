@@ -209,12 +209,12 @@
             right: 0;
             border-radius: 0;
             transition: top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                        max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        border 0.4s ease,
-                        box-shadow 0.45s ease,
-                        background-color 0.4s ease;
+                max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border 0.4s ease,
+                box-shadow 0.45s ease,
+                background-color 0.4s ease;
         }
 
         /* Scrolled Pill-Shaped State (After 3-4 user scrolls) */
@@ -1088,19 +1088,24 @@
                 min-width: clamp(280px, 45vw, 340px);
                 padding: 26px 22px 20px;
             }
+
             .service-preview-wrap {
                 height: 180px;
             }
+
             .service-card h3 {
                 font-size: 1.25rem;
             }
+
             .slider-corner-btn {
                 width: 44px;
                 height: 44px;
             }
+
             .slider-corner-btn.prev-btn {
                 left: -12px;
             }
+
             .slider-corner-btn.next-btn {
                 right: -12px;
             }
@@ -1111,12 +1116,14 @@
             .services-slider-container {
                 padding: 0;
             }
+
             .services-track {
                 gap: 16px;
                 padding: 8px 18px 20px;
                 margin: 0 -16px;
                 scroll-padding: 18px;
             }
+
             .service-card {
                 flex: 0 0 75vw;
                 min-width: 75vw;
@@ -1124,66 +1131,83 @@
                 padding: 22px 18px 18px;
                 border-radius: var(--radius-md);
             }
+
             .service-card-header {
                 margin-bottom: 16px;
             }
+
             .service-category-pill {
                 font-size: 0.74rem;
                 padding: 4px 12px;
             }
+
             .service-arrow-btn {
                 width: 34px;
                 height: 34px;
             }
+
             .service-arrow-btn svg {
                 width: 16px;
                 height: 16px;
             }
+
             .service-icon-clean {
                 margin-bottom: 12px;
             }
+
             .service-icon-clean svg {
                 width: 26px;
                 height: 26px;
             }
+
             .service-card h3 {
                 font-size: 1.15rem;
                 margin-bottom: 6px;
             }
+
             .service-card p {
                 font-size: 0.88rem;
                 line-height: 1.45;
             }
+
             .service-card-body {
                 margin-bottom: 16px;
             }
+
             .service-preview-wrap {
                 height: 155px;
             }
+
             .slider-corner-btn {
                 width: 36px;
                 height: 36px;
                 box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
                 background: rgba(255, 255, 255, 0.92);
             }
+
             .slider-corner-btn.prev-btn {
                 left: 2px;
             }
+
             .slider-corner-btn.next-btn {
                 right: 2px;
             }
+
             .slider-corner-btn svg {
                 width: 18px;
                 height: 18px;
             }
+
             .services-dots-wrap {
                 margin-top: 18px;
                 gap: 8px;
             }
+
             .service-dot {
                 width: 8px;
                 height: 8px;
             }
+
             .service-dot.active {
                 width: 24px;
             }
@@ -1255,6 +1279,7 @@
             from {
                 width: 0%;
             }
+
             to {
                 width: 100%;
             }
@@ -1507,31 +1532,39 @@
             .desktop-only-text {
                 display: none !important;
             }
+
             .mobile-only-text {
                 display: inline !important;
             }
+
             .process-content-grid {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
+
             .process-content-right {
                 display: none !important;
             }
+
             .process-accordion-header {
                 padding: 18px 20px;
             }
+
             .process-header-title {
                 font-size: 1.2rem;
             }
+
             .process-step-badge {
                 font-size: 1.15rem;
                 padding: 5px 12px;
             }
+
             .process-accordion-item.active .process-accordion-content {
                 max-height: 500px;
                 padding: 0 20px 22px 20px;
                 padding-top: 16px;
             }
+
             .process-content-left h3 {
                 font-size: 1.3rem;
             }
@@ -1632,6 +1665,7 @@
             from {
                 transform: translateX(0);
             }
+
             to {
                 transform: translateX(-50%);
             }
@@ -1641,6 +1675,7 @@
             from {
                 transform: translateX(-50%);
             }
+
             to {
                 transform: translateX(0);
             }
@@ -1704,7 +1739,7 @@
             font-weight: 700;
             color: #FFFFFF;
             flex-shrink: 0;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
         }
 
@@ -1756,14 +1791,17 @@
                 transform: scale(0.3) translateY(4px);
                 opacity: 0.3;
             }
+
             50% {
                 transform: scale(1.6) translateY(-4px);
                 opacity: 1;
                 filter: drop-shadow(0 2px 5px rgba(234, 67, 53, 0.6));
             }
+
             75% {
                 transform: scale(0.9) translateY(1px);
             }
+
             100% {
                 transform: scale(1) translateY(0);
                 opacity: 1;
@@ -1815,14 +1853,17 @@
                 transform: scale(0);
                 opacity: 0;
             }
+
             50% {
                 transform: scale(1.55) rotate(14deg);
                 opacity: 1;
                 filter: drop-shadow(0 0 5px rgba(251, 188, 5, 0.7));
             }
+
             75% {
                 transform: scale(0.85) rotate(-4deg);
             }
+
             100% {
                 transform: scale(1) rotate(0deg);
                 opacity: 1;
@@ -1881,59 +1922,73 @@
             .testimonials-section {
                 padding: 44px 0 48px;
             }
+
             .testimonials-section .section-title {
                 font-size: clamp(26px, 6.5vw, 32px);
                 margin-bottom: 10px;
             }
+
             .testimonials-section .section-description {
                 font-size: 0.92rem;
             }
+
             .marquee-wrapper {
                 margin-top: 20px;
                 gap: 10px;
                 padding: 6px 0;
             }
+
             .marquee-row {
                 padding: 6px 0 10px;
                 margin: -2px 0;
             }
+
             .marquee-track {
                 gap: 12px;
                 padding: 2px 0;
             }
+
             .google-review-card {
                 width: 250px;
                 padding: 15px 16px;
                 gap: 9px;
                 border-radius: var(--radius-md);
             }
+
             .reviewer-avatar {
                 width: 32px;
                 height: 32px;
                 font-size: 0.88rem;
             }
+
             .reviewer-name {
                 font-size: 0.88rem;
             }
+
             .reviewer-guide {
                 font-size: 0.68rem;
                 gap: 3px;
             }
+
             .reviewer-guide svg {
                 width: 10px;
                 height: 10px;
             }
+
             .google-badge-icon {
                 width: 17px;
                 height: 17px;
             }
+
             .review-stars {
                 font-size: 0.82rem;
                 gap: 1px;
             }
+
             .review-time {
                 font-size: 0.72rem;
             }
+
             .review-text {
                 font-size: 0.8rem;
                 line-height: 1.45;
@@ -2365,7 +2420,8 @@
                         <span class="mobile-only-text">One Partner. Many Solutions.</span>
                     </h2>
                     <p class="section-description">
-                        <span class="desktop-only-text">Everything your business needs to establish authority, attract qualified customers, and automate operations.</span>
+                        <span class="desktop-only-text">Everything your business needs to establish authority, attract
+                            qualified customers, and automate operations.</span>
                         <span class="mobile-only-text">Built around what your business needs to move forward.</span>
                     </p>
                 </div>
@@ -2373,7 +2429,8 @@
                 <div class="services-slider-container">
                     <!-- Corner Nav Buttons (Left & Right) -->
                     <button class="slider-corner-btn prev-btn" id="servicesPrevBtn" aria-label="Previous service">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
@@ -2384,14 +2441,16 @@
                             <div class="service-card-header">
                                 <span class="service-category-pill">Web Experience</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <polyline pathLength="1" points="16 18 22 12 16 6"></polyline>
                                         <polyline pathLength="1" points="8 6 2 12 8 18"></polyline>
                                     </svg>
@@ -2400,7 +2459,8 @@
                                 <p>Websites and custom web experiences.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/web-development.jpg" alt="Web Development Interface Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/WEB-DEVELOPMENT.png" alt="Web Development Interface Preview"
+                                    class="service-preview-img" loading="lazy">
                             </div>
                         </div>
 
@@ -2409,14 +2469,16 @@
                             <div class="service-card-header">
                                 <span class="service-category-pill">Organic Growth</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <circle pathLength="1" cx="11" cy="11" r="8"></circle>
                                         <line pathLength="1" x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                         <polyline pathLength="1" points="11 8 13 11 16 11"></polyline>
@@ -2426,7 +2488,8 @@
                                 <p>Top search rankings, technical audits & organic traffic.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/seo-ranking.jpg" alt="Local SEO & GBP Dashboard Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/SEARCH-ENGINE-OPTIMIZATION.jpeg" alt="Search Engine Optimization Preview"
+                                    class="service-preview-img" loading="lazy">
                             </div>
                         </div>
 
@@ -2435,14 +2498,16 @@
                             <div class="service-card-header">
                                 <span class="service-category-pill">Local Maps</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path pathLength="1" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle pathLength="1" cx="12" cy="10" r="3"></circle>
                                     </svg>
@@ -2451,7 +2516,8 @@
                                 <p>Google Maps 3-pack dominance and local customer calls.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/google-business-profile.jpg" alt="Google Business Profile Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/GOOLE-BUSINESS-PROFILE.jpeg" alt="Google Business Profile Preview"
+                                    class="service-preview-img" loading="lazy">
                             </div>
                         </div>
 
@@ -2460,48 +2526,56 @@
                             <div class="service-card-header">
                                 <span class="service-category-pill">AI & Automation</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path pathLength="1" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path pathLength="1"
+                                            d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                                        </path>
                                     </svg>
                                 </div>
                                 <h3>AI Solutions</h3>
                                 <p>Chatbots, AI receptionists and automation.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/ai-solutions.jpg" alt="AI Automation & Chatbots Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/AI-SOLUTIONS.png" alt="AI Automation & Chatbots Preview"
+                                    class="service-preview-img" style="object-position: top center;" loading="lazy">
                             </div>
                         </div>
 
-                        <!-- Service 5: Web Applications -->
+                        <!-- Service 5: Web Applications & Softwares -->
                         <div class="service-card">
                             <div class="service-card-header">
                                 <span class="service-category-pill">Custom Apps</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <rect pathLength="1" x="2" y="3" width="20" height="14" rx="2"></rect>
                                         <line pathLength="1" x1="8" y1="21" x2="16" y2="21"></line>
                                         <line pathLength="1" x1="12" y1="17" x2="12" y2="21"></line>
                                     </svg>
                                 </div>
-                                <h3>Web Applications</h3>
+                                <h3>Web Applications & Softwares</h3>
                                 <p>Custom scalable applications and cloud software.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/web-apps.jpg" alt="Web Applications & Platform Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/WEB-APPLICATION.png" alt="Web Applications & Softwares Preview"
+                                    class="service-preview-img" loading="lazy">
                             </div>
                         </div>
 
@@ -2510,14 +2584,16 @@
                             <div class="service-card-header">
                                 <span class="service-category-pill">CMS & WordPress</span>
                                 <span class="service-arrow-btn" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14M13 6l6 6-6 6" />
                                     </svg>
                                 </span>
                             </div>
                             <div class="service-card-body">
                                 <div class="service-icon-clean">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <polygon pathLength="1" points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                         <polyline pathLength="1" points="2 17 12 22 22 17"></polyline>
                                         <polyline pathLength="1" points="2 12 12 17 22 12"></polyline>
@@ -2527,13 +2603,15 @@
                                 <p>Custom themes, flexible layouts and easy management.</p>
                             </div>
                             <div class="service-preview-wrap">
-                                <img src="assets/wordpress-development.jpg" alt="WordPress CMS & Custom Theme Preview" class="service-preview-img" loading="lazy">
+                                <img src="assets/WORDPRESS-DEVELOPMENT.png" alt="WordPress CMS & Custom Theme Preview"
+                                    class="service-preview-img" loading="lazy">
                             </div>
                         </div>
                     </div>
 
                     <button class="slider-corner-btn next-btn" id="servicesNextBtn" aria-label="Next service">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 18l6-6-6-6" />
                         </svg>
                     </button>
@@ -2545,7 +2623,7 @@
                     <button class="service-dot" data-index="1" aria-label="Go to SEO"></button>
                     <button class="service-dot" data-index="2" aria-label="Go to Google Business Profile"></button>
                     <button class="service-dot" data-index="3" aria-label="Go to AI Solutions"></button>
-                    <button class="service-dot" data-index="4" aria-label="Go to Web Applications"></button>
+                    <button class="service-dot" data-index="4" aria-label="Go to Web Applications & Softwares"></button>
                     <button class="service-dot" data-index="5" aria-label="Go to WordPress Development"></button>
                 </div>
             </div>
@@ -2561,7 +2639,8 @@
                         <span class="mobile-only-text">From Idea to Launch.</span>
                     </h2>
                     <p class="section-description">
-                        <span class="desktop-only-text">What happens if you hire us? A straightforward, three-step execution designed for speed and clarity.</span>
+                        <span class="desktop-only-text">What happens if you hire us? A straightforward, three-step
+                            execution designed for speed and clarity.</span>
                         <span class="mobile-only-text">A clear process. Built around your goals.</span>
                     </p>
                 </div>
@@ -2575,7 +2654,8 @@
                                 <span class="process-header-title">Discover</span>
                             </div>
                             <span class="process-accordion-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
@@ -2595,25 +2675,37 @@
                                         <span class="mobile-only-text">Understand the Goal.</span>
                                     </h3>
                                     <p class="process-desc">
-                                        <span class="desktop-only-text">We analyze your business, target audience, and key goals to craft the ideal technical and design strategy.</span>
-                                        <span class="mobile-only-text">We learn about your business, audience and what you need to achieve.</span>
+                                        <span class="desktop-only-text">We analyze your business, target audience, and
+                                            key goals to craft the ideal technical and design strategy.</span>
+                                        <span class="mobile-only-text">We learn about your business, audience and what
+                                            you need to achieve.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
-                                            <span class="desktop-only-text">Target audience analysis & competitor mapping</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span class="desktop-only-text">Target audience analysis & competitor
+                                                mapping</span>
                                             <span class="mobile-only-text">Goals & requirements</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
-                                            <span class="desktop-only-text">Technical architecture & custom roadmap</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span class="desktop-only-text">Technical architecture & custom
+                                                roadmap</span>
                                             <span class="mobile-only-text">Project roadmap</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="process-content-right">
                                     <div class="process-lottie-box scale-lg">
-                                        <dotlottie-player src="https://lottie.host/070a5879-e05b-41c4-bbcb-c657ecdb271a/2UNjvcFh62.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                                        <dotlottie-player
+                                            src="https://lottie.host/070a5879-e05b-41c4-bbcb-c657ecdb271a/2UNjvcFh62.lottie"
+                                            background="transparent" speed="1" loop autoplay></dotlottie-player>
                                     </div>
                                 </div>
                             </div>
@@ -2628,7 +2720,8 @@
                                 <span class="process-header-title">Build</span>
                             </div>
                             <span class="process-accordion-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
@@ -2648,25 +2741,38 @@
                                         <span class="mobile-only-text">Design & Build.</span>
                                     </h3>
                                     <p class="process-desc">
-                                        <span class="desktop-only-text">We engineer your project with clean, high-performance code, pixel-perfect UI, and robust mobile responsiveness.</span>
-                                        <span class="mobile-only-text">We design and develop the solution around your goals, with responsive performance across every screen.</span>
+                                        <span class="desktop-only-text">We engineer your project with clean,
+                                            high-performance code, pixel-perfect UI, and robust mobile
+                                            responsiveness.</span>
+                                        <span class="mobile-only-text">We design and develop the solution around your
+                                            goals, with responsive performance across every screen.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
-                                            <span class="desktop-only-text">High-performance, semantic modern code</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span class="desktop-only-text">High-performance, semantic modern
+                                                code</span>
                                             <span class="mobile-only-text">UI & development</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
-                                            <span class="desktop-only-text">Pixel-perfect responsive design across all screens</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span class="desktop-only-text">Pixel-perfect responsive design across all
+                                                screens</span>
                                             <span class="mobile-only-text">Responsive & optimized</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="process-content-right">
                                     <div class="process-lottie-box scale-normal">
-                                        <dotlottie-player src="https://lottie.host/7d146f84-3ad1-4166-8869-efdd860c40d8/K0GXWTsgEv.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                                        <dotlottie-player
+                                            src="https://lottie.host/7d146f84-3ad1-4166-8869-efdd860c40d8/K0GXWTsgEv.lottie"
+                                            background="transparent" speed="1" loop autoplay></dotlottie-player>
                                     </div>
                                 </div>
                             </div>
@@ -2681,7 +2787,8 @@
                                 <span class="process-header-title">Launch</span>
                             </div>
                             <span class="process-accordion-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
@@ -2701,25 +2808,37 @@
                                         <span class="mobile-only-text">Launch & Improve.</span>
                                     </h3>
                                     <p class="process-desc">
-                                        <span class="desktop-only-text">Smooth deployment, performance checks, and ongoing guidance so your digital presence continues to generate results.</span>
-                                        <span class="mobile-only-text">We launch your project, check performance and continue improving it after launch.</span>
+                                        <span class="desktop-only-text">Smooth deployment, performance checks, and
+                                            ongoing guidance so your digital presence continues to generate
+                                            results.</span>
+                                        <span class="mobile-only-text">We launch your project, check performance and
+                                            continue improving it after launch.</span>
                                     </p>
                                     <ul class="process-feature-list">
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
                                             <span class="desktop-only-text">Smooth deployment with zero downtime</span>
                                             <span class="mobile-only-text">Deployment & testing</span>
                                         </li>
                                         <li>
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline pathLength="1" points="20 6 9 17 4 12"></polyline></svg>
-                                            <span class="desktop-only-text">Continuous tracking, SEO audits & guidance</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <polyline pathLength="1" points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span class="desktop-only-text">Continuous tracking, SEO audits &
+                                                guidance</span>
                                             <span class="mobile-only-text">Ongoing support</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="process-content-right">
                                     <div class="process-lottie-box scale-lg">
-                                        <dotlottie-player src="https://lottie.host/62714392-5f6e-4cc5-bc57-07b2eeb4a629/uLMPfGB52M.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                                        <dotlottie-player
+                                            src="https://lottie.host/62714392-5f6e-4cc5-bc57-07b2eeb4a629/uLMPfGB52M.lottie"
+                                            background="transparent" speed="1" loop autoplay></dotlottie-player>
                                     </div>
                                 </div>
                             </div>
@@ -2754,16 +2873,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Marcus Sterling</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 34 reviews · 12 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2777,7 +2903,9 @@
                                 <span class="review-time">3 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to 99, and organic conversions jumped by 42% in the first month. Absolutely top-tier engineering."
+                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to
+                                99, and organic conversions jumped by 42% in the first month. Absolutely top-tier
+                                engineering."
                             </p>
                         </div>
 
@@ -2789,16 +2917,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Dr. Elena Vance</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 19 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2812,7 +2947,9 @@
                                 <span class="review-time">a month ago</span>
                             </div>
                             <p class="review-text">
-                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1 locally for all our primary healthcare keywords. The patient booking flow is smooth as butter."
+                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1
+                                locally for all our primary healthcare keywords. The patient booking flow is smooth as
+                                butter."
                             </p>
                         </div>
 
@@ -2824,16 +2961,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Kavitha Ramanathan</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 48 reviews · 27 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2847,7 +2991,8 @@
                                 <span class="review-time">2 months ago</span>
                             </div>
                             <p class="review-text">
-                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
+                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated
+                                plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
                             </p>
                         </div>
 
@@ -2859,16 +3004,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">David Holbrook</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             12 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2882,7 +3034,8 @@
                                 <span class="review-time">2 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "Working with PradTech was effortless. They automated our internal customer workflow with custom AI integration. Saved our operations team over 15 hours every single week."
+                                "Working with PradTech was effortless. They automated our internal customer workflow
+                                with custom AI integration. Saved our operations team over 15 hours every single week."
                             </p>
                         </div>
 
@@ -2894,16 +3047,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Marcus Sterling</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 34 reviews · 12 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2917,7 +3077,9 @@
                                 <span class="review-time">3 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to 99, and organic conversions jumped by 42% in the first month. Absolutely top-tier engineering."
+                                "PradTech rebuilt our web app from scratch. Our Lighthouse score skyrocketed from 62 to
+                                99, and organic conversions jumped by 42% in the first month. Absolutely top-tier
+                                engineering."
                             </p>
                         </div>
 
@@ -2928,16 +3090,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Dr. Elena Vance</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 19 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2951,7 +3120,9 @@
                                 <span class="review-time">a month ago</span>
                             </div>
                             <p class="review-text">
-                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1 locally for all our primary healthcare keywords. The patient booking flow is smooth as butter."
+                                "The attention to detail and SEO optimization is extraordinary. Our clinic now ranks #1
+                                locally for all our primary healthcare keywords. The patient booking flow is smooth as
+                                butter."
                             </p>
                         </div>
 
@@ -2962,16 +3133,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Kavitha Ramanathan</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 48 reviews · 27 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -2985,7 +3163,8 @@
                                 <span class="review-time">2 months ago</span>
                             </div>
                             <p class="review-text">
-                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
+                                "Delivered a lightning-fast headless WordPress store ahead of schedule. Zero bloated
+                                plugins, pristine clean code, and flawless mobile experience. Highly recommended!"
                             </p>
                         </div>
 
@@ -2996,16 +3175,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">David Holbrook</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             12 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3019,7 +3205,8 @@
                                 <span class="review-time">2 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "Working with PradTech was effortless. They automated our internal customer workflow with custom AI integration. Saved our operations team over 15 hours every single week."
+                                "Working with PradTech was effortless. They automated our internal customer workflow
+                                with custom AI integration. Saved our operations team over 15 hours every single week."
                             </p>
                         </div>
                     </div>
@@ -3036,16 +3223,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Sarah Jenkins</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 29 reviews · 8 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3059,7 +3253,9 @@
                                 <span class="review-time">1 week ago</span>
                             </div>
                             <p class="review-text">
-                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth transitions make our brand look ten times more established. Truly modern web development."
+                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth
+                                transitions make our brand look ten times more established. Truly modern web
+                                development."
                             </p>
                         </div>
 
@@ -3071,16 +3267,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Arjun Mehta</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 52 reviews · 41 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3094,7 +3297,8 @@
                                 <span class="review-time">3 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
+                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge
+                                in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
                             </p>
                         </div>
 
@@ -3106,16 +3310,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Claire Beaumont</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             15 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3129,7 +3340,8 @@
                                 <span class="review-time">a month ago</span>
                             </div>
                             <p class="review-text">
-                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant page loads. They delivered our venture portal with zero friction."
+                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant
+                                page loads. They delivered our venture portal with zero friction."
                             </p>
                         </div>
 
@@ -3141,16 +3353,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Naveen Kumar</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 63 reviews · 35 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3164,7 +3383,8 @@
                                 <span class="review-time">5 days ago</span>
                             </div>
                             <p class="review-text">
-                                "From discovery to deployment, communication was clear and proactive. Every single promise on performance targets and mobile responsiveness was met with flying colors."
+                                "From discovery to deployment, communication was clear and proactive. Every single
+                                promise on performance targets and mobile responsiveness was met with flying colors."
                             </p>
                         </div>
 
@@ -3176,16 +3396,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Sarah Jenkins</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 29 reviews · 8 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3199,7 +3426,9 @@
                                 <span class="review-time">1 week ago</span>
                             </div>
                             <p class="review-text">
-                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth transitions make our brand look ten times more established. Truly modern web development."
+                                "Incredible UX design and frontend responsiveness. The micro-animations and smooth
+                                transitions make our brand look ten times more established. Truly modern web
+                                development."
                             </p>
                         </div>
 
@@ -3210,16 +3439,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Arjun Mehta</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 52 reviews · 41 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3233,7 +3469,8 @@
                                 <span class="review-time">3 weeks ago</span>
                             </div>
                             <p class="review-text">
-                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
+                                "Our Google Business Profile optimization and technical SEO overhaul led to a 3x surge
+                                in phone inquiries within 45 days. Best ROI we've seen on any digital investment."
                             </p>
                         </div>
 
@@ -3244,16 +3481,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Claire Beaumont</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             15 reviews
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3267,7 +3511,8 @@
                                 <span class="review-time">a month ago</span>
                             </div>
                             <p class="review-text">
-                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant page loads. They delivered our venture portal with zero friction."
+                                "Cleanest codebase I have ever reviewed. No fluff, pristine semantic markup, and instant
+                                page loads. They delivered our venture portal with zero friction."
                             </p>
                         </div>
 
@@ -3278,16 +3523,23 @@
                                     <div class="reviewer-meta">
                                         <div class="reviewer-name">Naveen Kumar</div>
                                         <div class="reviewer-guide">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
                                             Local Guide · 63 reviews · 35 photos
                                         </div>
                                     </div>
                                 </div>
                                 <svg class="google-badge-icon" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                                 </svg>
                             </div>
                             <div class="review-rating-row">
@@ -3301,7 +3553,8 @@
                                 <span class="review-time">5 days ago</span>
                             </div>
                             <p class="review-text">
-                                "From discovery to deployment, communication was clear and proactive. Every single promise on performance targets and mobile responsiveness was met with flying colors."
+                                "From discovery to deployment, communication was clear and proactive. Every single
+                                promise on performance targets and mobile responsiveness was met with flying colors."
                             </p>
                         </div>
                     </div>
@@ -3326,13 +3579,16 @@
                         <button class="faq-question" aria-expanded="true">
                             <span>How long does a typical website project take?</span>
                             <span class="faq-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Most website projects are completed within 2 to 4 weeks, depending on the project scope, custom features, and feedback turnaround. We establish a clear milestone timeline before kickoff so you always know what to expect.</p>
+                            <p>Most website projects are completed within 2 to 4 weeks, depending on the project scope,
+                                custom features, and feedback turnaround. We establish a clear milestone timeline before
+                                kickoff so you always know what to expect.</p>
                         </div>
                     </div>
 
@@ -3341,13 +3597,16 @@
                         <button class="faq-question" aria-expanded="false">
                             <span>Can you redesign an existing website?</span>
                             <span class="faq-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes. We can completely modernize your current website’s look, speed, and mobile responsiveness while safeguarding your existing SEO rankings, backlink equity, and content structure.</p>
+                            <p>Yes. We can completely modernize your current website’s look, speed, and mobile
+                                responsiveness while safeguarding your existing SEO rankings, backlink equity, and
+                                content structure.</p>
                         </div>
                     </div>
 
@@ -3356,13 +3615,16 @@
                         <button class="faq-question" aria-expanded="false">
                             <span>Do you build WordPress websites?</span>
                             <span class="faq-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes. We develop custom WordPress themes and flexible setups that give you full control over your content while maintaining high loading speeds and clean architecture without bloated plugins.</p>
+                            <p>Yes. We develop custom WordPress themes and flexible setups that give you full control
+                                over your content while maintaining high loading speeds and clean architecture without
+                                bloated plugins.</p>
                         </div>
                     </div>
 
@@ -3371,13 +3633,16 @@
                         <button class="faq-question" aria-expanded="false">
                             <span>Can you manage my Google Business Profile?</span>
                             <span class="faq-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes. We optimize your profile category, services, citations, photos, and review strategy to help your business rank in Google Local Map Packs and attract local customer inquiries.</p>
+                            <p>Yes. We optimize your profile category, services, citations, photos, and review strategy
+                                to help your business rank in Google Local Map Packs and attract local customer
+                                inquiries.</p>
                         </div>
                     </div>
 
@@ -3386,13 +3651,16 @@
                         <button class="faq-question" aria-expanded="false">
                             <span>Do you provide SEO after the website launch?</span>
                             <span class="faq-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes. We offer ongoing SEO retainers covering technical audits, keyword tracking, content strategy, and continuous performance improvements to keep your business climbing search engine results.</p>
+                            <p>Yes. We offer ongoing SEO retainers covering technical audits, keyword tracking, content
+                                strategy, and continuous performance improvements to keep your business climbing search
+                                engine results.</p>
                         </div>
                     </div>
                 </div>
@@ -3409,7 +3677,9 @@
                         Tell us what you need. We'll take it from there.
                     </p>
 
-                    <a href="mailto:sathyprathosh@futryx.in?subject=Project%20Inquiry%20-%20PradTech" class="btn btn-primary" style="background-color: var(--accent-primary); border-color: var(--accent-primary); padding: 14px 32px; font-size: 1.05rem;">
+                    <a href="mailto:sathyprathosh@futryx.in?subject=Project%20Inquiry%20-%20PradTech"
+                        class="btn btn-primary"
+                        style="background-color: var(--accent-primary); border-color: var(--accent-primary); padding: 14px 32px; font-size: 1.05rem;">
                         <span>Start Your Project</span>
                         <span class="draw-arrow-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -3575,7 +3845,7 @@
                 if (idx === targetIdx) {
                     item.classList.add('active');
                     if (headerBtn) headerBtn.setAttribute('aria-expanded', 'true');
-                    
+
                     if (fillBar) {
                         // Reset and trigger linear progress bar animation
                         fillBar.style.animation = 'none';

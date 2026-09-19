@@ -191,17 +191,17 @@
         }
 
         /* ==========================================================================
-       ROBUST NAVBAR ALIGNMENT & DYNAMIC PILL TRANSITION
+       ROBUST NAVBAR ALIGNMENT & APPLE GLASS DYNAMIC PILL TRANSITION
        ========================================================================== */
         .header {
             position: fixed;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(20px) saturate(190%);
-            -webkit-backdrop-filter: blur(20px) saturate(190%);
-            border-bottom: 1px solid rgba(220, 230, 228, 0.65);
-            box-shadow: 0 4px 20px rgba(23, 37, 43, 0.03);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(28px) saturate(190%) contrast(96%);
+            -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(96%);
+            border-bottom: 1px solid rgba(220, 230, 228, 0.6);
+            box-shadow: 0 4px 24px rgba(23, 37, 43, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
@@ -212,25 +212,30 @@
             -webkit-transform: translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-            will-change: top, max-width, width, border-radius, box-shadow, background-color;
+            will-change: top, max-width, width, border-radius, box-shadow, background;
             transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 border 0.35s ease,
                 box-shadow 0.4s ease,
-                background-color 0.35s ease;
+                background 0.35s ease;
         }
 
-        /* Scrolled Pill-Shaped State (After 3-4 user scrolls) */
+        /* Scrolled Pill-Shaped State with Apple Liquid Glass Look */
         .header.scrolled-pill {
             top: 14px;
             max-width: 1060px;
             width: calc(100% - 36px);
             border-radius: var(--radius-full);
-            border: 1px solid rgba(220, 230, 228, 0.9);
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 12px 36px rgba(23, 37, 43, 0.09), 0 2px 8px rgba(23, 37, 43, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(32px) saturate(210%);
+            -webkit-backdrop-filter: blur(32px) saturate(210%);
+            box-shadow: 0 16px 36px -10px rgba(23, 37, 43, 0.12),
+                        0 0 0 1px rgba(220, 230, 228, 0.65),
+                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+                        inset 0 -1px 1px 0 rgba(58, 143, 140, 0.06);
         }
 
         .nav-wrapper {
@@ -244,7 +249,7 @@
 
         .header.scrolled-pill .nav-wrapper {
             height: 60px;
-            padding: 0 6px;
+            padding: 0 8px;
         }
 
         /* Brand Logo */
@@ -340,7 +345,7 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 6px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -348,23 +353,34 @@
 
         .nav-link {
             font-family: var(--font-body);
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             font-weight: 500;
             color: var(--text-secondary);
-            padding: 8px 12px;
-            border-radius: var(--radius-sm);
-            transition: color 0.2s ease, background-color 0.2s ease;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
+            position: relative;
+            border: 1px solid transparent;
+            user-select: none;
         }
 
         .nav-link:hover {
-            color: var(--accent-primary);
-            background-color: var(--accent-soft);
+            color: var(--text-primary);
+            background-color: rgba(58, 143, 140, 0.08);
+            border-color: rgba(58, 143, 140, 0.16);
         }
 
+        /* Nav Section Glow Effect when active on current viewport section */
         .nav-link.active {
             color: var(--accent-primary);
             font-weight: 600;
+            background: rgba(58, 143, 140, 0.12);
+            border: 1px solid rgba(58, 143, 140, 0.38);
+            box-shadow: 0 0 16px rgba(58, 143, 140, 0.32),
+                        0 0 4px rgba(58, 143, 140, 0.18),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 10px rgba(58, 143, 140, 0.4);
         }
 
         /* Nav Right Actions */
@@ -466,31 +482,39 @@
             animation: iconStrokeDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Mobile Menu Toggle Button */
+        /* Mobile Menu Toggle Button (Apple Glass Styled) */
         .mobile-toggle {
             display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-md);
             align-items: center;
             justify-content: center;
-            background-color: var(--bg-surface);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 14px rgba(23, 37, 43, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
             transition: var(--transition-smooth);
             cursor: pointer;
+            outline: none;
         }
 
-        .mobile-toggle:hover {
-            background-color: var(--accent-soft);
-            border-color: var(--accent-primary);
+        .mobile-toggle:hover,
+        .mobile-toggle:active,
+        .mobile-toggle.is-active {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(58, 143, 140, 0.4);
+            box-shadow: 0 0 14px rgba(58, 143, 140, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.95);
         }
 
         .mobile-toggle svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             stroke: var(--text-primary);
             stroke-linecap: round;
             stroke-linejoin: round;
+            transition: transform 0.25s ease;
         }
 
         .mobile-toggle svg path {
@@ -613,8 +637,73 @@
        ========================================================================== */
         /* Tablet & Medium Screens (Prevent Navbar Collision) */
         @media (max-width: 992px) {
+            .nav-wrapper {
+                position: relative;
+            }
+
             .nav-menu {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.78);
+                backdrop-filter: blur(32px) saturate(210%) contrast(96%);
+                -webkit-backdrop-filter: blur(32px) saturate(210%) contrast(96%);
+                border: 1px solid rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                padding: 14px 12px;
+                gap: 6px;
+                box-shadow: 0 20px 48px -10px rgba(23, 37, 43, 0.16),
+                            0 0 0 1px rgba(220, 230, 228, 0.7),
+                            inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+                            inset 0 -1px 1px rgba(58, 143, 140, 0.05);
+                z-index: 1001;
+                transform-origin: top center;
+                animation: appleGlassMenuOpen 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+
+            .nav-menu.mobile-open {
+                display: flex !important;
+            }
+
+            .nav-menu .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 11px 16px;
+                font-size: 0.95rem;
+                font-weight: 600;
+                border-radius: var(--radius-full);
+                background: rgba(255, 255, 255, 0.4);
+                border: 1px solid rgba(220, 230, 228, 0.4);
+                transition: all 0.22s ease;
+            }
+
+            .nav-menu .nav-link:hover,
+            .nav-menu .nav-link:active {
+                background: rgba(58, 143, 140, 0.08);
+                border-color: rgba(58, 143, 140, 0.22);
+            }
+
+            .nav-menu .nav-link.active {
+                color: var(--accent-primary);
+                background: rgba(58, 143, 140, 0.14);
+                border: 1px solid rgba(58, 143, 140, 0.38);
+                box-shadow: 0 0 14px rgba(58, 143, 140, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+                text-shadow: 0 0 8px rgba(58, 143, 140, 0.35);
+            }
+
+            @keyframes appleGlassMenuOpen {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.96) translateY(-8px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
             }
 
             .mobile-toggle {
@@ -2226,11 +2315,85 @@
         /* ==========================================================================
         FOOTER INTERACTIVE TEXT HOVER BANNER (THREE.JS SHADER EFFECT)
         ========================================================================== */
+        .footer-hover-hint-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 14px;
+            margin-bottom: 2px;
+        }
+
+        .footer-hover-hint {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(58, 143, 140, 0.28);
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(58, 143, 140, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+            letter-spacing: 0.02em;
+            user-select: none;
+            white-space: nowrap;
+            max-width: 100%;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .hover-hint-text {
+            white-space: nowrap;
+        }
+
+        .footer-hover-hint:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 6px 24px rgba(58, 143, 140, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+        }
+
+        .hover-hint-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .hover-hint-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hover-arrow-left {
+            animation: hintNudgeLeft 1.4s ease-in-out infinite alternate;
+        }
+
+        .hover-arrow-right {
+            animation: hintNudgeRight 1.4s ease-in-out infinite alternate;
+        }
+
+        @keyframes hintNudgeLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-4px); }
+        }
+
+        @keyframes hintNudgeRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(4px); }
+        }
+
         .footer-hover-banner {
             position: relative;
             width: 100%;
             height: clamp(120px, 18vw, 240px);
-            margin: 16px 0 32px;
+            margin: 10px 0 32px;
             overflow: hidden;
             background-color: transparent;
             border: none;
@@ -2307,6 +2470,18 @@
             .footer-nav {
                 flex-direction: column;
                 gap: 14px;
+            }
+
+            .footer-hover-hint {
+                padding: 6px 14px;
+                gap: 8px;
+                font-size: 0.78rem;
+                white-space: nowrap !important;
+            }
+
+            .hover-hint-icon {
+                width: 13px;
+                height: 13px;
             }
         }
     </style>
@@ -3748,7 +3923,22 @@
             </div>
 
             <!-- Interactive Footer Brand Showcase (Three.js Hover Shader Effect) -->
-            <div class="footer-hover-banner" id="footerTextContainer" title="Hover over PradTech"></div>
+            <div class="footer-hover-hint-wrap">
+                <div class="footer-hover-hint">
+                    <span class="hover-hint-icon hover-arrow-left">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </span>
+                    <span class="hover-hint-text"><span class="desktop-only-text">Hover</span><span class="mobile-only-text">Drag</span> left &amp; right to interact</span>
+                    <span class="hover-hint-icon hover-arrow-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-hover-banner" id="footerTextContainer" title="Hover left and right over PradTech"></div>
 
             <div class="footer-bottom">
                 <div>© 2026 PradTech. All rights reserved.</div>
@@ -3794,25 +3984,10 @@
         const navMenu = document.querySelector('.nav-menu');
 
         if (mobileBtn && navMenu) {
-            mobileBtn.addEventListener('click', () => {
-                const isOpen = navMenu.style.display === 'flex';
-                if (isOpen) {
-                    navMenu.style.display = 'none';
-                } else {
-                    navMenu.style.display = 'flex';
-                    navMenu.style.flexDirection = 'column';
-                    navMenu.style.position = 'absolute';
-                    navMenu.style.top = '70px';
-                    navMenu.style.left = '0';
-                    navMenu.style.width = '100%';
-                    navMenu.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-                    navMenu.style.backdropFilter = 'blur(20px) saturate(190%)';
-                    navMenu.style.webkitBackdropFilter = 'blur(20px) saturate(190%)';
-                    navMenu.style.borderBottom = '1px solid rgba(220, 230, 228, 0.7)';
-                    navMenu.style.padding = '20px 24px';
-                    navMenu.style.gap = '14px';
-                    navMenu.style.boxShadow = '0 12px 30px rgba(0,0,0,0.06)';
-                }
+            mobileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = navMenu.classList.toggle('mobile-open');
+                mobileBtn.classList.toggle('is-active', isOpen);
             });
 
             // Close mobile menu when clicking any nav link
@@ -3820,11 +3995,87 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 992) {
-                        navMenu.style.display = 'none';
+                        navMenu.classList.remove('mobile-open');
+                        mobileBtn.classList.remove('is-active');
                     }
                 });
             });
+
+            // Close mobile menu when clicking anywhere outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    navMenu.classList.remove('mobile-open');
+                    mobileBtn.classList.remove('is-active');
+                }
+            });
         }
+
+        // ==========================================================================
+        // ACTIVE NAVBAR SECTION SCROLLSPY WITH LUMINOUS GLOW
+        // ==========================================================================
+        const navLinksList = document.querySelectorAll('.nav-menu .nav-link');
+        const trackedSections = [
+            { id: 'services', el: document.getElementById('services') },
+            { id: 'process', el: document.getElementById('process') },
+            { id: 'reviews', el: document.getElementById('reviews') },
+            { id: 'faq', el: document.getElementById('faq') },
+            { id: 'contact', el: document.getElementById('contact') }
+        ];
+
+        function updateActiveNavGlow() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const headerOffset = 140; // comfortable visual threshold below header
+
+            // If user scrolled to the very bottom of page, activate Contact
+            if (scrollY + windowHeight >= docHeight - 50) {
+                setActiveSection('contact');
+                return;
+            }
+
+            // If user is at top hero area (before services), clear active links
+            const firstSection = trackedSections[0].el;
+            if (firstSection && scrollY < firstSection.offsetTop - headerOffset) {
+                setActiveSection('');
+                return;
+            }
+
+            let currentActiveId = '';
+            for (let i = 0; i < trackedSections.length; i++) {
+                const sec = trackedSections[i];
+                if (sec.el) {
+                    const top = sec.el.offsetTop - headerOffset;
+                    const height = sec.el.offsetHeight;
+                    if (scrollY >= top && scrollY < top + height) {
+                        currentActiveId = sec.id;
+                        break;
+                    }
+                }
+            }
+
+            if (currentActiveId) {
+                setActiveSection(currentActiveId);
+            }
+        }
+
+        function setActiveSection(sectionId) {
+            navLinksList.forEach(link => {
+                const target = link.getAttribute('href');
+                if (sectionId && target === `#${sectionId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            window.requestAnimationFrame(updateActiveNavGlow);
+        }, { passive: true });
+        window.addEventListener('resize', updateActiveNavGlow, { passive: true });
+        document.addEventListener('DOMContentLoaded', updateActiveNavGlow);
+        updateActiveNavGlow();
 
         // FAQ Accordion Toggle
         const faqQuestions = document.querySelectorAll('.faq-question');

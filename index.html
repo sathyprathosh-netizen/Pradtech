@@ -35,14 +35,14 @@
             --bg-main: #fdf9fc;
             --bg-surface: #FFFFFF;
             --text-primary: #17252B;
-            --text-secondary: #47585D;
-            --accent-primary: #3A8F8C;
-            --accent-dark: #205E5B;
-            --accent-soft: #E7F3F1;
+            --text-secondary: #3D4F54;
+            --accent-primary: #256B68;
+            --accent-dark: #134B48;
+            --accent-soft: #E6F3F1;
             --border: #DCE6E4;
-            --status-success: #3D7354;
-            --status-warning: #A87632;
-            --status-error: #B54C4C;
+            --status-success: #2C6345;
+            --status-warning: #946522;
+            --status-error: #A83C3C;
 
             /* Typography Families */
             --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -443,15 +443,17 @@
         /* Secondary Button Interaction */
         .btn-secondary {
             background-color: var(--accent-soft);
-            color: var(--accent-primary);
-            border: 1px solid var(--border);
+            color: var(--accent-dark);
+            font-weight: 700;
+            border: 1px solid rgba(19, 75, 72, 0.22);
             box-shadow: 0 4px 14px rgba(220, 230, 228, 0.6), 0 1px 3px rgba(58, 143, 140, 0.05);
         }
 
         .btn-secondary:hover {
             transform: translateY(-2px);
             background-color: var(--bg-surface);
-            border-color: var(--accent-primary);
+            border-color: var(--accent-dark);
+            color: var(--accent-dark);
             box-shadow: 0 8px 22px rgba(220, 230, 228, 0.95), 0 2px 6px rgba(58, 143, 140, 0.12);
         }
 
@@ -620,13 +622,13 @@
             align-items: center;
             gap: 10px;
             background-color: var(--accent-soft);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(19, 75, 72, 0.22);
             padding: 8px 18px;
             border-radius: var(--radius-full);
             font-family: var(--font-body);
             font-size: 0.84rem;
-            font-weight: 600;
-            color: var(--accent-primary);
+            font-weight: 700;
+            color: var(--accent-dark);
             margin-bottom: 28px;
             letter-spacing: 0.03em;
             cursor: pointer;
@@ -649,8 +651,8 @@
         }
 
         .sparkle-icon path {
-            fill: var(--accent-primary);
-            stroke: var(--accent-primary);
+            fill: var(--accent-dark);
+            stroke: var(--accent-dark);
             stroke-width: 1.5;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -964,13 +966,13 @@
             align-items: center;
             gap: 8px;
             background-color: var(--accent-soft);
-            border: 1px solid rgba(58, 143, 140, 0.25);
+            border: 1px solid rgba(19, 75, 72, 0.22);
             padding: 7px 16px;
             border-radius: var(--radius-full);
             font-family: var(--font-heading);
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--accent-primary);
+            color: var(--accent-dark);
             margin-bottom: 18px;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -1279,41 +1281,42 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 6px;
             margin-top: 26px;
         }
 
         .service-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: var(--radius-full);
-            background: rgba(58, 143, 140, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            background: transparent;
             border: none;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 0;
             position: relative;
         }
 
-        .service-dot::before {
+        .service-dot::after {
             content: '';
-            position: absolute;
-            top: -18px;
-            bottom: -18px;
-            left: -18px;
-            right: -18px;
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-full);
+            background: rgba(37, 107, 104, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .service-dot:hover {
+        .service-dot:hover::after {
             background: var(--accent-primary);
             transform: scale(1.25);
         }
 
-        .service-dot.active {
-            width: 32px;
+        .service-dot.active::after {
+            width: 28px;
             background: var(--accent-primary);
-            border-radius: var(--radius-full);
-            box-shadow: 0 2px 10px rgba(58, 143, 140, 0.45);
+            box-shadow: 0 2px 10px rgba(37, 107, 104, 0.45);
         }
 
         /* Tablet scaling (Shows ~1.8 cards + 20% peek) */
@@ -1439,16 +1442,21 @@
 
             .services-dots-wrap {
                 margin-top: 18px;
-                gap: 8px;
+                gap: 4px;
             }
 
             .service-dot {
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .service-dot::after {
                 width: 8px;
                 height: 8px;
             }
 
-            .service-dot.active {
-                width: 24px;
+            .service-dot.active::after {
+                width: 22px;
             }
         }
 
@@ -1547,11 +1555,11 @@
             font-family: var(--font-mono);
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--accent-primary);
+            color: var(--accent-dark);
             background: var(--accent-soft);
             padding: 6px 14px;
             border-radius: var(--radius-md);
-            border: 1px solid rgba(58, 143, 140, 0.2);
+            border: 1px solid rgba(19, 75, 72, 0.22);
             line-height: 1;
             letter-spacing: -0.02em;
             transition: all 0.25s ease;
@@ -1642,11 +1650,11 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--accent-primary);
+            color: var(--accent-dark);
             background: var(--accent-soft);
             padding: 4px 14px;
             border-radius: var(--radius-full);
-            border: 1px solid rgba(58, 143, 140, 0.2);
+            border: 1px solid rgba(19, 75, 72, 0.22);
             margin-bottom: 2px;
             transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
@@ -2163,12 +2171,14 @@
             }
 
             .testimonials-section .section-title {
-                font-size: clamp(26px, 6.5vw, 32px);
-                margin-bottom: 10px;
+                font-size: clamp(22px, 5.8vw, 26px);
+                line-height: 1.2;
+                margin-bottom: 8px;
             }
 
             .testimonials-section .section-description {
-                font-size: 0.92rem;
+                font-size: 0.88rem;
+                line-height: 1.5;
             }
 
             .marquee-wrapper {
@@ -2516,13 +2526,13 @@
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(58, 143, 140, 0.28);
+            border: 1px solid rgba(19, 75, 72, 0.25);
             border-radius: var(--radius-full);
             font-family: var(--font-heading);
             font-size: 0.86rem;
-            font-weight: 600;
-            color: var(--accent-primary);
-            box-shadow: 0 4px 20px rgba(58, 143, 140, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+            font-weight: 700;
+            color: var(--accent-dark);
+            box-shadow: 0 4px 20px rgba(19, 75, 72, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
             letter-spacing: 0.02em;
             user-select: none;
             white-space: nowrap;
@@ -3277,7 +3287,7 @@
                     </div>
                     <h2 class="section-title">
                         <span class="desktop-only-text">Trusted by Businesses. Built on Real Results.</span>
-                        <span class="mobile-only-text">Trusted by Businesses. Proven by Results.</span>
+                        <span class="mobile-only-text">Trusted by Businesses.</span>
                     </h2>
                     <p class="section-description">
                         <span class="desktop-only-text">See what founders and business owners say about partnering with PradTech to build authority, attract qualified clients, and grow online.</span>
@@ -4190,33 +4200,33 @@
        INTERACTIVE SCRIPTS (MOBILE MENU & FAQ ACCORDION)
        ========================================================================== -->
     <script>
-        // Dynamic Pill-Shaped Navbar Transition on Scroll (Buttery smooth with hysteresis)
-        const headerElement = document.querySelector('.header');
-        if (headerElement) {
-            let isScrolled = false;
-            let isTicking = false;
+        // Dynamic Script Loader for Non-Critical Libraries
+        function loadScriptAsync(src, callback) {
+            if (document.querySelector(`script[src="${src}"]`)) {
+                if (callback) callback();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            if (callback) script.onload = callback;
+            document.body.appendChild(script);
+        }
 
-            const updateNavbarShape = () => {
-                const currentY = window.scrollY || window.pageYOffset;
-                // Deadband hysteresis to guarantee ZERO oscillation or vibration:
-                if (!isScrolled && currentY > 65) {
-                    isScrolled = true;
-                    headerElement.classList.add('scrolled-pill');
-                } else if (isScrolled && currentY < 25) {
-                    isScrolled = false;
-                    headerElement.classList.remove('scrolled-pill');
+        // Lazy load DotLottie Player when process section approaches viewport
+        const processSectionEl = document.getElementById('process');
+        if (processSectionEl && 'IntersectionObserver' in window) {
+            const lottieObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    loadScriptAsync('https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js');
+                    lottieObserver.disconnect();
                 }
-                isTicking = false;
-            };
-
-            window.addEventListener('scroll', () => {
-                if (!isTicking) {
-                    window.requestAnimationFrame(updateNavbarShape);
-                    isTicking = true;
-                }
-            }, { passive: true });
-
-            updateNavbarShape();
+            }, { rootMargin: '300px' });
+            lottieObserver.observe(processSectionEl);
+        } else {
+            setTimeout(() => {
+                loadScriptAsync('https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js');
+            }, 2500);
         }
 
         // Mobile Navigation Toggle & Auto-Close
@@ -4254,8 +4264,9 @@
         }
 
         // ==========================================================================
-        // ACTIVE NAVBAR SECTION SCROLLSPY WITH LUMINOUS GLOW
+        // UNIFIED HIGH-PERFORMANCE SCROLL & NAVBAR COORDINATOR (ZERO FORCED REFLOWS)
         // ==========================================================================
+        const headerElement = document.querySelector('.header');
         const navLinksList = document.querySelectorAll('.nav-menu .nav-link');
         const trackedSections = [
             { id: 'services', el: document.getElementById('services') },
@@ -4266,9 +4277,12 @@
         ];
 
         let cachedSectionBounds = [];
+        let isScrolledPill = false;
+        let isScrollTicking = false;
+
         function cacheSectionBounds() {
             const headerOffset = 140;
-            const scrollY = window.scrollY || window.pageYOffset;
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
             cachedSectionBounds = [];
             trackedSections.forEach(sec => {
                 if (sec.el) {
@@ -4282,35 +4296,41 @@
             });
         }
 
-        function updateActiveNavGlow() {
-            const scrollY = window.scrollY || window.pageYOffset;
-            const windowHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
+        function handleScrollFrame() {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
 
-            // If user scrolled to the very bottom of page, activate Contact
-            if (scrollY + windowHeight >= docHeight - 50) {
-                setActiveSection('contact');
-                return;
-            }
-
-            // If user is at top hero area (before services), clear active links
-            if (!cachedSectionBounds.length || scrollY < cachedSectionBounds[0].top) {
-                setActiveSection('');
-                return;
-            }
-
-            let currentActiveId = '';
-            for (let i = 0; i < cachedSectionBounds.length; i++) {
-                const b = cachedSectionBounds[i];
-                if (scrollY >= b.top && scrollY < b.bottom) {
-                    currentActiveId = b.id;
-                    break;
+            // 1. Dynamic Pill-Shaped Navbar Transition with Deadband Hysteresis
+            if (headerElement) {
+                if (!isScrolledPill && scrollY > 65) {
+                    isScrolledPill = true;
+                    headerElement.classList.add('scrolled-pill');
+                } else if (isScrolledPill && scrollY < 25) {
+                    isScrolledPill = false;
+                    headerElement.classList.remove('scrolled-pill');
                 }
             }
 
-            if (currentActiveId) {
-                setActiveSection(currentActiveId);
+            // 2. Active Section Scrollspy
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+
+            if (scrollY + windowHeight >= docHeight - 50) {
+                setActiveSection('contact');
+            } else if (!cachedSectionBounds.length || scrollY < cachedSectionBounds[0].top) {
+                setActiveSection('');
+            } else {
+                let currentActiveId = '';
+                for (let i = 0; i < cachedSectionBounds.length; i++) {
+                    const b = cachedSectionBounds[i];
+                    if (scrollY >= b.top && scrollY < b.bottom) {
+                        currentActiveId = b.id;
+                        break;
+                    }
+                }
+                if (currentActiveId) setActiveSection(currentActiveId);
             }
+
+            isScrollTicking = false;
         }
 
         function setActiveSection(sectionId) {
@@ -4325,18 +4345,26 @@
         }
 
         window.addEventListener('scroll', () => {
-            window.requestAnimationFrame(updateActiveNavGlow);
+            if (!isScrollTicking) {
+                window.requestAnimationFrame(handleScrollFrame);
+                isScrollTicking = true;
+            }
         }, { passive: true });
+
         window.addEventListener('resize', () => {
             cacheSectionBounds();
-            updateActiveNavGlow();
+            if (!isScrollTicking) {
+                window.requestAnimationFrame(handleScrollFrame);
+                isScrollTicking = true;
+            }
         }, { passive: true });
+
         window.addEventListener('load', () => {
             cacheSectionBounds();
-            updateActiveNavGlow();
+            handleScrollFrame();
         });
         cacheSectionBounds();
-        updateActiveNavGlow();
+        handleScrollFrame();
 
         // FAQ Accordion Toggle
         const faqQuestions = document.querySelectorAll('.faq-question');
@@ -4880,8 +4908,8 @@
                                 if (typeof THREE !== "undefined") {
                                     initializeScene();
                                 } else {
-                                    window.addEventListener('load', () => {
-                                        if (typeof THREE !== "undefined") initializeScene();
+                                    loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js', () => {
+                                        initializeScene();
                                     });
                                 }
                             }
@@ -4896,16 +4924,12 @@
                             }
                         }
                     });
-                }, { threshold: 0.02 });
+                }, { rootMargin: '300px', threshold: 0.01 });
 
                 footerObserver.observe(container);
             }
         })();
     </script>
-
-    <!-- Deferred High-Performance Libraries (Loaded asynchronously without blocking FCP/LCP) -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
 </body>
 
 </html>

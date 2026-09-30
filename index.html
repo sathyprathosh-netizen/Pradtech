@@ -2594,7 +2594,7 @@
             border-radius: 0;
             cursor: pointer;
             user-select: none;
-            touch-action: none;
+            touch-action: pan-y;
         }
 
         .footer-hover-banner canvas {
@@ -4196,6 +4196,9 @@
         </div>
     </footer>
 
+    <!-- Deferred Scripts for WebGL Shaders & Interactive Animations -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+
     <!-- ==========================================================================
        INTERACTIVE SCRIPTS (MOBILE MENU & FAQ ACCORDION)
        ========================================================================== -->
@@ -4781,22 +4784,33 @@
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
                 const rect = container.getBoundingClientRect();
-                const initW = rect.width > 0 ? rect.width : 1100;
-                const initH = rect.height > 0 ? rect.height : 220;
+                const initW = rect.width > 0 ? rect.width : (container.clientWidth || 1100);
+                const initH = rect.height > 0 ? rect.height : (container.clientHeight || 220);
                 renderer.setSize(initW, initH);
                 renderer.setClearColor(0xffffff, 1);
 
+                container.innerHTML = "";
                 container.appendChild(renderer.domElement);
+
+                isVisible = true;
+                if (!animationFrameId) {
+                    animateScene();
+                } else if (renderer && scene && camera) {
+                    renderer.render(scene, camera);
+                }
 
                 if (document.fonts) {
                     document.fonts.ready.then(() => {
                         reloadTexture();
+                        if (renderer && scene && camera) {
+                            renderer.render(scene, camera);
+                        }
                     });
                 }
             }
 
             function reloadTexture() {
-                if (!container.clientWidth || !container.clientHeight || !shaderMaterial || typeof THREE === "undefined") return;
+                if (!shaderMaterial || typeof THREE === "undefined") return;
                 const newTexture = createTextTexture();
                 if (shaderMaterial.uniforms.u_texture.value) {
                     shaderMaterial.uniforms.u_texture.value.dispose();
@@ -4834,6 +4848,10 @@
             }
 
             function handlePointerMove(event) {
+                if (!isInitialized) {
+                    tryInit();
+                    return;
+                }
                 const rect = container.getBoundingClientRect();
                 if (rect.width <= 0 || rect.height <= 0) return;
 
@@ -4845,9 +4863,18 @@
 
                 targetMousePosition.x = newX;
                 targetMousePosition.y = newY;
+
+                if (!isVisible) {
+                    isVisible = true;
+                    if (!animationFrameId) animateScene();
+                }
             }
 
             function handlePointerEnter(event) {
+                if (!isInitialized) {
+                    tryInit();
+                    return;
+                }
                 const rect = container.getBoundingClientRect();
                 if (rect.width <= 0 || rect.height <= 0) return;
 
@@ -4860,6 +4887,11 @@
                 targetVelocity.y = 0;
                 velocity.x = 0;
                 velocity.y = 0;
+
+                if (!isVisible) {
+                    isVisible = true;
+                    if (!animationFrameId) animateScene();
+                }
             }
 
             function handlePointerLeave() {
@@ -4885,6 +4917,7 @@
             }, { passive: true });
 
             container.addEventListener("touchend", handlePointerLeave, { passive: true });
+            container.addEventListener("touchcancel", handlePointerLeave, { passive: true });
 
             // Responsive Resize
             let resizeTimeout;
@@ -4895,9 +4928,22 @@
                     if (rect.width > 0 && rect.height > 0 && isInitialized && renderer) {
                         renderer.setSize(rect.width, rect.height);
                         reloadTexture();
+                        if (renderer && scene && camera) {
+                            renderer.render(scene, camera);
+                        }
                     }
                 }, 120);
             }, { passive: true });
+
+            function tryInit() {
+                if (typeof THREE !== "undefined") {
+                    initializeScene();
+                } else {
+                    loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js', () => {
+                        initializeScene();
+                    });
+                }
+            }
 
             // Viewport Observer to dynamically initialize Scene on demand
             if ("IntersectionObserver" in window) {
@@ -4905,28 +4951,33 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             if (!isInitialized) {
-                                if (typeof THREE !== "undefined") {
-                                    initializeScene();
-                                } else {
-                                    loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js', () => {
-                                        initializeScene();
-                                    });
-                                }
-                            }
-                            if (!isVisible) {
+                                tryInit();
+                            } else if (!isVisible) {
                                 isVisible = true;
-                                animateScene();
+                                if (!animationFrameId) {
+                                    animateScene();
+                                }
                             }
                         } else {
                             isVisible = false;
                             if (animationFrameId) {
                                 cancelAnimationFrame(animationFrameId);
+                                animationFrameId = null;
                             }
                         }
                     });
-                }, { rootMargin: '300px', threshold: 0.01 });
+                }, { rootMargin: '400px', threshold: 0.01 });
 
                 footerObserver.observe(container);
+            } else {
+                tryInit();
+            }
+
+            // Also guarantee initialization once document finishes loading
+            if (document.readyState === "complete") {
+                tryInit();
+            } else {
+                window.addEventListener("load", tryInit, { once: true });
             }
         })();
     </script>

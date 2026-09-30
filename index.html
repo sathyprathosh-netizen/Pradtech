@@ -10,35 +10,39 @@
 
     <link rel="icon" type="image/svg+xml" href="No bg Icon.svg">
 
-    <!-- Exact Typography Fonts: Manrope, DM Sans, IBM Plex Mono -->
+    <!-- High-Speed Preconnect & Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+    <link rel="preconnect" href="https://lottie.host" crossorigin>
+
+    <!-- Asynchronous Non-blocking Google Fonts with font-display=swap -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Three.js (for footer shader text hover animation) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-
-    <!-- DotLottie Web Player -->
-    <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500;1,9..40,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+    </noscript>
 
     <style>
         /* ==========================================================================
-       STRICT COLOR SYSTEM & TYPOGRAPHY TOKENS
+       STRICT COLOR SYSTEM & TYPOGRAPHY TOKENS (LIGHTHOUSE CONTRAST OPTIMIZED)
        ========================================================================== */
         :root {
             /* Palette */
             --bg-main: #fdf9fc;
             --bg-surface: #FFFFFF;
             --text-primary: #17252B;
-            --text-secondary: #5F6F73;
+            --text-secondary: #47585D;
             --accent-primary: #3A8F8C;
+            --accent-dark: #205E5B;
             --accent-soft: #E7F3F1;
             --border: #DCE6E4;
-            --status-success: #4F8A6A;
-            --status-warning: #C6924A;
-            --status-error: #C65D5D;
+            --status-success: #3D7354;
+            --status-warning: #A87632;
+            --status-error: #B54C4C;
 
             /* Typography Families */
             --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -197,11 +201,11 @@
             position: fixed;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(28px) saturate(190%) contrast(96%);
-            -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(96%);
-            border-bottom: 1px solid rgba(220, 230, 228, 0.6);
-            box-shadow: 0 4px 24px rgba(23, 37, 43, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            background: rgba(253, 249, 252, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(23, 37, 43, 0.06);
+            box-shadow: none;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
@@ -222,20 +226,19 @@
                 background 0.35s ease;
         }
 
-        /* Scrolled Pill-Shaped State with Apple Liquid Glass Look */
+        /* Scrolled Pill-Shaped State with Refined Luxury Glass Look */
         .header.scrolled-pill {
             top: 14px;
-            max-width: 1060px;
+            max-width: 1040px;
             width: calc(100% - 36px);
             border-radius: var(--radius-full);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            background: rgba(255, 255, 255, 0.68);
-            backdrop-filter: blur(32px) saturate(210%);
-            -webkit-backdrop-filter: blur(32px) saturate(210%);
-            box-shadow: 0 16px 36px -10px rgba(23, 37, 43, 0.12),
-                        0 0 0 1px rgba(220, 230, 228, 0.65),
-                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
-                        inset 0 -1px 1px 0 rgba(58, 143, 140, 0.06);
+            border: 1px solid rgba(23, 37, 43, 0.08);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+            box-shadow: 0 10px 30px -10px rgba(23, 37, 43, 0.08),
+                        0 2px 8px -2px rgba(23, 37, 43, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
         }
 
         .nav-wrapper {
@@ -345,7 +348,7 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -353,34 +356,41 @@
 
         .nav-link {
             font-family: var(--font-body);
-            font-size: 0.93rem;
+            font-size: 0.92rem;
             font-weight: 500;
             color: var(--text-secondary);
-            padding: 8px 16px;
+            padding: 7px 16px;
             border-radius: var(--radius-full);
-            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
             position: relative;
             border: 1px solid transparent;
             user-select: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-link .nav-link-arrow {
+            display: none;
+        }
+
+        .mobile-drawer-cta {
+            display: none;
         }
 
         .nav-link:hover {
             color: var(--text-primary);
-            background-color: rgba(58, 143, 140, 0.08);
-            border-color: rgba(58, 143, 140, 0.16);
+            background-color: rgba(23, 37, 43, 0.04);
+            border-color: transparent;
         }
 
-        /* Nav Section Glow Effect when active on current viewport section */
+        /* Nav Section Active Pill (Subtle, Crisp, World-Class Designer Style) */
         .nav-link.active {
-            color: var(--accent-primary);
+            color: var(--accent-dark);
             font-weight: 600;
-            background: rgba(58, 143, 140, 0.12);
-            border: 1px solid rgba(58, 143, 140, 0.38);
-            box-shadow: 0 0 16px rgba(58, 143, 140, 0.32),
-                        0 0 4px rgba(58, 143, 140, 0.18),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.8);
-            text-shadow: 0 0 10px rgba(58, 143, 140, 0.4);
+            background: rgba(58, 143, 140, 0.09);
+            border: 1px solid rgba(58, 143, 140, 0.22);
+            box-shadow: 0 1px 3px rgba(23, 37, 43, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-shadow: none;
         }
 
         /* Nav Right Actions */
@@ -482,52 +492,62 @@
             animation: iconStrokeDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Mobile Menu Toggle Button (Apple Glass Styled) */
+        /* Mobile Menu Toggle Button (Apple Glass Styled with Dynamic Icon Animation) */
         .mobile-toggle {
             display: none;
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: var(--radius-md);
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 4px 14px rgba(23, 37, 43, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            flex-direction: column;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+            border: 1px solid rgba(220, 230, 228, 0.8);
+            box-shadow: 0 4px 14px rgba(23, 37, 43, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95);
             transition: var(--transition-smooth);
             cursor: pointer;
-            outline: none;
+            padding: 8px;
+            z-index: 1002;
         }
 
         .mobile-toggle:hover,
         .mobile-toggle:active,
         .mobile-toggle.is-active {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(58, 143, 140, 0.4);
-            box-shadow: 0 0 14px rgba(58, 143, 140, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(58, 143, 140, 0.45);
+            box-shadow: 0 0 16px rgba(58, 143, 140, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.95);
         }
 
-        .mobile-toggle svg {
+        .toggle-bar {
+            display: block;
             width: 20px;
-            height: 20px;
-            stroke: var(--text-primary);
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.25s ease;
+            height: 2px;
+            background-color: var(--text-primary);
+            border-radius: 2px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background-color 0.2s ease;
+            transform-origin: center;
         }
 
-        .mobile-toggle svg path {
-            stroke-dasharray: 1;
-            stroke-dashoffset: 0;
+        .mobile-toggle.is-active .toggle-bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background-color: var(--accent-primary);
         }
 
-        .mobile-toggle:hover svg path {
-            animation: iconStrokeDraw 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .mobile-toggle.is-active .toggle-bar:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .mobile-toggle.is-active .toggle-bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background-color: var(--accent-primary);
         }
 
         /* ==========================================================================
-       HERO SECTION
+       HERO SECTION WITH WORLD-CLASS DESIGNER GRID SYSTEM
        ========================================================================== */
         .hero-section {
             min-height: calc(100vh - 80px);
@@ -537,7 +557,51 @@
             justify-content: center;
             padding: 60px 0 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Ambient Glow & Precision Technical Grid Mesh */
+        .hero-bg-grid-wrapper {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Subtle Ambient Radial Light Aura */
+        .hero-bg-aura {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 860px;
+            max-width: 96vw;
+            height: 520px;
+            background: radial-gradient(circle at 50% 45%, rgba(58, 143, 140, 0.15) 0%, rgba(194, 240, 237, 0.38) 35%, rgba(253, 249, 252, 0) 72%);
+            filter: blur(55px);
+            border-radius: 50%;
+            opacity: 0.95;
+        }
+
+        /* Modern Designer Geometric Grid Pattern */
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 46px 46px;
+            background-image: 
+                linear-gradient(to right, rgba(58, 143, 140, 0.09) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(58, 143, 140, 0.09) 1px, transparent 1px);
+            background-position: center center;
+            mask-image: radial-gradient(ellipse 78% 68% at 50% 48%, #000000 20%, rgba(0, 0, 0, 0.5) 55%, transparent 82%);
+            -webkit-mask-image: radial-gradient(ellipse 78% 68% at 50% 48%, #000000 20%, rgba(0, 0, 0, 0.5) 55%, transparent 82%);
+        }
+
+
 
         .hero-container {
             max-width: 1000px;
@@ -546,6 +610,8 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         /* Status Pill (Calm & Static Badge) */
@@ -644,61 +710,104 @@
             .nav-menu {
                 display: none;
                 flex-direction: column;
+                align-items: stretch;
                 position: absolute;
-                top: calc(100% + 10px);
+                top: calc(100% + 12px);
                 left: 0;
                 right: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.78);
-                backdrop-filter: blur(32px) saturate(210%) contrast(96%);
-                -webkit-backdrop-filter: blur(32px) saturate(210%) contrast(96%);
-                border: 1px solid rgba(255, 255, 255, 0.9);
-                border-radius: 20px;
-                padding: 14px 12px;
-                gap: 6px;
-                box-shadow: 0 20px 48px -10px rgba(23, 37, 43, 0.16),
-                            0 0 0 1px rgba(220, 230, 228, 0.7),
-                            inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-                            inset 0 -1px 1px rgba(58, 143, 140, 0.05);
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(28px) saturate(200%);
+                -webkit-backdrop-filter: blur(28px) saturate(200%);
+                border: 1px solid rgba(23, 37, 43, 0.08);
+                border-radius: 22px;
+                padding: 10px;
+                gap: 4px;
+                box-shadow: 0 16px 36px -8px rgba(23, 37, 43, 0.1),
+                            0 2px 8px rgba(23, 37, 43, 0.04),
+                            inset 0 1px 1px rgba(255, 255, 255, 0.95);
                 z-index: 1001;
                 transform-origin: top center;
-                animation: appleGlassMenuOpen 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation: appleGlassMenuOpen 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
 
             .nav-menu.mobile-open {
                 display: flex !important;
             }
 
+            .nav-menu li {
+                width: 100%;
+                list-style: none;
+            }
+
             .nav-menu .nav-link {
                 width: 100%;
-                text-align: center;
-                padding: 11px 16px;
-                font-size: 0.95rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+                padding: 12px 16px;
+                font-size: 0.96rem;
                 font-weight: 600;
-                border-radius: var(--radius-full);
-                background: rgba(255, 255, 255, 0.4);
-                border: 1px solid rgba(220, 230, 228, 0.4);
-                transition: all 0.22s ease;
+                border-radius: 12px;
+                background: transparent;
+                border: 1px solid transparent;
+                color: var(--text-primary);
+                min-height: 48px;
+                transition: all 0.18s ease;
+            }
+
+            .nav-menu .nav-link .nav-link-arrow {
+                width: 16px;
+                height: 16px;
+                color: var(--text-secondary);
+                opacity: 0.35;
+                transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+                display: inline-block;
             }
 
             .nav-menu .nav-link:hover,
             .nav-menu .nav-link:active {
-                background: rgba(58, 143, 140, 0.08);
-                border-color: rgba(58, 143, 140, 0.22);
+                background: rgba(23, 37, 43, 0.03);
+                color: var(--accent-primary);
+            }
+
+            .nav-menu .nav-link:hover .nav-link-arrow,
+            .nav-menu .nav-link:active .nav-link-arrow {
+                opacity: 0.9;
+                color: var(--accent-primary);
+                transform: translateX(2px);
             }
 
             .nav-menu .nav-link.active {
-                color: var(--accent-primary);
-                background: rgba(58, 143, 140, 0.14);
-                border: 1px solid rgba(58, 143, 140, 0.38);
-                box-shadow: 0 0 14px rgba(58, 143, 140, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-                text-shadow: 0 0 8px rgba(58, 143, 140, 0.35);
+                color: var(--accent-dark);
+                background: rgba(58, 143, 140, 0.08);
+                border: 1px solid rgba(58, 143, 140, 0.18);
+                box-shadow: none;
+            }
+
+            .nav-menu .nav-link.active .nav-link-arrow {
+                opacity: 1;
+                color: var(--accent-dark);
+            }
+
+            .nav-menu .mobile-drawer-cta {
+                display: block;
+                padding-top: 8px;
+                margin-top: 4px;
+                border-top: 1px solid rgba(23, 37, 43, 0.06);
+            }
+
+            .nav-menu .mobile-drawer-cta .btn {
+                width: 100%;
+                min-height: 46px;
+                font-size: 0.92rem;
             }
 
             @keyframes appleGlassMenuOpen {
                 0% {
                     opacity: 0;
-                    transform: scale(0.96) translateY(-8px);
+                    transform: scale(0.97) translateY(-6px);
                 }
                 100% {
                     opacity: 1;
@@ -786,6 +895,18 @@
                 padding: 24px 0 32px;
                 box-sizing: border-box;
             }
+
+            .hero-bg-grid {
+                background-size: 32px 32px;
+            }
+
+            .hero-bg-aura {
+                width: 100%;
+                height: 380px;
+                filter: blur(40px);
+            }
+
+
 
             .hero-container {
                 width: 100%;
@@ -1171,6 +1292,16 @@
             cursor: pointer;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 0;
+            position: relative;
+        }
+
+        .service-dot::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            bottom: -18px;
+            left: -18px;
+            right: -18px;
         }
 
         .service-dot:hover {
@@ -2282,6 +2413,39 @@
             line-height: 1.5;
         }
 
+        .footer-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 8px 16px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(58, 143, 140, 0.25);
+            border-radius: var(--radius-full);
+            color: var(--accent-dark);
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            min-height: 44px;
+        }
+
+        .footer-email-btn:hover {
+            background: #FFFFFF;
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(58, 143, 140, 0.16);
+        }
+
+        .footer-email-btn svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
         .footer-nav {
             display: flex;
             gap: 28px;
@@ -2294,6 +2458,10 @@
             font-weight: 500;
             color: var(--text-secondary);
             transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 4px;
         }
 
         .footer-link:hover {
@@ -2310,6 +2478,22 @@
             border-top: 1px solid var(--border);
             font-size: 0.84rem;
             color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-email {
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 6px;
+        }
+
+        .footer-bottom-email:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
         }
 
         /* ==========================================================================
@@ -2518,11 +2702,46 @@
 
                 <!-- Navigation Links (Manrope) -->
                 <ul class="nav-menu">
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#process" class="nav-link">How It Works</a></li>
-                    <li><a href="#reviews" class="nav-link">Reviews</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <a href="#services" class="nav-link">
+                            <span>Services</span>
+                            <svg class="nav-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#process" class="nav-link">
+                            <span>How It Works</span>
+                            <svg class="nav-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reviews" class="nav-link">
+                            <span>Reviews</span>
+                            <svg class="nav-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#faq" class="nav-link">
+                            <span>FAQ</span>
+                            <svg class="nav-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav-link">
+                            <span>Contact</span>
+                            <svg class="nav-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li class="mobile-drawer-cta">
+                        <a href="#contact" class="btn btn-primary" style="justify-content: center;">
+                            <span>Discuss Your Project</span>
+                            <span class="draw-arrow-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path pathLength="1" d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Right Side CTA Actions -->
@@ -2535,10 +2754,10 @@
                             </svg>
                         </span>
                     </a>
-                    <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path pathLength="1" d="M3 12h18M3 6h18M3 18h18" />
-                        </svg>
+                    <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobileMenuBtn" aria-expanded="false">
+                        <span class="toggle-bar"></span>
+                        <span class="toggle-bar"></span>
+                        <span class="toggle-bar"></span>
                     </button>
                 </div>
             </nav>
@@ -2551,6 +2770,12 @@
     <main>
         <!-- 01 — HERO SECTION -->
         <section class="hero-section" id="home">
+            <!-- World-Class Subtle Geometric Grid Structure & Ambient Light Aura -->
+            <div class="hero-bg-grid-wrapper" aria-hidden="true">
+                <div class="hero-bg-aura"></div>
+                <div class="hero-bg-grid"></div>
+            </div>
+
             <div class="container">
                 <div class="hero-container">
 
@@ -2654,7 +2879,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/WEB-DEVELOPMENT.png" alt="Web Development Interface Preview"
-                                    class="service-preview-img" loading="lazy">
+                                    class="service-preview-img" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
 
@@ -2683,7 +2908,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/SEARCH-ENGINE-OPTIMIZATION.jpeg"
-                                    alt="Search Engine Optimization Preview" class="service-preview-img" loading="lazy">
+                                    alt="Search Engine Optimization Preview" class="service-preview-img" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
 
@@ -2711,7 +2936,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/GOOLE-BUSINESS-PROFILE.jpeg" alt="Google Business Profile Preview"
-                                    class="service-preview-img" loading="lazy">
+                                    class="service-preview-img" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
 
@@ -2740,7 +2965,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/AI-SOLUTIONS.png" alt="AI Automation & Chatbots Preview"
-                                    class="service-preview-img" style="object-position: top center;" loading="lazy">
+                                    class="service-preview-img" style="object-position: top center;" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
 
@@ -2769,7 +2994,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/WEB-APPLICATION.png" alt="Web Apps & Software Preview"
-                                    class="service-preview-img" loading="lazy">
+                                    class="service-preview-img" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
 
@@ -2798,7 +3023,7 @@
                             </div>
                             <div class="service-preview-wrap">
                                 <img src="assets/WORDPRESS-DEVELOPMENT.png" alt="WordPress CMS & Custom Theme Preview"
-                                    class="service-preview-img" loading="lazy">
+                                    class="service-preview-img" width="600" height="600" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -3910,6 +4135,13 @@
                         <span>Prad<span>Tech</span></span>
                     </a>
                     <p class="footer-tagline">Web Development · SEO · AI · Digital Solutions</p>
+                    <a href="mailto:pradtechh@gmail.com" class="footer-email-btn" aria-label="Send email to pradtechh@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                        <span>pradtechh@gmail.com</span>
+                    </a>
                 </div>
 
                 <!-- Footer Navigation -->
@@ -3942,6 +4174,7 @@
 
             <div class="footer-bottom">
                 <div>© 2026 PradTech. All rights reserved.</div>
+                <a href="mailto:pradtechh@gmail.com" class="footer-bottom-email" aria-label="Email pradtechh@gmail.com">pradtechh@gmail.com</a>
             </div>
         </div>
     </footer>
@@ -3988,6 +4221,7 @@
                 e.stopPropagation();
                 const isOpen = navMenu.classList.toggle('mobile-open');
                 mobileBtn.classList.toggle('is-active', isOpen);
+                mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
 
             // Close mobile menu when clicking any nav link
@@ -3997,6 +4231,7 @@
                     if (window.innerWidth <= 992) {
                         navMenu.classList.remove('mobile-open');
                         mobileBtn.classList.remove('is-active');
+                        mobileBtn.setAttribute('aria-expanded', 'false');
                     }
                 });
             });
@@ -4006,6 +4241,7 @@
                 if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
                     navMenu.classList.remove('mobile-open');
                     mobileBtn.classList.remove('is-active');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
                 }
             });
         }
@@ -4022,11 +4258,27 @@
             { id: 'contact', el: document.getElementById('contact') }
         ];
 
+        let cachedSectionBounds = [];
+        function cacheSectionBounds() {
+            const headerOffset = 140;
+            const scrollY = window.scrollY || window.pageYOffset;
+            cachedSectionBounds = [];
+            trackedSections.forEach(sec => {
+                if (sec.el) {
+                    const rect = sec.el.getBoundingClientRect();
+                    cachedSectionBounds.push({
+                        id: sec.id,
+                        top: rect.top + scrollY - headerOffset,
+                        bottom: rect.top + scrollY + rect.height - headerOffset
+                    });
+                }
+            });
+        }
+
         function updateActiveNavGlow() {
             const scrollY = window.scrollY || window.pageYOffset;
             const windowHeight = window.innerHeight;
             const docHeight = document.documentElement.scrollHeight;
-            const headerOffset = 140; // comfortable visual threshold below header
 
             // If user scrolled to the very bottom of page, activate Contact
             if (scrollY + windowHeight >= docHeight - 50) {
@@ -4035,22 +4287,17 @@
             }
 
             // If user is at top hero area (before services), clear active links
-            const firstSection = trackedSections[0].el;
-            if (firstSection && scrollY < firstSection.offsetTop - headerOffset) {
+            if (!cachedSectionBounds.length || scrollY < cachedSectionBounds[0].top) {
                 setActiveSection('');
                 return;
             }
 
             let currentActiveId = '';
-            for (let i = 0; i < trackedSections.length; i++) {
-                const sec = trackedSections[i];
-                if (sec.el) {
-                    const top = sec.el.offsetTop - headerOffset;
-                    const height = sec.el.offsetHeight;
-                    if (scrollY >= top && scrollY < top + height) {
-                        currentActiveId = sec.id;
-                        break;
-                    }
+            for (let i = 0; i < cachedSectionBounds.length; i++) {
+                const b = cachedSectionBounds[i];
+                if (scrollY >= b.top && scrollY < b.bottom) {
+                    currentActiveId = b.id;
+                    break;
                 }
             }
 
@@ -4073,8 +4320,15 @@
         window.addEventListener('scroll', () => {
             window.requestAnimationFrame(updateActiveNavGlow);
         }, { passive: true });
-        window.addEventListener('resize', updateActiveNavGlow, { passive: true });
-        document.addEventListener('DOMContentLoaded', updateActiveNavGlow);
+        window.addEventListener('resize', () => {
+            cacheSectionBounds();
+            updateActiveNavGlow();
+        }, { passive: true });
+        window.addEventListener('load', () => {
+            cacheSectionBounds();
+            updateActiveNavGlow();
+        });
+        cacheSectionBounds();
         updateActiveNavGlow();
 
         // FAQ Accordion Toggle
@@ -4345,15 +4599,16 @@
         // ==========================================================================
         (function initFooterTextHover() {
             const container = document.getElementById("footerTextContainer");
-            if (!container || typeof THREE === "undefined") return;
+            if (!container) return;
 
             let scene, camera, renderer, planeMesh, shaderMaterial;
             let mousePosition = { x: 0.5, y: 0.5 };
             let targetMousePosition = { x: 0.5, y: 0.5 };
             let velocity = { x: 0.0, y: 0.0 };
             let targetVelocity = { x: 0.0, y: 0.0 };
-            let isVisible = true;
+            let isVisible = false;
             let animationFrameId = null;
+            let isInitialized = false;
 
             const vertexShader = `
                 varying vec2 vUv;
@@ -4462,6 +4717,9 @@
             }
 
             function initializeScene() {
+                if (isInitialized || typeof THREE === "undefined") return;
+                isInitialized = true;
+
                 scene = new THREE.Scene();
                 camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
                 camera.position.z = 1;
@@ -4494,10 +4752,16 @@
                 renderer.setClearColor(0xffffff, 1);
 
                 container.appendChild(renderer.domElement);
+
+                if (document.fonts) {
+                    document.fonts.ready.then(() => {
+                        reloadTexture();
+                    });
+                }
             }
 
             function reloadTexture() {
-                if (!container.clientWidth || !container.clientHeight || !shaderMaterial) return;
+                if (!container.clientWidth || !container.clientHeight || !shaderMaterial || typeof THREE === "undefined") return;
                 const newTexture = createTextTexture();
                 if (shaderMaterial.uniforms.u_texture.value) {
                     shaderMaterial.uniforms.u_texture.value.dispose();
@@ -4506,16 +4770,8 @@
                 shaderMaterial.uniforms.u_grid.value = getGridVector();
             }
 
-            initializeScene();
-
-            if (document.fonts) {
-                document.fonts.ready.then(() => {
-                    reloadTexture();
-                });
-            }
-
             function animateScene() {
-                if (!isVisible) return;
+                if (!isVisible || !isInitialized || !renderer) return;
                 animationFrameId = requestAnimationFrame(animateScene);
 
                 // Responsive follow & decay (snappy, zero sticky drag)
@@ -4541,8 +4797,6 @@
 
                 renderer.render(scene, camera);
             }
-
-            animateScene();
 
             function handlePointerMove(event) {
                 const rect = container.getBoundingClientRect();
@@ -4603,18 +4857,27 @@
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
                     const rect = container.getBoundingClientRect();
-                    if (rect.width > 0 && rect.height > 0) {
+                    if (rect.width > 0 && rect.height > 0 && isInitialized && renderer) {
                         renderer.setSize(rect.width, rect.height);
                         reloadTexture();
                     }
                 }, 120);
             }, { passive: true });
 
-            // Viewport Observer
+            // Viewport Observer to dynamically initialize Scene on demand
             if ("IntersectionObserver" in window) {
                 const footerObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
+                            if (!isInitialized) {
+                                if (typeof THREE !== "undefined") {
+                                    initializeScene();
+                                } else {
+                                    window.addEventListener('load', () => {
+                                        if (typeof THREE !== "undefined") initializeScene();
+                                    });
+                                }
+                            }
                             if (!isVisible) {
                                 isVisible = true;
                                 animateScene();
@@ -4632,6 +4895,10 @@
             }
         })();
     </script>
+
+    <!-- Deferred High-Performance Libraries (Loaded asynchronously without blocking FCP/LCP) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
 </body>
 
 </html>

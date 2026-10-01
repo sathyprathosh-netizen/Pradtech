@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <!-- Homepage / Main Landing Page -->
@@ -47,7 +47,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/WEB-DEVELOPMENT.png</image:loc>
-            <image:title>Custom Web Development Lifecycle & Showcase</image:title>
+            <image:title>Custom Web Development Lifecycle &amp; Showcase</image:title>
             <image:caption>End-to-end web engineering process from UI/UX design to ultra-fast production deployment</image:caption>
         </image:image>
     </url>
@@ -60,7 +60,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/SEARCH-ENGINE-OPTIMIZATION.jpeg</image:loc>
-            <image:title>Search Engine Optimization Process & Analytics</image:title>
+            <image:title>Search Engine Optimization Process &amp; Analytics</image:title>
             <image:caption>Complete SEO workflow covering technical audit, on-page keyword mapping, and authority building</image:caption>
         </image:image>
     </url>
@@ -73,7 +73,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/GOOLE-BUSINESS-PROFILE.jpeg</image:loc>
-            <image:title>Google Business Profile Optimization & Local Pack Growth</image:title>
+            <image:title>Google Business Profile Optimization &amp; Local Pack Growth</image:title>
             <image:caption>Comprehensive local SEO methodology from profile verification to automated review funnels</image:caption>
         </image:image>
     </url>
@@ -86,7 +86,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/AI-SOLUTIONS.png</image:loc>
-            <image:title>AI Solutions & Intelligent Automation Workflow</image:title>
+            <image:title>AI Solutions &amp; Intelligent Automation Workflow</image:title>
             <image:caption>Custom AI agents, LLM integrations, and operational automation architecture</image:caption>
         </image:image>
     </url>
@@ -99,7 +99,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/WEB-APPLICATION.png</image:loc>
-            <image:title>Web Applications & Custom Software Engineering</image:title>
+            <image:title>Web Applications &amp; Custom Software Engineering</image:title>
             <image:caption>Full stack web application architecture, robust backend APIs, and enterprise cloud deployments</image:caption>
         </image:image>
     </url>
@@ -112,7 +112,7 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://sathyprathosh-netizen.github.io/Pradtech/assets/WORDPRESS-DEVELOPMENT.png</image:loc>
-            <image:title>Custom WordPress Theme & CMS Engineering</image:title>
+            <image:title>Custom WordPress Theme &amp; CMS Engineering</image:title>
             <image:caption>Bespoke WordPress engineering without bloated plugins, featuring enterprise security and custom ACF workflows</image:caption>
         </image:image>
     </url>

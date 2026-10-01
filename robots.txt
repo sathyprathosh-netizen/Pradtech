@@ -1,0 +1,19 @@
+﻿# ==============================================================================
+# PradTech robots.txt
+# Optimized for Googlebot, Bingbot & all standard web crawlers
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.svg$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+
+# Sitemap declaration
+Sitemap: https://sathyprathosh-netizen.github.io/Pradtech/sitemap.xml
+
